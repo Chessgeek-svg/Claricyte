@@ -18,7 +18,7 @@ pipx install label-studio          # or: pip install label-studio in its own env
 
 ## Per-batch workflow
 
-1. **Generate a task batch** for one class (run in the `hemascope` env):
+1. **Generate a task batch** for one class (run in the `claricyte` env):
 
    ```bash
    python labeling/make_tasks.py --label Blast --n 300

@@ -2,11 +2,11 @@ import random
 
 import torch
 
-from hemascope.data import MorphologyDataset
-from hemascope.explain import explain
-from hemascope.model import Model
-from hemascope.predict import contributions, predict
-from hemascope.vocab import CLASSES
+from claricyte.data import MorphologyDataset
+from claricyte.explain import explain
+from claricyte.model import Model
+from claricyte.predict import contributions, predict
+from claricyte.vocab import CLASSES
 
 ATTR_PATH, METADATA_PATH = "metadata/attributes.csv", "metadata/metadata.csv"
 

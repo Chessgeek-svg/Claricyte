@@ -1,8 +1,8 @@
 import torch
 
-from hemascope.data import MorphologyDataset
-from hemascope.model import Model
-from hemascope.training import attr_only_loss, balanced_loader, train
+from claricyte.data import MorphologyDataset
+from claricyte.model import Model
+from claricyte.training import attr_only_loss, balanced_loader, train
 
 torch.manual_seed(0)
 

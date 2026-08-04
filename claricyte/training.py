@@ -13,10 +13,10 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader, WeightedRandomSampler
 
-from hemascope.vocab import ATTRIBUTES
+from claricyte.vocab import ATTRIBUTES
 
 
-def balanced_loader(dataset, batch_size, label_column="hemascope_label"):
+def balanced_loader(dataset, batch_size, label_column="claricyte_label"):
     """A DataLoader whose sampler draws every class about equally often.
 
     Each sample is weighted by the inverse of its class frequency, so a majority

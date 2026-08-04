@@ -9,9 +9,9 @@ class.
 
 import torch
 
-from hemascope.data import MorphologyDataset
-from hemascope.model import Model
-from hemascope.training import balanced_loader, class_only_loss, train
+from claricyte.data import MorphologyDataset
+from claricyte.model import Model
+from claricyte.training import balanced_loader, class_only_loss, train
 
 ATTR_PATH, METADATA_PATH = "metadata/attributes.csv", "metadata/metadata.csv"
 device = "cuda" if torch.cuda.is_available() else "cpu"

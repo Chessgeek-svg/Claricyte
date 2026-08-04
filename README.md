@@ -1,13 +1,13 @@
-# HemaScope
+# Claricyte
 
-An AI-powered study tool for hematology morphology identification. HemaScope helps
+An AI-powered study tool for hematology morphology identification. Claricyte helps
 clinical laboratory professionals and students learn to identify white blood cell
 types by pairing each cell with a plain-English explanation of the morphological
 features that support its classification.
 
 ## How it works
 
-HemaScope is built on a concept bottleneck model (CBM) rather than a black-box
+Claricyte is built on a concept bottleneck model (CBM) rather than a black-box
 classifier. Instead of mapping an image straight to a label, it uses a shared vision backbone to feed 11 attribute heads, which predict morphological featurtes of the cell. Finally, those predictions and their confidence values are taken and fed to the classification head, which provides the classification prediction for the cell.
 
 ```
@@ -21,7 +21,7 @@ than regurgitating a rote textbook description of the cell.
 
 ## Study (quiz) mode
 
-The demo runs as a quiz. HemaScope draws a real validation-set cell, you guess its
+The demo runs as a quiz. Claricyte draws a real validation-set cell, you guess its
 type, and then it reveals the answer along with the model's predicted morphological
 attributes and a plain-English explanation of why those features fit the known-correct
 classification. You can also browse a specific cell type to study it directly.
@@ -54,7 +54,7 @@ in `scripts/` (`train_attr_heads.py` then `train_class_head.py`).
 
 ## Credits & attribution
 
-HemaScope is trained and evaluated on publicly released data, used here under their
+Claricyte is trained and evaluated on publicly released data, used here under their
 respective licenses:
 
 - Blood cell images: Acevedo et al., "A dataset of microscopic peripheral blood cell

@@ -4,7 +4,7 @@ from PIL import Image
 from torch.utils.data import Dataset
 from torchvision.transforms import v2
 
-from hemascope.vocab import ATTRIBUTES, CLASS_TO_INDEX, VALUE_TO_INDEX
+from claricyte.vocab import ATTRIBUTES, CLASS_TO_INDEX, VALUE_TO_INDEX
 
 
 class MorphologyDataset(Dataset):
@@ -60,7 +60,7 @@ class MorphologyDataset(Dataset):
         attr_targets = torch.tensor(row[ATTRIBUTES].to_numpy(dtype="int64"))
 
         # class target: string -> canonical int index
-        class_target = CLASS_TO_INDEX[row["hemascope_label"]]
+        class_target = CLASS_TO_INDEX[row["claricyte_label"]]
 
         path = row["image_path"]
         image = Image.open(path).convert("RGB")

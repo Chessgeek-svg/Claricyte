@@ -7,7 +7,7 @@ from typing import Iterator, NamedTuple
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-from hemascope.vocab import ATTRIBUTES
+from claricyte.vocab import ATTRIBUTES
 
 
 class RawRow(NamedTuple):
@@ -34,7 +34,7 @@ def ingest_mll23(root: Path) -> Iterator[RawRow]:
             )
 
 
-# original MLL23 folder name -> one of the 17 HemaScope classes
+# original MLL23 folder name -> one of the 17 Claricyte classes
 MLL23_LABEL_MAP: dict[str, str] = {
     "basophil": "Basophil",
     "eosinophil": "Eosinophil",
@@ -73,7 +73,7 @@ def ingest_hrls(root: Path) -> Iterator[RawRow]:
             )
 
 
-# original HRLS folder name -> one of the 8 HemaScope classes
+# original HRLS folder name -> one of the 8 Claricyte classes
 HRLS_LABEL_MAP: dict[str, str] = {
     "Basophile": "Basophil",
     "Eosinophile": "Eosinophil",
@@ -86,7 +86,7 @@ HRLS_LABEL_MAP: dict[str, str] = {
     "Normoblast": "Erythroblast",
 }
 
-# Acevedo/PBC class -> HemaScope class. The neutrophil and ig folders are mixed,
+# Acevedo/PBC class -> Claricyte class. The neutrophil and ig folders are mixed,
 # their real class comes from the filename prefix (BNE/SNE, MMY/MY/PMY), not the folder
 ACEVEDO_LABEL_MAP: dict[str, str] = {
     "basophil": "Basophil",
@@ -188,23 +188,23 @@ YARIKAN_LABEL_MAP = {
 def ingest_yarikan(root: Path) -> pd.DataFrame:
     """Ingest Yarikan/Koc. CSV-labeled, ships its own patient-level split.
 
-    The on-disk class folders are already the HemaScope names; the CSV `path`
+    The on-disk class folders are already the Claricyte names; the CSV `path`
     gives the physical train/val/test folder, which can differ from the split
     column since the split is re-assigned per patient.
     """
     data = pd.read_csv(root / "metadata_with_patient_level_splits.csv")
-    hemascope = data["cell_type"].map(YARIKAN_LABEL_MAP)
+    claricyte = data["cell_type"].map(YARIKAN_LABEL_MAP)
     physical = data["path"].str.split("/").str[0]
     data["image_path"] = [
         str(root / "dataset" / phys / label / name)
-        for phys, label, name in zip(physical, hemascope, data["image_name"])
+        for phys, label, name in zip(physical, claricyte, data["image_name"])
     ]
     return pd.DataFrame(
         {
             "image_path": data["image_path"],
             "source_dataset": "yarikan",
             "original_label": data["cell_type"],
-            "hemascope_label": hemascope,
+            "claricyte_label": claricyte,
             "split": data["split"].replace({"validation": "val"}),
         }
     )
@@ -215,13 +215,13 @@ def assign_splits(metadata: pd.DataFrame, val_frac: float, test_frac: float) -> 
 
     Rows arriving with `split` already set (datasets that ship an official
     train/val/test split, e.g. WB-CAtt) are left untouched. The remaining rows
-    are split with stratification on `hemascope_label`.
+    are split with stratification on `claricyte_label`.
     """
     unassigned = metadata.index[metadata["split"].isna()].tolist()
     if not unassigned:
         return
 
-    labels = metadata["hemascope_label"].loc[unassigned].tolist()
+    labels = metadata["claricyte_label"].loc[unassigned].tolist()
 
     trainval_idx, test_idx = train_test_split(
         unassigned, test_size=test_frac, stratify=labels, random_state=42
@@ -229,7 +229,7 @@ def assign_splits(metadata: pd.DataFrame, val_frac: float, test_frac: float) -> 
     train_idx, val_idx = train_test_split(
         trainval_idx,
         test_size=val_frac / (1 - test_frac),
-        stratify=metadata["hemascope_label"].loc[trainval_idx].tolist(),
+        stratify=metadata["claricyte_label"].loc[trainval_idx].tolist(),
         random_state=42,
     )
 
@@ -259,7 +259,7 @@ def main() -> None:
             "image_path": str(r.image_path),
             "source_dataset": r.source_dataset,
             "original_label": r.original_label,
-            "hemascope_label": LABEL_MAPS[r.source_dataset][r.original_label],
+            "claricyte_label": LABEL_MAPS[r.source_dataset][r.original_label],
             "split": None,  # filled in by assign_splits
         }
         for r in raw

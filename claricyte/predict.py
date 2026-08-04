@@ -1,8 +1,8 @@
 import torch
 import torch.nn.functional as F
 
-from hemascope import vocab
-from hemascope.vocab import ATTRIBUTES, decode
+from claricyte import vocab
+from claricyte.vocab import ATTRIBUTES, decode
 
 
 def predict(model, image_tensor):

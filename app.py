@@ -1,4 +1,4 @@
-"""Streamlit demo UI for the HemaScope concept bottleneck model.
+"""Streamlit demo UI for the Claricyte concept bottleneck model.
 
 Quiz / given-label mode: draw a real validation-set cell, let the user guess its
 type, then reveal the model's predicted morphological attributes (with confidences)
@@ -15,11 +15,11 @@ import streamlit as st
 import torch
 from PIL import Image
 
-from hemascope.data import MorphologyDataset
-from hemascope.explain import explain
-from hemascope.model import Model
-from hemascope.predict import contributions, predict
-from hemascope.vocab import CLASSES
+from claricyte.data import MorphologyDataset
+from claricyte.explain import explain
+from claricyte.model import Model
+from claricyte.predict import contributions, predict
+from claricyte.vocab import CLASSES
 
 ATTR_PATH, METADATA_PATH = "metadata/attributes.csv", "metadata/metadata.csv"
 CHECKPOINT = "checkpoints/best_model.pt"
@@ -49,7 +49,7 @@ def load_valset():
 
 def pick_index(valset, scope):
     """Random dataframe index of a val cell within `scope` (a class, or any)."""
-    labels = valset.df["hemascope_label"]
+    labels = valset.df["claricyte_label"]
     if scope == QUIZ_SCOPE:
         candidates = labels.index.tolist()
     else:
@@ -66,7 +66,7 @@ def advance(valset, scope):
 model = load_model()
 valset = load_valset()
 
-st.title("HemaScope WBC morphology tutor")
+st.title("Claricyte WBC morphology tutor")
 
 # Sidebar: quiz on any cell, or browse a specific type.
 scope = st.sidebar.selectbox("Mode", [QUIZ_SCOPE, *CLASSES])
@@ -79,7 +79,7 @@ if "index" not in st.session_state or st.session_state.get("scope") != scope:
 index = st.session_state.index
 row = valset.df.iloc[index]
 image_tensor, _, _ = valset[index]
-true_label = row["hemascope_label"]
+true_label = row["claricyte_label"]
 
 quiz_mode = scope == QUIZ_SCOPE
 # In quiz mode the label stays hidden until the user commits a guess.

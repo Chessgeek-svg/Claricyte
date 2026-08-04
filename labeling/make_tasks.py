@@ -1,4 +1,4 @@
-"""Generate a Label Studio task file for one HemaScope class.
+"""Generate a Label Studio task file for one Claricyte class.
 
 Picks images of the target class that aren't labeled yet, converts non-viewable
 formats (tif/bmp) to jpg under labeling/cache/, and writes tasks.json. Each task
@@ -54,7 +54,7 @@ def local_files_url(abspath: Path) -> str:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--label", required=True, help="hemascope_label to serve")
+    ap.add_argument("--label", required=True, help="claricyte_label to serve")
     ap.add_argument("--n", type=int, default=300)
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--out", default="tasks.json")
@@ -62,7 +62,7 @@ def main() -> None:
 
     meta = pd.read_csv(REPO_ROOT / "metadata" / "metadata.csv")
     done = already_labeled()
-    pool = meta[(meta["hemascope_label"] == args.label) & (~meta["image_path"].isin(done))]
+    pool = meta[(meta["claricyte_label"] == args.label) & (~meta["image_path"].isin(done))]
     picked = pool.sample(n=min(args.n, len(pool)), random_state=args.seed)
 
     tasks = []
@@ -71,7 +71,7 @@ def main() -> None:
         tasks.append({"data": {
             "image": local_files_url(view),
             "image_path": row.image_path,
-            "hemascope_label": row.hemascope_label,
+            "claricyte_label": row.claricyte_label,
             "source_dataset": row.source_dataset,
         }})
 

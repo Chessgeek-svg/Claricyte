@@ -1,4 +1,4 @@
-<!-- Label Studio config for HemaScope morphological attribute labeling.
+<!-- Label Studio config for Claricyte morphological attribute labeling.
      Attribute names and Choice values are taken verbatim from attributes.csv
      (the WB-CAtt schema) so manual labels are interchangeable with WB-CAtt's.
      unexpected_case is an extra flag for cells that look mislabeled/atypical. -->
@@ -6,7 +6,7 @@
 
   <View style="flex: 40%; padding-right: 1em;">
     <Image name="image" value="$image" zoom="true" maxWidth="100%"/>
-    <Header value="Class (given): $hemascope_label"/>
+    <Header value="Class (given): $claricyte_label"/>
   </View>
 
   <View style="flex: 30%; padding-right: 1em;">
@@ -26,7 +26,7 @@
       <Choice value="densely"/>
     </Choices>
 
-    <!-- HemaScope addition, not part of the WB-CAtt schema: WB-CAtt is normal-cell
+    <!-- Claricyte addition, not part of the WB-CAtt schema: WB-CAtt is normal-cell
          only (nucleoli ~always absent), so this column is blank on WB-CAtt rows and
          must NOT enter vocab.ATTRIBUTE_VOCAB until those rows are backfilled. -->
     <Header value="Nucleoli Present"/>
