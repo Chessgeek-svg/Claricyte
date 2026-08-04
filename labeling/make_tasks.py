@@ -6,6 +6,7 @@ keeps the true metadata image_path so exports map back to the real image.
 
 Usage: python labeling/make_tasks.py --label Blast --n 300
 """
+
 import argparse
 import hashlib
 import json
@@ -16,7 +17,7 @@ from urllib.parse import quote
 import pandas as pd
 from PIL import Image
 
-REPO_ROOT = Path(__file__).resolve().parent.parent   # Label Studio document root
+REPO_ROOT = Path(__file__).resolve().parent.parent  # Label Studio document root
 CACHE_DIR = REPO_ROOT / "labeling" / "cache"
 VIEWABLE = {".jpg", ".jpeg", ".png"}
 
@@ -62,18 +63,24 @@ def main() -> None:
 
     meta = pd.read_csv(REPO_ROOT / "metadata" / "metadata.csv")
     done = already_labeled()
-    pool = meta[(meta["claricyte_label"] == args.label) & (~meta["image_path"].isin(done))]
+    is_label = meta["claricyte_label"] == args.label
+    not_done = ~meta["image_path"].isin(done)
+    pool = meta[is_label & not_done]
     picked = pool.sample(n=min(args.n, len(pool)), random_state=args.seed)
 
     tasks = []
     for row in picked.itertuples():
         view = viewable_copy(row.image_path)
-        tasks.append({"data": {
-            "image": local_files_url(view),
-            "image_path": row.image_path,
-            "claricyte_label": row.claricyte_label,
-            "source_dataset": row.source_dataset,
-        }})
+        tasks.append(
+            {
+                "data": {
+                    "image": local_files_url(view),
+                    "image_path": row.image_path,
+                    "claricyte_label": row.claricyte_label,
+                    "source_dataset": row.source_dataset,
+                }
+            }
+        )
 
     out = REPO_ROOT / "labeling" / args.out
     out.write_text(json.dumps(tasks, indent=2))

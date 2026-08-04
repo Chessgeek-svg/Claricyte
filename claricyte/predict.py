@@ -29,7 +29,7 @@ def predict(model, image_tensor):
     result = {}
     for attr in ATTRIBUTES:
         # probs: (1, n_values); sum(n_values) = 1
-        probs = F.softmax(attr_logits[attr], dim=1)  
+        probs = F.softmax(attr_logits[attr], dim=1)
         top = probs.max(dim=1)  # tuple: (values, indices)
         # result: dict[attr] = (value string, probability), e.g.
         # {'cell_size': ('small', 0.99), 'cell_shape': ('round', 0.95), ...}

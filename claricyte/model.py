@@ -48,6 +48,6 @@ class Model(nn.Module):
         # Glue the 11 prob vectors into one (B, 31) concept vector,
         # then map those concepts -> 6 class scores.
         class_logits = self.class_head(torch.cat(probs, dim=1))
-        
+
         # attr_logits: 11 x (B, n_values); class_logits: (B, 6).
         return attr_logits, class_logits

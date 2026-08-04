@@ -43,7 +43,7 @@ MLL23_LABEL_MAP: dict[str, str] = {
     "lymphocyte_large_granular": "Lymphocyte",
     "lymphocyte_neoplastic": "Blast",
     # NOTE: MLL23 count for reactive lymphs (33) is unreliable; may drop later
-    "lymphocyte_reactive": "Reactive Lymphocyte",  
+    "lymphocyte_reactive": "Reactive Lymphocyte",
     "metamyelocyte": "Metamyelocyte",
     "monocyte": "Monocyte",
     "myeloblast": "Blast",

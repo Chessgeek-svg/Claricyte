@@ -56,7 +56,7 @@ PHRASING: dict[str, dict[str, str]] = {
 # If the model's predicted value is in the acceptable set it confirms the label; if
 # not, that contradiction is surfaced as an explicit atypical-finding note.
 #
-# Values that aren't a simple equality (e.g. band vs. seg nucleus is a judgment call) 
+# Values that aren't a simple equality (e.g. band vs. seg nucleus is a judgment call)
 # are given as an acceptable *set*, not a single value. Empty {} = no strictly mandatory
 # single feature.
 REQUIRED_FEATURES: dict[str, dict[str, set[str]]] = {

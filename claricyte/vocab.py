@@ -50,7 +50,7 @@ VALUE_TO_INDEX: dict[str, dict[str, int]] = {
     for attr, values in ATTRIBUTE_VOCAB.items()
 }
 
-# The current 6 classes in alphabetical order. 
+# The current 6 classes in alphabetical order.
 # As more are added, they can be appended to the end
 CLASSES: list[str] = [
     "Band Neutrophil",
