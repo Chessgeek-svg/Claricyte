@@ -16,16 +16,26 @@ from torch.utils.data import DataLoader, WeightedRandomSampler
 from claricyte.vocab import ATTRIBUTES
 
 
-def balanced_loader(dataset, batch_size, label_column="claricyte_label"):
+def balanced_loader(dataset, batch_size, label_column="claricyte_label", num_workers=4):
     """A DataLoader whose sampler draws every class about equally often.
 
     Each sample is weighted by the inverse of its class frequency, so a majority
     class (e.g. eosinophil) stops dominating gradient updates.
+
+    num_workers > 0 loads/decodes images in parallel worker processes instead of
+    the main thread, so the GPU isn't left idle waiting on CPU image decoding
+    between batches. pin_memory speeds up the CPU -> GPU transfer.
     """
     counts = dataset.df[label_column].value_counts()
     weights = [1.0 / counts[label] for label in dataset.df[label_column]]
     sampler = WeightedRandomSampler(weights, num_samples=len(dataset), replacement=True)
-    return DataLoader(dataset, batch_size=batch_size, sampler=sampler)
+    return DataLoader(
+        dataset,
+        batch_size=batch_size,
+        sampler=sampler,
+        num_workers=num_workers,
+        pin_memory=True,
+    )
 
 
 def joint_loss(attr_logits, class_logits, attr_targets, class_targets):
