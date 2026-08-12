@@ -42,10 +42,12 @@ if __name__ == "__main__":
         valset, batch_size=64, shuffle=False, num_workers=4, pin_memory=True
     )
 
-    # Only the class head trains, with no weight decay so its logits can spread
-    # instead of being shrunk toward a flat prior.
+    # Only the class head trains. A small weight decay (not the wd=0.0 used to
+    # isolate the original flat-logit diagnosis) plus label smoothing to discourage
+    # the head from overfitting to full certainty on this small, frozen-feature
+    # dataset.
     optimizer = torch.optim.AdamW(
-        model.class_head.parameters(), lr=1e-3, weight_decay=0.0
+        model.class_head.parameters(), lr=1e-3, weight_decay=1e-4
     )
 
     train(
@@ -53,7 +55,7 @@ if __name__ == "__main__":
         loader,
         val_loader,
         optimizer,
-        class_only_loss,
+        class_only_loss(label_smoothing=0.1),
         device,
         epochs=15,
         checkpoint_path="checkpoints/best_model_seq.pt",

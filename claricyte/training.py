@@ -47,9 +47,22 @@ def joint_loss(attr_logits, class_logits, attr_targets, class_targets):
     return attr_loss + F.cross_entropy(class_logits, class_targets)
 
 
-def class_only_loss(attr_logits, class_logits, attr_targets, class_targets):
-    """Class cross-entropy alone, for the sequential stage where attrs are frozen."""
-    return F.cross_entropy(class_logits, class_targets)
+def class_only_loss(label_smoothing=0.0):
+    """Factory returning a class-only cross-entropy loss function.
+
+    Softens one-hot targets to prevent weight explosion and overconfidence 
+    during sequential training with frozen features.
+
+    Usage:
+        criterion = class_only_loss(label_smoothing=0.1)
+    """
+
+    def loss_fn(attr_logits, class_logits, attr_targets, class_targets):
+        return F.cross_entropy(
+            class_logits, class_targets, label_smoothing=label_smoothing
+        )
+
+    return loss_fn
 
 
 def attr_only_loss(attr_logits, class_logits, attr_targets, class_targets):
