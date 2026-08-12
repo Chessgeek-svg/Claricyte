@@ -26,9 +26,9 @@ for i in random.sample(range(len(valset)), 5):
     image_tensor, _, class_target = valset[i]
     true_label = CLASSES[class_target]
 
-    result, class_dist = predict(model, image_tensor)
+    result, class_dist, concepts = predict(model, image_tensor)
     predicted_label = max(class_dist, key=lambda c: class_dist[c])
-    scores = contributions(model, result, true_label)
+    scores = contributions(model, result, concepts, true_label)
 
     print(valset.df.iloc[i]["image_path"])
     print(f"true={true_label}  predicted={predicted_label}")

@@ -109,8 +109,8 @@ with right:
             else:
                 st.error(f"You guessed {guess}. It's a {true_label}.")
 
-        result, class_dist = predict(model, image_tensor)
-        scores = contributions(model, result, true_label)
+        result, class_dist, concepts = predict(model, image_tensor)
+        scores = contributions(model, result, concepts, true_label)
 
         st.subheader("Explanation")
         st.write(explain(result, scores, true_label))
