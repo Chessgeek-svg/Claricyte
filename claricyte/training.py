@@ -11,7 +11,7 @@ import os
 
 import torch
 import torch.nn.functional as F
-from torch.utils.data import DataLoader, WeightedRandomSampler
+from torch.utils.data import DataLoader, TensorDataset, WeightedRandomSampler
 
 from claricyte.vocab import ATTRIBUTES
 
@@ -38,6 +38,119 @@ def balanced_loader(dataset, batch_size, label_column="claricyte_label", num_wor
     )
 
 
+def precompute_concepts(model, dataset, device, views=1, batch_size=64, num_workers=4):
+    """Run the frozen backbone + attribute heads once and cache the concept vectors.
+
+    In sequential stage 2 everything upstream of the class head is frozen, so those
+    concept vectors are fixed. Recomputing a ResNet50 over the whole dataset every
+    epoch to feed a ~1k-parameter head spends nearly all the compute regenerating
+    identical values.
+
+    The train split's transform applies random augmentation, so `views` > 1 caches
+    that many independently augmented copies rather than freezing a single view.
+    Concepts are 31 floats each, so even ten views of the train set is under 10MB.
+
+    Returns (concepts (N*views, concept_dim), class_targets (N*views,)) on CPU.
+    """
+    model.eval()  # no BN/dropout updates while caching
+    loader = DataLoader(
+        dataset,
+        batch_size=batch_size,
+        shuffle=False,
+        num_workers=num_workers,
+        pin_memory=True,
+    )
+
+    all_concepts, all_targets = [], []
+    with torch.no_grad():
+        for _ in range(views):
+            for images, _attr_targets, class_targets in loader:
+                images = images.to(device, non_blocking=True)
+                attr_logits, _class_logits = model(images)
+                # Same order forward() uses, so index i means the same thing.
+                concepts = torch.cat(
+                    [F.softmax(attr_logits[a], dim=1) for a in ATTRIBUTES], dim=1
+                )
+                all_concepts.append(concepts.cpu())
+                all_targets.append(class_targets)
+
+    return torch.cat(all_concepts), torch.cat(all_targets)
+
+
+def balanced_concept_loader(concepts, targets, batch_size):
+    """Class-balanced DataLoader over cached concept vectors.
+
+    Same inverse-frequency weighting as balanced_loader, but over tensors instead
+    of images.
+    """
+    counts = torch.bincount(targets)
+    weights = (1.0 / counts[targets].float()).tolist()
+    sampler = WeightedRandomSampler(weights, num_samples=len(targets), replacement=True)
+    dataset = TensorDataset(concepts, targets)
+    return DataLoader(dataset, batch_size=batch_size, sampler=sampler)
+
+
+def train_class_head_cached(
+    model,
+    loader,
+    val_concepts,
+    val_targets,
+    optimizer,
+    device,
+    *,
+    epochs,
+    checkpoint_path,
+    label_smoothing=0.0,
+):
+    """Train ONLY the class head on cached concept vectors.
+
+    Equivalent to the image-based loop for stage 2 (everything upstream is frozen)
+    but without the redundant backbone forward passes. Saves the full model
+    state_dict, so the checkpoint stays loadable by app.py / spot_check.py.
+    """
+    ckpt_dir = os.path.dirname(checkpoint_path)
+    if ckpt_dir:
+        os.makedirs(ckpt_dir, exist_ok=True)
+
+    val_concepts = val_concepts.to(device)
+    val_targets = val_targets.to(device)
+    best_acc = 0.0
+
+    for epoch in range(epochs):
+        model.class_head.train()
+        running_loss = 0.0
+        for concepts, targets in loader:
+            concepts = concepts.to(device)
+            targets = targets.to(device)
+
+            class_logits = model.class_head(concepts)
+            loss = F.cross_entropy(
+                class_logits, targets, label_smoothing=label_smoothing
+            )
+
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+            running_loss += loss.item()
+
+        model.class_head.eval()
+        with torch.no_grad():
+            preds = model.class_head(val_concepts).argmax(dim=1)
+            class_acc = (preds == val_targets).float().mean().item()
+
+        avg_loss = running_loss / len(loader)
+        print(
+            f"Epoch {epoch}: train_loss={avg_loss:.4f}  val_class_acc={class_acc:.3f}",
+            flush=True,
+        )
+        if class_acc > best_acc:
+            best_acc = class_acc
+            torch.save(model.state_dict(), checkpoint_path)
+            print(f"  saved new best (class_acc={best_acc:.3f})", flush=True)
+
+    return best_acc
+
+
 def joint_loss(attr_logits, class_logits, attr_targets, class_targets):
     """Sum of the 11 attribute cross-entropies plus the class cross-entropy."""
     attr_loss = sum(
@@ -50,7 +163,7 @@ def joint_loss(attr_logits, class_logits, attr_targets, class_targets):
 def class_only_loss(label_smoothing=0.0):
     """Factory returning a class-only cross-entropy loss function.
 
-    Softens one-hot targets to prevent weight explosion and overconfidence 
+    Softens one-hot targets to prevent weight explosion and overconfidence
     during sequential training with frozen features.
 
     Usage:
