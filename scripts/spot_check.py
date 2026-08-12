@@ -14,7 +14,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 
 model = Model("resnet50")
 model.load_state_dict(
-    torch.load("checkpoints/best_model.pt", map_location=device, weights_only=True)
+    torch.load("checkpoints/best_model_seq.pt", map_location=device, weights_only=True)
 )
 model.to(device)
 model.eval()

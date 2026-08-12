@@ -22,7 +22,7 @@ from claricyte.predict import contributions, predict
 from claricyte.vocab import CLASSES
 
 ATTR_PATH, METADATA_PATH = "metadata/attributes.csv", "metadata/metadata.csv"
-CHECKPOINT = "checkpoints/best_model.pt"
+CHECKPOINT = "checkpoints/best_model_seq.pt"
 
 # Sidebar scope for "any cell type" quiz mode. Specific classes are study mode.
 QUIZ_SCOPE = "Quiz me!"
