@@ -7,7 +7,7 @@ from claricyte import vocab
 
 
 class Model(nn.Module):
-    def __init__(self, model_name) -> None:
+    def __init__(self, model_name, head="linear", hidden_dim=32) -> None:
         super().__init__()
         self.backbone = timm.create_model(model_name, pretrained=True, num_classes=0)
         for param in self.backbone.parameters():
@@ -19,10 +19,39 @@ class Model(nn.Module):
                 for attr in vocab.ATTRIBUTES
             }
         )
-        self.class_head = nn.Linear(
-            in_features=sum(vocab.num_classes(attr) for attr in vocab.ATTRIBUTES),
-            out_features=len(vocab.CLASSES),
-        )
+
+        # The concept vector: 11 attribute softmaxes concatenated (31 dims today).
+        concept_dim = sum(vocab.num_classes(attr) for attr in vocab.ATTRIBUTES)
+
+        if head == "linear":
+            # One fixed weight per concept dimension. Cannot represent interactions
+            # between attributes: a concept's contribution is the same regardless of
+            # what the other concepts say.
+            self.class_head = nn.Linear(concept_dim, len(vocab.CLASSES))
+        elif head == "mlp":
+            # The hidden layer + ReLU lets a unit fire only on a COMBINATION of
+            # concepts (e.g. band-shaped nucleus AND small cell), which a single
+            # linear layer provably cannot express. Two stacked Linears with no
+            # nonlinearity between them would collapse back to one Linear, so the
+            # ReLU is what actually buys the extra expressiveness.
+            self.class_head = nn.Sequential(
+                nn.Linear(concept_dim, hidden_dim),
+                nn.ReLU(),
+                nn.Linear(hidden_dim, len(vocab.CLASSES)),
+            )
+        else:
+            raise ValueError(f"unknown head {head!r}, expected 'linear' or 'mlp'")
+
+    def reset_class_head(self):
+        """Re-initialize the class head, whichever architecture it is.
+
+        nn.Sequential has no reset_parameters(), so walk its submodules. Stage 2
+        calls this so training starts from a clean head rather than whatever
+        untrained weights came in on the stage-1 checkpoint.
+        """
+        for module in self.class_head.modules():
+            if isinstance(module, nn.Linear):
+                module.reset_parameters()
 
     def train(self, mode: bool = True):
         # nn.Module.train() recurses into EVERY submodule, which would flip the frozen

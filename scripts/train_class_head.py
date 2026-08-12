@@ -5,7 +5,12 @@ FREEZE everything except the class head and retrain just that head on a
 class-balanced loader. The class head then learns to separate classes from stable,
 accurate concept vectors instead of chasing a moving target and riding the majority
 class.
+
+--head linear is one weight per concept. --head mlp adds a hidden layer + ReLU so
+the head can key on combinations of concepts rather than just linearly weighting them.
 """
+
+import argparse
 
 import torch
 
@@ -17,15 +22,32 @@ from claricyte.training import balanced_loader, class_only_loss, train
 # one re-imports this module. Without this guard, every worker would re-run all
 # the training code below instead of just importing the functions it needs.
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--head", choices=["linear", "mlp"], default="linear")
+    parser.add_argument("--hidden-dim", type=int, default=32)
+    parser.add_argument("--epochs", type=int, default=15)
+    parser.add_argument("--out", default="checkpoints/best_model_seq.pt")
+    parser.add_argument("--seed", type=int, default=0)
+    args = parser.parse_args()
+
+    torch.manual_seed(args.seed)
+
     ATTR_PATH, METADATA_PATH = "metadata/attributes.csv", "metadata/metadata.csv"
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    print(f"device: {device}", flush=True)
+    print(f"device: {device}  head: {args.head}  seed: {args.seed}", flush=True)
 
-    # Load the stage-1 model: good attribute heads, plus the untrained class head we
-    # are about to fit.
-    model = Model("resnet50")
-    model.load_state_dict(
-        torch.load("checkpoints/best_model.pt", map_location=device, weights_only=True)
+    model = Model("resnet50", head=args.head, hidden_dim=args.hidden_dim)
+
+    # Take the backbone and attribute heads from stage 1. Its class head is dropped:
+    # stage 1 never trained it, and its shape won't even match when --head mlp.
+    state = torch.load(
+        "checkpoints/best_model.pt", map_location=device, weights_only=True
+    )
+    state = {k: v for k, v in state.items() if not k.startswith("class_head.")}
+    missing, unexpected = model.load_state_dict(state, strict=False)
+    assert not unexpected, f"unexpected keys in checkpoint: {unexpected}"
+    assert all(k.startswith("class_head.") for k in missing), (
+        f"stage-1 checkpoint is missing more than the class head: {missing}"
     )
     model.to(device)
 
@@ -33,7 +55,7 @@ if __name__ == "__main__":
     # so we start clean rather than from whatever came in on the checkpoint.
     for param in model.attribute_heads.parameters():
         param.requires_grad = False
-    model.class_head.reset_parameters()
+    model.reset_class_head()
 
     trainset = MorphologyDataset(ATTR_PATH, METADATA_PATH, split="train")
     valset = MorphologyDataset(ATTR_PATH, METADATA_PATH, split="val")
@@ -57,6 +79,6 @@ if __name__ == "__main__":
         optimizer,
         class_only_loss(label_smoothing=0.1),
         device,
-        epochs=15,
-        checkpoint_path="checkpoints/best_model_seq.pt",
+        epochs=args.epochs,
+        checkpoint_path=args.out,
     )
