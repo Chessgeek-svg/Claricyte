@@ -19,6 +19,13 @@ class MorphologyDataset(Dataset):
         metadata = pd.read_csv(self.metadata_filepath)
         df = df.merge(metadata, on="image_path", how="inner")
 
+        # ingest.py built these paths with pathlib on Windows, so they arrive with
+        # backslash separators. On Linux a backslash is an ordinary filename
+        # character, not a separator, so those paths resolve to nothing once the app
+        # is hosted. Forward slashes work on both platforms. Done once here rather
+        # than per item in __getitem__, which runs 1.5k times per epoch.
+        df["image_path"] = df["image_path"].str.replace("\\", "/", regex=False)
+
         # Keep only classes the model has an output unit for. Without this, the
         # first attribute-labeled Blast or Erythroblast would raise a bare KeyError
         # from CLASS_TO_INDEX partway through an epoch. Filtering here also makes
