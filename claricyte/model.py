@@ -13,9 +13,17 @@ CHECKPOINT_FORMAT = 1
 
 
 class Model(nn.Module):
-    def __init__(self, model_name, head="linear", hidden_dim=32, unfreeze=None) -> None:
+    def __init__(
+        self, model_name, head="linear", hidden_dim=32, unfreeze=None, pretrained=True
+    ) -> None:
         super().__init__()
-        self.backbone = timm.create_model(model_name, pretrained=True, num_classes=0)
+        # pretrained=False builds the architecture with random weights and skips the
+        # ~100MB ImageNet download. Only safe when every backbone weight is about to
+        # be overwritten by a checkpoint, which from_checkpoint knows and callers
+        # generally do not, hence the default stays True.
+        self.backbone = timm.create_model(
+            model_name, pretrained=pretrained, num_classes=0
+        )
         self.feat_dim = self.backbone.num_features
 
         # unfreeze=None keeps the backbone at its pretrained weights and trains only
@@ -183,6 +191,12 @@ class Model(nn.Module):
             head=head,
             hidden_dim=hidden_dim,
             unfreeze=unfreeze,
+            # A fine-tuned checkpoint carries every backbone weight, so fetching the
+            # ImageNet ones first only to overwrite them costs a ~100MB download for
+            # nothing. That download is most of the hosted demo's cold start. When
+            # the checkpoint has no backbone, the pretrained weights ARE the
+            # backbone and must be fetched.
+            pretrained=not has_backbone,
         )
 
         weights = checkpoint["heads"]
