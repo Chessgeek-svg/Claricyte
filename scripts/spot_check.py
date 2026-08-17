@@ -12,11 +12,7 @@ ATTR_PATH, METADATA_PATH = "metadata/attributes.csv", "metadata/metadata.csv"
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-model = Model("resnet50")
-model.load_state_dict(
-    torch.load("checkpoints/best_model_seq.pt", map_location=device, weights_only=True)
-)
-model.to(device)
+model = Model.from_checkpoint(path="checkpoints/class_head_mlp.pt", device=device)
 model.eval()
 
 valset = MorphologyDataset(ATTR_PATH, METADATA_PATH, split="val")

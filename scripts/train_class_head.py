@@ -40,7 +40,8 @@ if __name__ == "__main__":
     # How many independently augmented copies of the train set to cache. >1 keeps
     # some augmentation variety; concepts are 31 floats each, so this is cheap.
     parser.add_argument("--views", type=int, default=8)
-    parser.add_argument("--out", default="checkpoints/best_model_seq.pt")
+    parser.add_argument("--attr-heads", default="checkpoints/attr_heads.pt")
+    parser.add_argument("--out", default="checkpoints/class_head.pt")
     parser.add_argument("--seed", type=int, default=0)
     args = parser.parse_args()
 
@@ -50,25 +51,28 @@ if __name__ == "__main__":
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"device: {device}  head: {args.head}  seed: {args.seed}", flush=True)
 
-    model = Model("resnet50", head=args.head, hidden_dim=args.hidden_dim)
-
-    # Take the backbone and attribute heads from stage 1. Its class head is dropped:
-    # stage 1 never trained it, and its shape won't even match when --head mlp.
-    state = torch.load(
-        "checkpoints/best_model.pt", map_location=device, weights_only=True
+    # Stage 1's attribute heads, under whichever class head --head asked for. The
+    # architecture comes from the flags rather than from the file, so the stored
+    # class head is dropped whenever the two disagree. Nothing is lost: stage 1's
+    # optimizer only ever held the attribute heads, so that head was never trained.
+    model = Model.from_checkpoint(
+        args.attr_heads,
+        device=device,
+        head=args.head,
+        hidden_dim=args.hidden_dim,
     )
-    state = {k: v for k, v in state.items() if not k.startswith("class_head.")}
-    missing, unexpected = model.load_state_dict(state, strict=False)
-    assert not unexpected, f"unexpected keys in checkpoint: {unexpected}"
-    assert all(k.startswith("class_head.") for k in missing), (
-        f"stage-1 checkpoint is missing more than the class head: {missing}"
-    )
-    model.to(device)
 
-    # Freeze the attribute heads so only the class head learns; reset the class head
-    # so we start clean rather than from whatever came in on the checkpoint.
+    # Only the class head learns. The optimizer below already holds nothing else, so
+    # this changes no behaviour today. It is here to defend the no-leakage property
+    # that justifies training in two stages at all, in case that optimizer is ever
+    # widened to model.parameters().
     for param in model.attribute_heads.parameters():
         param.requires_grad = False
+
+    # Always start from a fresh class head. A no-op when from_checkpoint dropped the
+    # stored one, and necessary when it did not: pointing this script at a stage-2
+    # checkpoint would otherwise warm-start from the previous run rather than
+    # training clean, which would quietly invalidate any seed-to-seed comparison.
     model.reset_class_head()
 
     trainset = MorphologyDataset(ATTR_PATH, METADATA_PATH, split="train")

@@ -22,7 +22,7 @@ from claricyte.predict import contributions, predict
 from claricyte.vocab import CLASSES
 
 ATTR_PATH, METADATA_PATH = "metadata/attributes.csv", "metadata/metadata.csv"
-CHECKPOINT = "checkpoints/best_model_seq.pt"
+CHECKPOINT = "checkpoints/class_head_mlp.pt"
 
 # Sidebar scope for "any cell type" quiz mode. Specific classes are study mode.
 QUIZ_SCOPE = "Quiz me!"
@@ -32,11 +32,7 @@ QUIZ_SCOPE = "Quiz me!"
 def load_model():
     """Load the trained CBM once and cache it across reruns."""
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    model = Model("resnet50")
-    model.load_state_dict(
-        torch.load(CHECKPOINT, map_location=device, weights_only=True)
-    )
-    model.to(device)
+    model = Model.from_checkpoint(CHECKPOINT, device=device)
     model.eval()
     return model
 

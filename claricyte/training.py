@@ -105,8 +105,9 @@ def train_class_head_cached(
     """Train ONLY the class head on cached concept vectors.
 
     Equivalent to the image-based loop for stage 2 (everything upstream is frozen)
-    but without the redundant backbone forward passes. Saves the full model
-    state_dict, so the checkpoint stays loadable by app.py / spot_check.py.
+    but without the redundant backbone forward passes. Saves the trained heads and
+    the architecture that produced them, so app.py / spot_check.py can rebuild the
+    model without knowing which class head was used.
     """
     ckpt_dir = os.path.dirname(checkpoint_path)
     if ckpt_dir:
@@ -145,7 +146,7 @@ def train_class_head_cached(
         )
         if class_acc > best_acc:
             best_acc = class_acc
-            torch.save(model.state_dict(), checkpoint_path)
+            model.save_heads(checkpoint_path, val_acc=best_acc, selected_by="class")
             print(f"  saved new best (class_acc={best_acc:.3f})", flush=True)
 
     return best_acc
@@ -267,7 +268,7 @@ def train(
 
         if score > best_score:
             best_score = score
-            torch.save(model.state_dict(), checkpoint_path)
+            model.save_heads(checkpoint_path, val_acc=best_score, selected_by=select_by)
             print(f"  saved new best ({select_by}_acc={best_score:.3f})")
 
     return best_score

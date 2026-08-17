@@ -40,7 +40,7 @@ if __name__ == "__main__":
         attr_only_loss,
         device,
         epochs=20,
-        checkpoint_path="checkpoints/best_model.pt",
+        checkpoint_path="checkpoints/attr_heads.pt",
         accum_steps=4,
         log_every=50,
         select_by="attr",
