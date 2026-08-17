@@ -227,3 +227,4 @@ __marimo__/
 /checkpoints/*
 !/checkpoints/demo.pt
 /documents
+.vscode/
