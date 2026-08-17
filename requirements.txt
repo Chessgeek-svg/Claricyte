@@ -6,6 +6,14 @@
 # this file, which will leave the CUDA builds in place:
 #   pip install torch==2.5.1 torchvision==0.20.1 \
 #       --index-url https://download.pytorch.org/whl/cu121
+#
+# The CPU index below is for hosting. On Linux, PyPI's default torch wheel bundles
+# the CUDA runtime and installs to several GB, which a small hosted container will
+# not tolerate; the CPU build is a fraction of that and the demo never uses a GPU.
+# A local version (2.5.1+cpu) sorts after the plain 2.5.1 under PEP 440, so pip
+# prefers it from here. An existing 2.5.1+cu121 install already satisfies ==2.5.1,
+# so this does not disturb a GPU machine.
+--extra-index-url https://download.pytorch.org/whl/cpu
 torch==2.5.1
 torchvision==0.20.1
 
