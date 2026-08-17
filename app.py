@@ -25,7 +25,7 @@ from claricyte.predict import contributions, predict
 from claricyte.vocab import CLASSES
 
 ATTR_PATH, METADATA_PATH = "demo_data/attributes.csv", "demo_data/metadata.csv"
-CHECKPOINT = "checkpoints/class_head_mlp.pt"
+CHECKPOINT = "checkpoints/demo.pt"
 
 # Sidebar scope for "any cell type" quiz mode. Specific classes are study mode.
 QUIZ_SCOPE = "Quiz me!"
