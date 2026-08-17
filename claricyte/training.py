@@ -164,8 +164,13 @@ def attr_only_loss(attr_logits, class_logits, attr_targets, class_targets):
     )
 
 
-def evaluate(model, loader, device):
-    """Run over `loader` without training; return (per-attribute acc dict, class acc)"""
+def evaluate(model, loader, device, include_class=True):
+    """Run over `loader` without training; return (per-attribute acc dict, class acc).
+
+    include_class=False returns None for the class accuracy, for stage 1, where
+    the class head is never trained and its accuracy is therefore noise. Printing
+    it next to the attribute accuracy invites reading one number as the other.
+    """
     model.eval()  # disable dropout / BN updates
     attr_correct = {attr: 0 for attr in ATTRIBUTES}
     class_correct = 0
@@ -188,7 +193,7 @@ def evaluate(model, loader, device):
             total += class_targets.size(0)
 
     attr_acc = {attr: attr_correct[attr] / total for attr in ATTRIBUTES}
-    return attr_acc, class_correct / total
+    return attr_acc, (class_correct / total if include_class else None)
 
 
 def train(
@@ -256,13 +261,20 @@ def train(
             optimizer.zero_grad()
 
         avg_loss = running_loss / len(loader)
-        attr_acc, class_acc = evaluate(model, val_loader, device)
-        mean_attr_acc = sum(attr_acc.values()) / len(attr_acc)
-        score = mean_attr_acc if select_by == "attr" else class_acc
-        print(
-            f"Epoch {epoch}: train_loss={avg_loss:.4f}  "
-            f"val_class_acc={class_acc:.3f}  mean_attr_acc={mean_attr_acc:.3f}"
+        # Selecting on attributes means the class head is not being trained, so its
+        # accuracy is neither computed nor reported.
+        select_on_attr = select_by == "attr"
+        attr_acc, class_acc = evaluate(
+            model, val_loader, device, include_class=not select_on_attr
         )
+        mean_attr_acc = sum(attr_acc.values()) / len(attr_acc)
+        score = mean_attr_acc if select_on_attr else class_acc
+
+        line = f"Epoch {epoch}: train_loss={avg_loss:.4f}  "
+        line += f"mean_attr_acc={mean_attr_acc:.3f}"
+        if class_acc is not None:
+            line += f"  val_class_acc={class_acc:.3f}"
+        print(line)
         for attr, acc in attr_acc.items():
             print(f"    {attr:28s} {acc:.3f}")
 
