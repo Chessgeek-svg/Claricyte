@@ -98,27 +98,38 @@ def _join(items: list[str]) -> str:
     return ", ".join(items[:-1]) + f", and {items[-1]}"
 
 
-def _describe_granules(result: dict[str, tuple[str, float]]) -> str | None:
+def _describe_granules(
+    result: dict[str, tuple[str, float]],
+) -> tuple[str, list[str]] | None:
     """Render the granularity/type/colour cluster as one fragment, or None.
 
     Folds the three granule attributes into a single clause ('coarse purple
     granules', 'no granules') so we never emit them as three separate features.
     Returns None if granularity wasn't predicted.
+
+    Also returns the attributes the clause actually drew on, so the caller can
+    hedge it on the same confidence rule as every other feature. The list is
+    needed because the clause does not always speak for all three: a nil
+    granule_type contributes no words, so its confidence should not be able to
+    drag the clause into a hedge.
     """
     if "granularity" not in result:
         return None
     if result["granularity"][0] == "no":
-        return "no granules"
+        return "no granules", ["granularity"]
     # granularity == "yes": prepend type then colour when present (skip nil).
     parts = []
+    spoke = ["granularity"]
     gtype = result.get("granule_type", (None,))[0]
     gcolour = result.get("granule_colour", (None,))[0]
     if gtype and gtype != "nil":
         parts.append(gtype)
+        spoke.append("granule_type")
     if gcolour and gcolour != "nil":
         parts.append(gcolour)
+        spoke.append("granule_colour")
     parts.append("granules")
-    return " ".join(parts)
+    return " ".join(parts), spoke
 
 
 def explain(
@@ -170,9 +181,14 @@ def explain(
         if attr in GRANULE_ATTRS:
             if not granules_done:
                 granules_done = True
-                frag = _describe_granules(result)
-                if frag is not None:
+                described = _describe_granules(result)
+                if described is not None:
+                    frag, spoke = described
                     fragments.append(frag)
+                    # The folded clause is only as certain as its weakest speaker.
+                    weakest = min(spoke, key=lambda a: result[a][1])
+                    if result[weakest][1] < low_confidence:
+                        hedged.append(weakest)
             continue
         if attr not in PHRASING or value not in PHRASING[attr]:
             continue
