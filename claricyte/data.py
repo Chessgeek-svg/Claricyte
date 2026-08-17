@@ -1,10 +1,12 @@
+import warnings
+
 import pandas as pd
 import torch
 from PIL import Image
 from torch.utils.data import Dataset
 from torchvision.transforms import v2
 
-from claricyte.vocab import ATTRIBUTES, CLASS_TO_INDEX, VALUE_TO_INDEX
+from claricyte.vocab import ATTRIBUTES, CLASS_TO_INDEX, CLASSES, VALUE_TO_INDEX
 
 
 class MorphologyDataset(Dataset):
@@ -16,6 +18,23 @@ class MorphologyDataset(Dataset):
         df = pd.read_csv(self.attributes_filepath)
         metadata = pd.read_csv(self.metadata_filepath)
         df = df.merge(metadata, on="image_path", how="inner")
+
+        # Keep only classes the model has an output unit for. Without this, the
+        # first attribute-labeled Blast or Erythroblast would raise a bare KeyError
+        # from CLASS_TO_INDEX partway through an epoch. Filtering here also makes
+        # the trained class set an explicit property of vocab.CLASSES rather than an
+        # accident of which rows happen to carry attribute labels. The warning
+        # matters as much as the filter: silently dropping rows would let a typo in
+        # a label name, or a genuinely new class, disappear without a trace.
+        known = df["claricyte_label"].isin(CLASSES)
+        if not known.all():
+            dropped = df.loc[~known, "claricyte_label"].value_counts().to_dict()
+            warnings.warn(
+                f"dropping {(~known).sum()} rows whose class is not in vocab.CLASSES: "
+                f"{dropped}. Add them to vocab.CLASSES to train on them.",
+                stacklevel=2,
+            )
+            df = df[known]
 
         for attr in ATTRIBUTES:
             df[attr] = df[attr].map(VALUE_TO_INDEX[attr])
