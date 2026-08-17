@@ -132,16 +132,31 @@ def wbcatt_attributes(root: Path) -> pd.DataFrame:
     """Read WB-CAtt's per-image attribute labels (an annotation layer on Acevedo).
 
     Joined to the metadata on image_path. Only the 5 annotated classes appear.
+
+    WB-CAtt publishes its train/val/test split as three separate label files, so
+    the split is implicit in which file a row came from. That membership is
+    recorded in a `split` column here and applied to the metadata by main(),
+    which is what lets our figures be compared against the paper's. Callers that
+    only want the attributes should drop the column: metadata.csv owns `split`,
+    and leaving it on both sides turns the join in MorphologyDataset into
+    split_x/split_y.
     """
-    files = ["pbc_attr_v1_train.csv", "pbc_attr_v1_val.csv", "pbc_attr_v1_test.csv"]
-    data = pd.concat(
-        [pd.read_csv(root / "labels" / f) for f in files], ignore_index=True
-    )
+    files = {
+        "train": "pbc_attr_v1_train.csv",
+        "val": "pbc_attr_v1_val.csv",
+        "test": "pbc_attr_v1_test.csv",
+    }
+    frames = []
+    for split, filename in files.items():
+        frame = pd.read_csv(root / "labels" / filename)
+        frame["split"] = split
+        frames.append(frame)
+    data = pd.concat(frames, ignore_index=True)
     data["image_path"] = [
         str(root / label.lower() / img_name)
         for label, img_name in zip(data["label"], data["img_name"])
     ]
-    attributes = data[["image_path", *ATTRIBUTES]].copy()
+    attributes = data[["image_path", "split", *ATTRIBUTES]].copy()
     attributes["source"] = "wbcatt"
     return attributes
 
@@ -213,9 +228,13 @@ def ingest_yarikan(root: Path) -> pd.DataFrame:
 def assign_splits(metadata: pd.DataFrame, val_frac: float, test_frac: float) -> None:
     """Fill the 'split' column in place for rows that don't already have one.
 
-    Rows arriving with `split` already set (datasets that ship an official
-    train/val/test split, e.g. WB-CAtt) are left untouched. The remaining rows
-    are split with stratification on `claricyte_label`.
+    Rows arriving with `split` already set are left untouched. Published splits
+    always win over a random one: Yarikan ships a patient-level split, and
+    main() applies WB-CAtt's published split to the images it annotates. Between
+    them that covers every image the model currently trains on, so this function
+    only assigns splits for datasets not yet in use.
+
+    The remaining rows are split with stratification on `claricyte_label`.
     """
     unassigned = metadata.index[metadata["split"].isna()].tolist()
     if not unassigned:
@@ -271,13 +290,22 @@ def main() -> None:
         [metadata, ingest_yarikan(data_root / "yarikan")], ignore_index=True
     )
 
-    assign_splits(metadata, val_frac=0.15, test_frac=0.15)
-
     # WB-CAtt attribute labels sit on the Acevedo images, joined on image_path
     attributes = wbcatt_attributes(data_root / "PBC_dataset_WBCAtt")
 
+    # Adopt WB-CAtt's published split for the images it annotates, before the
+    # random assignment runs. Every annotated image is one we train on, so this
+    # is the split the model is actually measured against, and matching it is
+    # what makes our numbers comparable to the paper's. Unannotated Acevedo
+    # images (and MLL23/HRLS/Raabin) have no published split and fall through to
+    # assign_splits below.
+    published = attributes.set_index("image_path")["split"]
+    metadata["split"] = metadata["split"].fillna(metadata["image_path"].map(published))
+
+    assign_splits(metadata, val_frac=0.15, test_frac=0.15)
+
     metadata.to_csv("metadata/metadata.csv", index=False)
-    attributes.to_csv("metadata/attributes.csv", index=False)
+    attributes.drop(columns="split").to_csv("metadata/attributes.csv", index=False)
 
 
 if __name__ == "__main__":
