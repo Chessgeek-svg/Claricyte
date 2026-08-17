@@ -1,5 +1,16 @@
-pandas
-scikit-learn
-pillow
-timm
-streamlit
+# Runtime dependencies for the demo and the training pipeline.
+#
+# torch and torchvision are pinned without a build suffix so that a plain
+# `pip install -r requirements.txt` resolves on any platform (CI gets the CPU
+# build). For GPU training, install them from the CUDA index FIRST, then run
+# this file, which will leave the CUDA builds in place:
+#   pip install torch==2.5.1 torchvision==0.20.1 \
+#       --index-url https://download.pytorch.org/whl/cu121
+torch==2.5.1
+torchvision==0.20.1
+
+timm==1.0.28
+
+pandas==3.0.3
+pillow==12.3.0
+streamlit==1.60.0
