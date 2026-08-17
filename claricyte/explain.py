@@ -71,7 +71,11 @@ REQUIRED_FEATURES: dict[str, dict[str, set[str]]] = {
 # The three attributes folded into one granule clause.
 GRANULE_ATTRS = {"granularity", "granule_type", "granule_colour"}
 
-LOW_CONFIDENCE = 0.6  # below this, a mentioned feature is hedged
+# Below this, a mentioned feature is hedged. Set from measured calibration rather
+# than taste: the attribute heads are well calibrated overall (ECE 0.025) but run
+# 8 to 10 points overconfident through the middle of the range, where a stated
+# 0.65 is right about 55% of the time. Asserting those flatly overstates them.
+LOW_CONFIDENCE = 0.75
 MAX_DISCRETIONARY = 3  # cap on Set B features per explanation
 
 
