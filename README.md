@@ -34,14 +34,20 @@ makes it a reliable learning aid that connects the visible morphology to the cla
 The demo is a Streamlit app:
 
 ```bash
-pip install -r requirements.txt   # plus torch / torchvision for your platform
+pip install -r requirements.txt
 streamlit run app.py
 ```
 
-It expects a trained checkpoint under `checkpoints/` and the standardized dataset
-metadata under `metadata/`. The source datasets carry their own
-licensing terms (see below), and model weights are produced by the two-stage training
-in `scripts/` (`train_attr_heads.py` then `train_class_head.py`).
+Nothing else to acquire. The repository ships the validation split it quizzes on
+under `demo_data/`, and the trained model under `checkpoints/`. The checkpoint
+stores only the trained heads (about 260KB); the frozen ResNet50 backbone is
+fetched by timm on first run rather than committed, since it never changes during
+training.
+
+Reproducing the model from the full corpus is a separate matter: that needs the
+source datasets, which carry their own licensing terms (see below), followed by
+the two-stage training in `scripts/` (`train_attr_heads.py`, then
+`train_class_head.py`).
 
 ## Scope
 

@@ -221,5 +221,9 @@ __marimo__/
 /metadata
 /labeling/cache
 /labeling/tasks.json
-/checkpoints
+# Checkpoints are heads-only (~260KB) since the frozen backbone is refetched by
+# timm, so the one the demo serves is small enough to commit. Training runs and
+# converted legacy files stay out.
+/checkpoints/*
+!/checkpoints/class_head_mlp.pt
 /documents

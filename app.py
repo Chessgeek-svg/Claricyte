@@ -6,7 +6,10 @@ and a plain-English explanation of why those features fit the known label.
 
 The explanation is driven by the true label, not the model's own class call. Run with:
     streamlit run app.py
-(needs the local dataset under metadata/ and a checkpoint under checkpoints/).
+
+Reads the self-contained package under demo_data/ (the validation split plus
+cut-down CSVs, built by scripts/make_demo_data.py) rather than the full corpus, so
+a fresh clone runs without acquiring any datasets.
 """
 
 import random
@@ -21,7 +24,7 @@ from claricyte.model import Model
 from claricyte.predict import contributions, predict
 from claricyte.vocab import CLASSES
 
-ATTR_PATH, METADATA_PATH = "metadata/attributes.csv", "metadata/metadata.csv"
+ATTR_PATH, METADATA_PATH = "demo_data/attributes.csv", "demo_data/metadata.csv"
 CHECKPOINT = "checkpoints/class_head_mlp.pt"
 
 # Sidebar scope for "any cell type" quiz mode. Specific classes are study mode.

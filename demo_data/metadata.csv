@@ -1,0 +1,1569 @@
+image_path,source_dataset,original_label,claricyte_label,split
+demo_data/images/Band_Neutrophil/BNE_7323.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_25765.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_7922.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_8741.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_9265.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_10150.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_25245.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_31317.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Lymphocyte/LY_48852.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_51625.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_65073.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_68814.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_28078.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_38254.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Basophil/BA_127868.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_136209.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_139275.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_178358.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_178853.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_184105.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_189696.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_193488.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_193863.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_196745.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_200989.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_210917.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_223705.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_232284.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_236096.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_237069.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_240977.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_254820.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_266945.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_271614.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_298364.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_301562.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_303637.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_313484.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_319331.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_337027.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_379184.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_399254.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_401869.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_418106.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_422994.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_425674.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_461177.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_462792.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_4744.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_476625.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_478314.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_482920.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_49215.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_493318.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_493706.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_497743.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_505139.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_50941.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_514550.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_526172.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_527667.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_530459.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_532264.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_559801.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_563406.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_566824.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_567394.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_580.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_580588.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_594734.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_602661.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_6162.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_619254.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_622087.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_640409.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_641976.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_647514.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_647570.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_658350.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_666432.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_674430.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_685684.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_689718.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_691060.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_695712.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_705900.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_717119.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_733311.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_74973.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_754114.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_760001.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_761947.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_770604.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_786828.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_791032.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_801667.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_804739.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_809385.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_812916.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_815713.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_818588.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_820417.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_84086.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_845115.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_87226.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_8742.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_874689.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_878109.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_878312.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_891878.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_893914.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_915476.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_922772.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_929127.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_932159.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_94405.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_952797.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_985011.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_988506.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_992703.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_995394.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Band_Neutrophil/BNE_109895.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_113656.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_124086.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_125604.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_128511.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_128562.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_131871.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_138667.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_150545.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_153786.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_163974.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_174448.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_180631.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_197336.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_197399.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_212416.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_221104.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_225075.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_227495.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_239868.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_242171.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_246456.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_252085.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_268233.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_270323.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_273585.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_277078.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_278616.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_279176.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_279206.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_286728.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_288032.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_295498.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_297581.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_309023.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_30987.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_314545.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_315281.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_315947.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_31736.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_319497.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_331697.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_332400.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_333793.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_338982.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_345170.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_347724.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_351029.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_357822.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_364260.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_366749.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_376075.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_38919.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_389215.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_394928.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_397228.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_39767.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_398566.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_409857.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_430604.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_434568.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_436110.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_443350.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_4555.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_46272.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_462747.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_491118.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_494996.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_509596.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_510336.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_512963.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_515542.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_520014.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_520896.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_53428.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_538408.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_544250.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_545123.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_545407.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_547029.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_553117.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_555286.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_558159.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_579098.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_582893.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_585707.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_596214.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_603801.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_623314.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_623488.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_627756.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_642218.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_643351.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_654315.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_659216.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_659430.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_666016.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_677665.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_680877.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_688044.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_706135.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_709653.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_721486.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_726259.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_727973.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_731008.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_733616.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_734804.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_734929.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_765092.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_777460.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_79688.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_799391.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_801860.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_806828.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_808960.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_81960.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_822053.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_823690.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_836973.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_840660.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_862711.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_873174.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_885859.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_891017.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_898519.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_899254.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_901137.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_905950.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_910236.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_915098.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_916402.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_929802.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_935665.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_939753.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_943597.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_945946.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_956356.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_960086.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_967395.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_970365.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_976865.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_986323.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_98656.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_990094.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_991991.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_999232.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_104169.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_105327.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_113603.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_114533.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_118338.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_125411.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_128238.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_129196.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_131707.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_132515.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_138253.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_141807.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_142659.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_147951.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_150121.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_155442.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_157176.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_157965.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_159731.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_161563.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_162162.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_164571.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_165454.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_166013.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_166195.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_166978.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_170131.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_172593.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_174410.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_177975.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_188943.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_189610.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_19043.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_191029.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_192128.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_196236.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_204284.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_209177.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_213595.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_215945.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_218071.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_220099.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_220987.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_224302.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_224498.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_225123.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_230241.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_23194.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_235932.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_238985.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_242314.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_244789.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_24568.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_246684.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_249877.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_250252.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_251778.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_255151.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_259856.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_27437.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_281130.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_284757.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_284934.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_287969.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_290013.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_294218.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_303442.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_309479.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_3205.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_321089.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_323763.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_324141.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_326334.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_333590.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_336291.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_337928.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_350584.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_352853.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_355022.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_359155.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_359161.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_36361.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_364407.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_367128.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_372511.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_383072.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_383219.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_386448.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_389300.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_39294.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_393795.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_401030.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_42441.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_42732.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_427585.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_432899.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_439200.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_441092.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_441794.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_447857.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_452374.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_45291.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_455970.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_456484.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_464387.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_470880.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_471626.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_473693.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_474075.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_475336.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_476186.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_482568.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_483445.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_489916.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_490942.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_492353.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_493789.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_49482.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_497408.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_498358.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_506281.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_510060.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_51563.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_515942.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_516265.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_516662.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_519146.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_523473.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_529831.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_531157.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_533757.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_544087.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_544538.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_544830.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_54678.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_549367.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_549513.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_553108.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_554725.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_55519.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_557445.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_559117.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_559297.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_568586.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_570111.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_579761.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_583076.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_583142.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_587264.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_589850.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_596736.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_601402.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_606125.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_606430.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_613088.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_615464.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_62120.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_633427.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_634772.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_63600.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_641431.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_649946.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_655398.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_657993.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_658500.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_661159.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_663939.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_665649.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_667326.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_675962.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_676281.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_680317.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_68109.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_684768.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_689368.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_689651.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_693130.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_700721.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_701790.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_703955.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_704557.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_705872.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_707053.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_710294.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_713403.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_722793.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_723342.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_727395.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_727803.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_729465.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_734856.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_743347.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_74399.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_74751.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_757168.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_757859.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_761728.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_765818.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_766884.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_76723.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_77393.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_780321.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_781562.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_784435.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_785575.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_787085.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_787359.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_788297.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_791371.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_794866.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_795552.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_796585.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_799659.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_801.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_802007.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_808436.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_811522.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_811570.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_812957.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_813511.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_81523.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_818276.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_81933.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_819918.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_820562.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_820762.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_824657.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_828208.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_834175.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_843365.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_850038.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_850861.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_852834.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_852904.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_854840.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_857550.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_863461.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_865611.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_871548.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_873315.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_882085.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_882366.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_889221.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_891800.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_892127.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_89342.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_897485.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_903036.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_907904.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_910337.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_913562.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_915293.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_917516.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_925092.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_929125.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_93417.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_94652.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_948168.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_948687.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_960387.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_960805.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_96407.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_967607.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_968484.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_981363.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_981774.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_982965.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_987324.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_994150.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_994152.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_996545.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_997379.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_998901.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_999409.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_125347.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_128283.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_135776.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_159509.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_165111.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_16740.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_173236.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_175082.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_176821.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_185090.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_185647.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_18831.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_206555.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_206769.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_225365.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_231533.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_234637.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_249136.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_253379.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_258828.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_259219.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_266337.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_282632.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_286920.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_288132.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_289164.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_289402.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_314460.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_316610.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_342545.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_343524.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_358166.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_360293.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_365740.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_373896.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_38716.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_404823.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_418108.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_418188.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_42352.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_432777.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_442318.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_449981.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_453245.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_462086.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_485381.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_490073.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_492956.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_493016.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_507266.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_511879.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_514232.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_516086.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_528196.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_538573.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_548338.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_554041.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_566461.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_570413.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_578344.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_589830.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_599099.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_600393.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_603507.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_606151.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_612600.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_613198.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_636684.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_647287.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_650850.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_660498.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_662291.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_665021.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_668845.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_676152.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_680002.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_685515.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_69259.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_703368.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_70378.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_706092.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_714950.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_720395.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_728263.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_742481.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_7449.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_762572.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_772663.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_803891.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_804787.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_812570.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_818290.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_818656.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_823713.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_825410.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_827883.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_837051.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_839010.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_8432.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_861218.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_861914.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_865265.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_867406.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_874739.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_875286.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_878313.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_881717.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_918494.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_919323.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_933937.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_935379.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_962746.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_970253.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_989262.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_99706.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_104431.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_104441.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_108531.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_134596.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_134963.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_148503.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_162174.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_163591.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_168818.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_168917.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_181748.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_183236.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_18877.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_200691.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_208335.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_210928.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_212295.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_2221.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_222303.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_238900.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_248568.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_250099.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_255406.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_258290.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_261626.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_293124.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_299307.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_307859.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_311339.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_332386.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_342563.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_345398.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_348475.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_349852.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_351284.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_357283.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_362980.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_371740.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_382804.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_383141.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_389525.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_412422.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_417142.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_420300.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_437728.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_441066.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_453799.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_458178.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_458271.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_467997.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_468776.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_474241.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_497693.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_499702.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_506372.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_509282.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_529368.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_542286.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_545901.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_557875.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_567498.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_574035.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_586282.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_589643.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_590262.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_598200.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_600892.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_609525.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_611239.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_61548.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_624758.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_628819.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_629706.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_637800.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_645730.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_646983.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_648815.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_65093.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_654471.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_664187.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_670990.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_691230.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_698675.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_718520.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_7195.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_721472.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_725703.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_727663.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_758331.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_76055.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_761438.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_763772.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_765086.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_772034.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_773253.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_775072.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_778543.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_785148.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_788923.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_821329.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_838314.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_842297.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_861099.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_882014.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_896406.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_906340.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_913449.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_931030.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_93573.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_939410.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_945019.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_946704.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_948549.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_952489.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_968256.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_975000.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_998144.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_998662.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Segmented_Neutrophil/NEUTROPHIL_150696.jpg,acevedo,NEUTROPHIL,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/NEUTROPHIL_158274.jpg,acevedo,NEUTROPHIL,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/NEUTROPHIL_205471.jpg,acevedo,NEUTROPHIL,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/NEUTROPHIL_236240.jpg,acevedo,NEUTROPHIL,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/NEUTROPHIL_322012.jpg,acevedo,NEUTROPHIL,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/NEUTROPHIL_389433.jpg,acevedo,NEUTROPHIL,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/NEUTROPHIL_471493.jpg,acevedo,NEUTROPHIL,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_102699.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_10403.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_10429.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_104445.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_128810.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_137703.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_13843.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_156474.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_158302.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_159793.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_161756.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_173457.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_178886.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_182040.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_183125.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_184155.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_184726.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_200362.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_202879.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_218168.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_219152.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_228880.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_22896.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_230902.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_241620.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_251641.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_257510.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_260144.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_273219.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_273267.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_274583.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_292321.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_295383.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_327603.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_334919.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_339572.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_341311.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_343862.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_362408.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_37089.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_375215.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_375821.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_380575.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_382444.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_386870.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_392001.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_392106.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_397471.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_402177.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_40306.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_403956.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_405383.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_409624.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_423252.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_432940.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_433963.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_443512.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_445540.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_452254.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_455449.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_463342.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_474619.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_478479.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_499727.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_50201.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_505047.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_511583.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_512050.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_519778.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_526872.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_534184.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_556796.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_560864.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_565578.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_571162.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_571552.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_576734.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_576927.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_586616.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_58748.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_587568.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_598181.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_601504.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_613918.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_634877.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_635288.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_635595.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_648704.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_663700.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_67724.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_677361.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_67811.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_68465.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_688417.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_691541.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_691743.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_700097.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_721798.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_731589.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_734146.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_736225.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_750907.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_759474.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_774800.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_775468.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_776076.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_81065.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_813844.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_815209.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_815833.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_817325.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_817717.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_83109.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_832031.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_840511.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_845581.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_853397.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_853631.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_859389.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_859885.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_871314.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_87507.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_876751.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_877869.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_878359.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_880415.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_884907.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_886540.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_889334.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_892103.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_896961.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_905412.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_910943.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_911441.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_912151.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_912333.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_912821.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_914937.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_916750.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_923069.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_927416.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_929944.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_932865.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_940402.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_941490.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_956298.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_96718.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_96787.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_972170.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_975181.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_98176.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_981851.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_9827.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_993244.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_99509.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_995874.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_31665.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_128458.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_550491.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_56069.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_863887.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_993513.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_331664.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_399159.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Band_Neutrophil/BNE_850956.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Basophil/BA_68896.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_142694.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_577568.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Monocyte/MO_240882.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_13364.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_729891.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_245773.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_437529.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_377830.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_556405.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_918028.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_834382.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_34065.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Monocyte/MO_12267.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_101258.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Band_Neutrophil/BNE_960718.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_784826.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_79214.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_999450.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_54103.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_444606.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_46088.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_343324.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_519286.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_144254.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Band_Neutrophil/BNE_330959.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_513366.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_943855.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_363451.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Monocyte/MO_888484.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_746004.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_834838.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_625010.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Basophil/BA_93417.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_422295.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_154997.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Basophil/BA_799126.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Band_Neutrophil/BNE_310148.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_341843.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_129727.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_594721.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_977712.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_769464.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_261509.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_665299.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_67379.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_189116.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_112202.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Band_Neutrophil/BNE_814356.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Lymphocyte/LY_732043.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_529838.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_834548.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_359031.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_407207.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_82173.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_176988.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_652110.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_70524.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_2234.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Lymphocyte/LY_29912.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_263017.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_526870.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_721078.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_631393.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Band_Neutrophil/BNE_282906.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_671361.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_182479.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_120688.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_296615.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_488521.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Lymphocyte/LY_363396.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Band_Neutrophil/BNE_580553.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_81939.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_589500.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_243574.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Basophil/BA_196807.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_633335.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Basophil/BA_330244.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_566153.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Basophil/BA_700831.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_178978.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_644595.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Basophil/BA_250620.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_285298.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_253464.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_665149.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_72747.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_401601.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_422401.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_676375.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_32523.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_510602.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_580802.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_718085.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_859907.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_87596.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_90576.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_784861.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_752024.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_775439.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_651122.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_207129.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_662683.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_631061.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Lymphocyte/LY_644290.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_94450.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_692427.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_948750.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Basophil/BA_273021.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_465184.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_50923.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_768683.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_243203.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_690157.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_902951.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_198665.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_872983.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_774908.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_989323.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_646915.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_894574.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_698291.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_12708.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_900162.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_850494.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_496119.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_142830.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Monocyte/MO_665320.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Basophil/BA_812946.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_454445.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_509334.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_711696.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_33661.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_324596.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_7582.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Band_Neutrophil/BNE_136347.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_47650.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Basophil/BA_208485.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Band_Neutrophil/BNE_53949.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_603329.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_69115.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_791031.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_352748.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_123421.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_612323.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_788042.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_758422.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Band_Neutrophil/BNE_473596.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_786059.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_402565.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_19779.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_870464.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Lymphocyte/LY_752478.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_483841.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_303404.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_371956.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_921575.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_305833.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_552215.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_816467.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_815811.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_962214.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Basophil/BA_38810.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Band_Neutrophil/BNE_249469.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Basophil/BA_249665.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_70096.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_945726.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_828359.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_204551.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Basophil/BA_152650.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Monocyte/MO_821957.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Band_Neutrophil/BNE_49911.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_507742.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_125468.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Lymphocyte/LY_828205.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_915714.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_574699.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Basophil/BA_484151.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Monocyte/MO_448293.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Band_Neutrophil/BNE_254272.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_404265.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Lymphocyte/LY_284207.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Basophil/BA_721289.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_570277.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_844687.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_260100.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_94859.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Monocyte/MO_470425.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_938311.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_863122.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_226132.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Lymphocyte/LY_400910.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Band_Neutrophil/BNE_62656.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_461282.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Basophil/BA_662105.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_280451.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_265799.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_46986.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_287479.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_684602.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_683648.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_846877.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_730904.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Basophil/BA_640980.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_835288.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_14041.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_139723.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_149883.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_640601.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Basophil/BA_840272.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_936098.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_437014.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_572115.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_969932.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Basophil/BA_173262.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_99338.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Band_Neutrophil/BNE_247568.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Monocyte/MO_463322.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_876956.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_85775.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_487630.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_151442.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_147472.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_297935.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Basophil/BA_839500.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_17629.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Basophil/BA_26527.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_377164.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_651676.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_863951.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_77980.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_201984.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_333101.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_902202.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_278647.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_827687.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Lymphocyte/LY_275148.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_927827.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_960788.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_308489.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_204075.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_952649.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_82322.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_715571.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Lymphocyte/LY_914594.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_166114.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Band_Neutrophil/BNE_37587.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Monocyte/MO_854625.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_522315.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_426699.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_145546.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Monocyte/MO_861570.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_325782.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_914261.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_443914.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Basophil/BA_451206.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Band_Neutrophil/BNE_808363.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_612226.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/NEUTROPHIL_620442.jpg,acevedo,NEUTROPHIL,Segmented Neutrophil,val
+demo_data/images/Monocyte/MO_49442.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_224317.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_109976.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_79706.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_530447.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_732056.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_813985.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_64196.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_363098.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_596214.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_122655.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_915927.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_729292.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_605990.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_131610.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_845169.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_604558.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_896706.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_927649.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_95665.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_622154.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_909035.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_930939.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_606776.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_14768.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Band_Neutrophil/BNE_239636.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_126173.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_993110.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_446923.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Basophil/BA_445437.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Monocyte/MO_71718.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Band_Neutrophil/BNE_312496.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_554939.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_56375.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Basophil/BA_89458.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_357066.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_305252.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Monocyte/MO_866623.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_147562.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_263455.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_592314.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_864076.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_379032.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Basophil/BA_142746.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Monocyte/MO_484116.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_813789.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_4334.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Band_Neutrophil/BNE_996898.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_195632.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_198153.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_824203.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_287569.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_495973.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_484777.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_936581.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_323753.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_536937.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_838548.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_74517.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_140425.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_388799.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_157092.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_464002.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_409307.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_458751.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_906709.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Basophil/BA_403789.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Monocyte/MO_564271.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_316202.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Basophil/BA_956163.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_279650.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_387942.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_582429.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_376948.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_896245.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_868570.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_56722.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_418745.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_545367.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Lymphocyte/LY_774874.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_179950.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_259587.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_119250.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Basophil/BA_654891.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_504467.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Monocyte/MO_293773.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Band_Neutrophil/BNE_896337.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_363989.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_745330.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_80261.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_659008.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Band_Neutrophil/BNE_874904.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_276644.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Basophil/BA_188974.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_31926.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_328721.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_716662.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_845594.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_78141.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Band_Neutrophil/BNE_256049.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_133625.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Lymphocyte/LY_588849.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_121452.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_78175.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Lymphocyte/LY_705501.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_761997.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_231678.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_997916.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_706560.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_154914.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_551599.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_460941.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_84435.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_346820.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_53714.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_370179.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_869684.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_561010.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_462597.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_383011.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Band_Neutrophil/BNE_180055.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_813005.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_105867.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Lymphocyte/LY_349836.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Band_Neutrophil/BNE_699064.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_63643.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_257520.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_664643.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Basophil/BA_238331.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_609046.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_434512.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_683106.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Basophil/BA_145728.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_226369.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_366351.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_128174.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_633597.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_136823.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_190191.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_575434.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_315956.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_504582.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Band_Neutrophil/BNE_924437.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Monocyte/MO_759794.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_533258.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_175579.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_215406.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_103649.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_686982.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_992150.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_406508.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_311010.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_148905.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Band_Neutrophil/BNE_186566.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_721607.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Lymphocyte/LY_18213.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_496455.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Monocyte/MO_965966.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_246005.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_600210.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_356161.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_305556.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_417311.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_110481.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_945147.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_971434.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Band_Neutrophil/BNE_37691.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_768671.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_324033.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Lymphocyte/LY_637633.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_355150.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_760857.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_189918.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_992859.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_553969.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_756267.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_526929.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_141054.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_618678.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_703258.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_349283.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_219523.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Band_Neutrophil/BNE_158778.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_480371.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_828240.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_741019.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_728297.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_850248.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_402139.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_483803.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Monocyte/MO_108488.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Basophil/BA_230866.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_863552.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_41456.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_701572.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_253964.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_15383.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_611781.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Band_Neutrophil/BNE_229472.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Basophil/BA_492819.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_914908.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_967099.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_109025.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Band_Neutrophil/BNE_122030.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_865258.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_556886.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_276797.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_241496.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_201623.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_925979.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/NEUTROPHIL_473612.jpg,acevedo,NEUTROPHIL,Segmented Neutrophil,val
+demo_data/images/Basophil/BA_147282.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_431005.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_364521.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_618428.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Band_Neutrophil/BNE_105748.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Monocyte/MO_815995.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_696379.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_973923.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_881775.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Band_Neutrophil/BNE_480776.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Basophil/BA_839707.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Monocyte/MO_745075.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_414119.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_781300.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Monocyte/MO_967515.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_109414.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Band_Neutrophil/BNE_77263.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_86752.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_138832.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_809318.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_919303.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_447298.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_499207.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_880204.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_49224.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_195225.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_333334.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_605920.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_700648.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_634117.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_443426.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_770459.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_661478.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_241450.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_498472.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_865426.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_470873.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Monocyte/MO_475504.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_589594.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_4884.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_829664.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Monocyte/MO_531560.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_91407.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Basophil/BA_891907.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_668285.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_850328.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Lymphocyte/LY_788039.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Basophil/BA_566587.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_106437.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_276203.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_548143.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_542933.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_853914.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_976204.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_853952.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_914583.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_921948.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_210288.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Basophil/BA_248930.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Monocyte/MO_373555.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Basophil/BA_398846.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_707186.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_619023.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Lymphocyte/LY_260701.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_475798.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_666302.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Basophil/BA_816718.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Monocyte/MO_147386.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Band_Neutrophil/BNE_54463.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Lymphocyte/LY_164687.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_308376.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Lymphocyte/LY_222797.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Lymphocyte/LY_321982.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_21337.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_372018.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Monocyte/MO_189829.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_411413.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_149081.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Lymphocyte/LY_970556.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_766383.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_139552.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_484601.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_527213.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_211341.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_375973.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_422423.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Monocyte/MO_452917.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_646952.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Band_Neutrophil/BNE_222611.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_979904.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_269763.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_61066.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Lymphocyte/LY_870923.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_21910.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_378779.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Basophil/BA_81688.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Eosinophil/EO_150200.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_481364.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_695453.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_959036.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_149300.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Basophil/BA_699269.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Band_Neutrophil/BNE_765760.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_679301.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Eosinophil/EO_597403.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_700280.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_549758.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_657991.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Band_Neutrophil/BNE_173958.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Monocyte/MO_260942.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_197483.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_34670.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_238906.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_99568.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_142899.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_264329.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Band_Neutrophil/BNE_668846.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Monocyte/MO_208200.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Monocyte/MO_91781.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_399454.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_504244.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_704271.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_829748.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_817026.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Segmented_Neutrophil/SNE_344447.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Segmented_Neutrophil/SNE_517153.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_934992.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_348569.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_303550.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Band_Neutrophil/BNE_252419.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Band_Neutrophil/BNE_850427.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Monocyte/MO_89535.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_409311.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Monocyte/MO_689589.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Lymphocyte/LY_692569.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Band_Neutrophil/BNE_943257.jpg,acevedo,BNE,Band Neutrophil,val
+demo_data/images/Eosinophil/EO_869508.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_959482.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_481692.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_414090.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Segmented_Neutrophil/SNE_517466.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_630646.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Basophil/BA_279501.jpg,acevedo,basophil,Basophil,val
+demo_data/images/Monocyte/MO_129006.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_402029.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Monocyte/MO_919757.jpg,acevedo,monocyte,Monocyte,val
+demo_data/images/Eosinophil/EO_485156.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Segmented_Neutrophil/SNE_569272.jpg,acevedo,SNE,Segmented Neutrophil,val
+demo_data/images/Eosinophil/EO_383782.jpg,acevedo,eosinophil,Eosinophil,val
+demo_data/images/Lymphocyte/LY_275504.jpg,acevedo,lymphocyte,Lymphocyte,val
+demo_data/images/Eosinophil/EO_266653.jpg,acevedo,eosinophil,Eosinophil,val
