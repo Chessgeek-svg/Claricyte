@@ -151,33 +151,6 @@ def train_class_head_cached(
     return best_acc
 
 
-def joint_loss(attr_logits, class_logits, attr_targets, class_targets):
-    """Sum of the 11 attribute cross-entropies plus the class cross-entropy."""
-    attr_loss = sum(
-        F.cross_entropy(attr_logits[attr], attr_targets[:, i])
-        for i, attr in enumerate(ATTRIBUTES)
-    )
-    return attr_loss + F.cross_entropy(class_logits, class_targets)
-
-
-def class_only_loss(label_smoothing=0.0):
-    """Factory returning a class-only cross-entropy loss function.
-
-    Softens one-hot targets to prevent weight explosion and overconfidence
-    during sequential training with frozen features.
-
-    Usage:
-        criterion = class_only_loss(label_smoothing=0.1)
-    """
-
-    def loss_fn(attr_logits, class_logits, attr_targets, class_targets):
-        return F.cross_entropy(
-            class_logits, class_targets, label_smoothing=label_smoothing
-        )
-
-    return loss_fn
-
-
 def attr_only_loss(attr_logits, class_logits, attr_targets, class_targets):
     """The 11 attribute cross-entropies alone, for pure concept supervision.
 
