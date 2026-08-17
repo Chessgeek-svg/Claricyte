@@ -6,7 +6,13 @@ from PIL import Image
 from torch.utils.data import Dataset
 from torchvision.transforms import v2
 
-from claricyte.vocab import ATTRIBUTES, CLASS_TO_INDEX, CLASSES, VALUE_TO_INDEX
+from claricyte.vocab import (
+    ATTRIBUTES,
+    CLASS_TO_INDEX,
+    CLASSES,
+    VALUE_TO_INDEX,
+    find_invalid_rows,
+)
 
 
 class MorphologyDataset(Dataset):
@@ -42,6 +48,29 @@ class MorphologyDataset(Dataset):
                 stacklevel=2,
             )
             df = df[known]
+
+        # Validate BEFORE encoding. The .map() below turns any value outside the
+        # vocabulary into NaN, which then survives all the way to __getitem__ and
+        # surfaces mid-epoch as a cryptic int64 cast error with no indication of
+        # which column or which file caused it.
+        invalid = find_invalid_rows(df)
+        if not invalid.empty:
+            offenders = {
+                attr: sorted(
+                    set(
+                        invalid.loc[
+                            ~invalid[attr].isin(VALUE_TO_INDEX[attr]), attr
+                        ].astype(str)
+                    )
+                )
+                for attr in ATTRIBUTES
+                if not invalid[attr].isin(VALUE_TO_INDEX[attr]).all()
+            }
+            raise ValueError(
+                f"{len(invalid)} rows hold attribute values outside "
+                f"vocab.ATTRIBUTE_VOCAB: {offenders}. "
+                f"First offending image: {invalid['image_path'].iloc[0]}"
+            )
 
         for attr in ATTRIBUTES:
             df[attr] = df[attr].map(VALUE_TO_INDEX[attr])
