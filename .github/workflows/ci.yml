@@ -15,3 +15,19 @@ jobs:
       - run: pip install ruff==0.15.22
       - run: ruff check .
       - run: ruff format --check .
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements*.txt
+      # requirements.txt points pip at the CPU wheel index, so this pulls the
+      # ~200MB CPU torch rather than the multi-gigabyte CUDA build.
+      - run: pip install -r requirements-dev.txt
+      # The suite builds every model with pretrained=False and touches no
+      # dataset, so it runs on a clean checkout with no weights to download.
+      - run: pytest -q
