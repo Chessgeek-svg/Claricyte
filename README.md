@@ -1,9 +1,6 @@
 # Claricyte
 
-An AI-powered study tool for hematology morphology identification. Claricyte helps
-clinical laboratory professionals and students learn to identify white blood cell
-types by pairing each cell with a plain-English explanation of the morphological
-features that support its classification.
+An AI-powered study tool for hematology morphology identification. Claricyte helps clinical laboratory professionals and students learn to identify white blood cell types by pairing each cell with a plain-English explanation of the morphological features that support its classification. For educational use only.
 
 Live demo: [claricyte.streamlit.app](https://claricyte.streamlit.app/)
 
@@ -17,7 +14,7 @@ image -> 11 morphological attributes (each with a confidence) -> cell class -> e
 
 Because the classifier sees nothing but the 11 predicted attributes, and the explanation is generated from those same predictions, the explanation text reports what the model actually observed on this cell rather than reciting a textbook description of the cell type. When the model is wrong, the explanation shows you why it was wrong.
 
-The 11 attributes come from the WBCAtt schema: cell size and shape, nucleus shape, nuclear-to-cytoplasmic ratio, chromatin density, cytoplasm colour, texture and vacuolation, and granularity with granule type and colour. The current version of the model analyzes 6 classes, splitting neutrophils into band and segmented neutrophils, while also categorizing monocytes, lymphocytes, eosinophils, and basophils. More cell types are planned, see [Scope](#scope) for details
+The 11 attributes come from the WBCAtt schema: cell size and shape, nucleus shape, nuclear-to-cytoplasmic ratio, chromatin density, cytoplasm colour, texture and vacuolation, and granularity with granule type and colour. The current version of the model analyzes 6 classes, splitting neutrophils into band and segmented neutrophils, while also categorizing monocytes, lymphocytes, eosinophils, and basophils. More cell types are planned, see [Scope](#scope) for details.
 
 ## Study (quiz) mode
 
@@ -31,18 +28,33 @@ Six classes: band neutrophil, basophil, eosinophil, lymphocyte, monocyte, segmen
 
 | Metric | Value |
 |---|---|
-| Validation class accuracy | 0.930 |
-| Mean attribute accuracy (11 heads) | 0.926 |
-| Ceiling given perfect discrete attributes | 0.925 |
+| Test class accuracy | 0.935 |
+| Mean attribute accuracy (11 heads) | 0.936 |
+| Ceiling given perfect discrete attributes | 0.930 |
 | Random baseline | 0.167 |
 
-Measured on 1,568 held-out validation cells. These are validation figures, and validation also selects the checkpoint, so they are mildly optimistic. A held-out test split exists and has deliberately not been touched, as selecting the model based on test performance is data leakage.
+Measured on 3,099 held-out test cells. Backbone configurations were compared on the validation split and the winner picked there, then the test split was read once. Selecting a model based on test performance is data leakage, so test never informed a decision.
 
-The previous iteration of the model was unimpressive at both attribute accurace and class accuracy. To work out where the error was actually coming from, I fed the classifier the ground-truth attributes instead of the predicted ones. It reached an accuracy of 0.920, against a theoretical maximum of 0.925 for any model reading only these 11 discrete attributes. That told me the classifier itself was already solid, and the larger issue lied in attribute heads misinterpreting the morphological features present in the cell. Fine-tuning the vision backbone closed most of the vision error, taking mean attribute accuracy from 0.81 to 0.926 and class accuracy from 0.774 to 0.930. 
+The partition is WBCAtt's own published train/validation/test split, so these numbers sit directly beside the ones in their paper. On their 5-class task, which merges band and segmented neutrophils into a single neutrophil class, this model scores 99.02 macro F-measure against the 99.40 they report for their attribute-based classifier, and 90.12 against their 91.20 on mean attribute macro F-measure. Slightly behind on both. The 5-class figure is produced by merging our band and segmented predictions back into one class but the model is optimized with the goal of distinguishing them into their own classes. Keeping the two apart, on the 6-class task the model is actually trained for, gives a macro F-measure of 93.27, though the paper has no equivalent figure to compare it against.
 
-The model now sits slightly above the 0.925 maximum, which is possible because the classifier reads the full probability distribution over each attribute rather than only the single most likely value. A cell whose nucleus shape is a coin flip between band and bilobed is carried forward as a coin flip, which lets the other attributes count for proportionally more in the final call rather than being overridden by a forced choice. For reference, discretizing those distributions before the classifier would drop the accuracy to 0.876.
+The previous iteration of the model was unimpressive at both attribute accuracy and class accuracy. To work out where the error was actually coming from, I fed the classifier the ground-truth attributes instead of the predicted ones. It reached an accuracy of 0.926, against a theoretical maximum of 0.930 for any model reading only these 11 discrete attributes. That told me the classifier itself was already solid, and the larger issue lay in attribute heads misinterpreting the morphological features present in the cell. Fine-tuning the vision backbone closed most of the vision error, taking mean attribute accuracy from 0.81 to 0.936 and class accuracy from 0.774 to 0.935.
 
-The remaining error comes from cells with overlapping attribute characteristics, which the model cannot possibly separate. 83.5% of all remaining mistakes are band and segmented neutrophils being confused for each other; from my examination of the dataset, I strongly suspect that a large portion of this stems from the nucleus shape labeling. 39.6% of segmented neutrophils are labeled as having a nucleus shape of unsegmented-band, which is the key feature that would distinguish segmented neutrophils from band neutrophils. This is supported by the segmented neutrophil class having 0.679 recall even when handed the ground-truth attributes, while all other classes are over .900
+The model now sits slightly above the 0.930 maximum, which is possible because the classifier reads the full probability distribution over each attribute rather than only the single most likely value. A cell whose nucleus shape is a coin flip between band and bilobed is carried forward as a coin flip, which lets the other attributes count for proportionally more in the final call rather than being overridden by a forced choice. For reference, discretizing those distributions before the classifier would drop the accuracy to 0.908.
+
+Performance across the six classes:
+
+| Class | Recall |
+|---|---|
+| Basophil | 0.997 |
+| Eosinophil | 0.995 |
+| Monocyte | 0.984 |
+| Lymphocyte | 0.975 |
+| Band Neutrophil | 0.885 |
+| Segmented Neutrophil | 0.766 |
+
+Four of the six classes sit above 0.97. Merging the two neutrophil classes into the single neutrophil class the WBCAtt paper uses takes class accuracy to 0.992, so nearly everything the model gets wrong is one boundary.
+
+The remaining error comes from cells with overlapping attribute characteristics, which the model cannot possibly separate. 87.6% of all remaining mistakes are band and segmented neutrophils being confused for each other; from my examination of the dataset, I strongly suspect that a large portion of this stems from the nucleus shape labeling. 39.6% of segmented neutrophils are labeled as having a nucleus shape of unsegmented-band, which is the key feature that would distinguish segmented neutrophils from band neutrophils. This is supported by the segmented neutrophil class having 0.704 recall even when handed the ground-truth attributes, while all other classes are over .900.
 
 ## Running the demo
 
@@ -53,13 +65,13 @@ streamlit run app.py
 
 The repository ships the validation split it quizzes on under `demo_data/`, and the trained model under `checkpoints/`. The checkpoint is about 47MB, because the ResNet50 backbone is fine-tuned rather than frozen and so cannot simply be refetched from timm; it is stored in half precision, which halves the file at no measurable cost to accuracy.
 
-Retraining the model would require the Acevedo image set and the WBCAtt attribute annotations, which carry their own licensing terms (see [Credits & attribution](#credits--attribution)), followed by the two-stage training in `scripts/` (`train_attr_heads.py`, then `train_class_head.py`). The two stages are trained separately on purpose, as otherwise the class objective (having received the correct label and then backpropagating to the attribute heads) would influence the attribute heads towards misidentified morphological cell features in order to make classification more accurate. For example, if an image of a segmented neutrophil was mistakenly labeled as an eosinophil, the jointly trained attribute head would be influenced by the class head to predict red granules on that image, even though none were actually present. Separating them allows the attribnute heads to visually identify morphological features as accurately as possible, and then rely on the class head to convert those confidence values into a final class prediction, which can then be explained by what attributes were actually seen in that individual cell.
+Retraining the model would require the Acevedo image set and the WBCAtt attribute annotations, which carry their own licensing terms (see [Credits & attribution](#credits--attribution)), followed by the two-stage training in `scripts/` (`train_attr_heads.py`, then `train_class_head.py`). The two stages are trained separately on purpose, as otherwise the class objective (having received the correct label and then backpropagating to the attribute heads) would influence the attribute heads towards misidentified morphological cell features in order to make classification more accurate. For example, if an image of a segmented neutrophil was mistakenly labeled as an eosinophil, the jointly trained attribute head would be influenced by the class head to predict red granules on that image, even though none were actually present. Separating them allows the attribute heads to visually identify morphological features as accurately as possible, and then rely on the class head to convert those confidence values into a final class prediction, which can then be explained by what attributes were actually seen in that individual cell.
 
 ## Scope
 
 Claricyte is in phase 1: white blood cell morphology on single-cell crops. The current model covers 6 classes, and the full taxonomy for this phase is 17. The plan from here, in order:
 
-1. Clarify the band versus segmented neutrophil confusion, which is where nearly all of the remaining error sits. The attribute vocabulary is already capable of expressing the distinction, it is just being applied inconsistently.
+1. Clarify the band versus segmented neutrophil confusion, which is where nearly all of the remaining error sits. The attribute vocabulary is already capable of expressing the distinction, it is just being applied inconsistently. This likely means a manual cleanup of the nucleus shape of segmented neutrophils
 2. Finish phase 1 by extending to all 17 classes. This is gated on attribute labels for the immature and neoplastic cell types, which do not exist yet and have to be produced by hand.
 3. Multi-cell detection, so that a whole field image can be broken into individual cells rather than requiring them to be cropped in advance. The goal is being able to accept user-submitted images.
 4. Red cell morphology and parasite detection, which will likely need separate models rather than more classes on this one.
