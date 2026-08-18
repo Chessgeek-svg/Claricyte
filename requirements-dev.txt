@@ -1,6 +1,10 @@
 # Development-only dependencies. Not needed to run the demo.
 -r requirements.txt
 
+# The project itself, editable, so tests and scripts import claricyte from an
+# installed package rather than relying on the repo root being on sys.path.
+-e .
+
 # scikit-learn is used solely by scripts/ingest.py, for the stratified
 # train/val/test split of datasets that do not ship an official one.
 scikit-learn==1.9.0
