@@ -39,6 +39,13 @@ def main() -> None:
     out = Path(args.out)
     images_dir = out / "images"
 
+    # Clear the previous package first. Without this the copy below only ever
+    # adds, so re-running after the split changes leaves every image from the
+    # old split orphaned in the directory: still committed, never referenced by
+    # the CSVs, and invisible in the diff except as size.
+    if images_dir.exists():
+        shutil.rmtree(images_dir)
+
     attributes = pd.read_csv(args.attributes)
     metadata = pd.read_csv(args.metadata)
     merged = attributes.merge(metadata, on="image_path", how="inner")
