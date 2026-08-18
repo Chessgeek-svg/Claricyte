@@ -4,6 +4,8 @@ An AI-powered study tool for hematology morphology identification. Claricyte hel
 
 Live demo: [claricyte.streamlit.app](https://claricyte.streamlit.app/)
 
+Live demo: [claricyte.streamlit.app](https://claricyte.streamlit.app/)
+
 ## How it works
 
 Claricyte is built on a concept bottleneck model (CBM). Instead of mapping an image straight to a label like in a standard black-box classifier, a shared vision backbone feeds 11 attribute heads that predict the cell's morphological features. Those predictions, with their confidence values, are the only input to the classification head, which of course makes the final prediction.
