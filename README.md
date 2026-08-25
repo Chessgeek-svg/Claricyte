@@ -1,6 +1,6 @@
 # Claricyte
 
-An vision model powered study tool for hematology morphology identification. Claricyte helps clinical laboratory professionals and students learn to identify white blood cell types by pairing each cell with a plain-English explanation of the morphological features that support its classification. For educational use only.
+A vision model powered study tool for hematology morphology identification. Claricyte helps clinical laboratory professionals and students learn to identify white blood cell types by pairing each cell with a plain-English explanation of the morphological features that support its classification. For educational use only.
 
 Live demo: [claricyte.streamlit.app](https://claricyte.streamlit.app/)
 

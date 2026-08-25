@@ -13,22 +13,55 @@ a fresh clone runs without acquiring any datasets.
 """
 
 import random
+from html import escape
 
 import streamlit as st
 import torch
 from PIL import Image
 
 from claricyte.data import MorphologyDataset
-from claricyte.explain import explain
+from claricyte.explain import LOW_CONFIDENCE, _article, explain
 from claricyte.model import Model
 from claricyte.predict import contributions, predict
 from claricyte.vocab import CLASSES
 
 ATTR_PATH, METADATA_PATH = "demo_data/attributes.csv", "demo_data/metadata.csv"
 CHECKPOINT = "checkpoints/demo.pt"
+CSS_PATH = "assets/claricyte.css"
 
 # Sidebar scope for "any cell type" quiz mode. Specific classes are study mode.
 QUIZ_SCOPE = "Quiz me!"
+
+
+@st.cache_data
+def load_css() -> str:
+    """Read the demo stylesheet once and cache it across reruns."""
+    with open(CSS_PATH, encoding="utf-8") as handle:
+        return handle.read()
+
+
+def attribute_table_html(result: dict[str, tuple[str, float]]) -> str:
+    """Render the predicted attributes as a bordered HTML table.
+
+    Rows whose confidence falls below the threshold the explanation hedges at are
+    flagged, so the table and the paragraph agree about what is uncertain.
+    """
+    rows = []
+    for attribute, (value, confidence) in result.items():
+        hedged = ' class="hedged"' if confidence < LOW_CONFIDENCE else ""
+        rows.append(
+            f"<tr{hedged}>"
+            f"<td>{escape(attribute.replace('_', ' '))}</td>"
+            f"<td>{escape(str(value))}</td>"
+            f'<td class="confidence">{confidence:.0%}</td>'
+            "</tr>"
+        )
+    return (
+        '<table class="claricyte-attrs"><thead><tr>'
+        "<th>Attribute</th><th>Value</th>"
+        '<th class="confidence">Conf.</th>'
+        f"</tr></thead><tbody>{''.join(rows)}</tbody></table>"
+    )
 
 
 @st.cache_resource
@@ -61,6 +94,9 @@ def advance(valset, scope):
     st.session_state.index = pick_index(valset, scope)
     st.session_state.guess = None
 
+
+st.set_page_config(page_title="Claricyte", layout="centered")
+st.markdown(f"<style>{load_css()}</style>", unsafe_allow_html=True)
 
 model = load_model()
 valset = load_valset()
@@ -96,7 +132,7 @@ with right:
         st.subheader("What type is this cell?")
         cols = st.columns(2)
         for i, cls in enumerate(CLASSES):
-            if cols[i % 2].button(cls, use_container_width=True):
+            if cols[i % 2].button(cls, type="primary", use_container_width=True):
                 st.session_state.guess = cls
                 st.rerun()
     else:
@@ -106,7 +142,8 @@ with right:
             if guess == true_label:
                 st.success(f"Correct: {true_label}")
             else:
-                st.error(f"You guessed {guess}. It's a {true_label}.")
+                article = _article(true_label)
+                st.error(f"You guessed {guess}. It's {article} {true_label}.")
 
         result, class_dist, concepts = predict(model, image_tensor)
         scores = contributions(model, result, concepts, true_label)
@@ -115,14 +152,7 @@ with right:
         st.write(explain(result, scores, true_label))
 
         st.subheader("Predicted attributes")
-        st.dataframe(
-            {
-                "attribute": [attr.replace("_", " ") for attr in result],
-                "value": [value for value, _ in result.values()],
-                "confidence": [f"{conf:.0%}" for _, conf in result.values()],
-            },
-            hide_index=True,
-        )
+        st.markdown(attribute_table_html(result), unsafe_allow_html=True)
 
         # Honest reveal of the raw class head.
         with st.expander("Model internals (raw class prediction)"):
@@ -134,4 +164,4 @@ with right:
                 "The demo explains the known-correct label, not this prediction."
             )
 
-    st.button("Next cell", on_click=advance, args=(valset, scope))
+    st.button("Next cell", key="next_cell", on_click=advance, args=(valset, scope))

@@ -1,0 +1,127 @@
+:root {
+  --ink: #3d405b;
+  --ink-pressed: #292b3d;
+  --accent: #c99f18;
+  --accent-pressed: #a48213;
+  --incorrect: #d85531;
+  --muted: #adb5bd;
+}
+
+
+[data-testid="stHeading"] h1 {
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 0.4rem;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.015em;
+}
+
+[data-testid="stHeading"] h2,
+[data-testid="stHeading"] h3 {
+  color: var(--ink);
+}
+
+
+[data-testid="stImage"] img {
+  box-sizing: border-box;
+  width: 100%;
+  border: 3px solid var(--ink);
+  background: #ffffff;
+  padding: 10px;
+}
+
+[data-testid="stCaptionContainer"] {
+  color: var(--ink);
+  opacity: 0.75;
+}
+
+[data-testid="stImageCaption"],
+[data-testid="stImageCaption"] [data-testid="stCaptionContainer"],
+[data-testid="stImageCaption"] p {
+  color: var(--ink);
+  opacity: 1;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
+[data-testid="stAppDeployButton"] {
+  display: none;
+}
+
+[data-testid="stBaseButton-primary"] {
+  border: 1px solid var(--muted);
+  font-weight: 600;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+[data-testid="stBaseButton-primary"]:hover {
+  background-color: var(--ink-pressed);
+  border-color: var(--ink-pressed);
+}
+
+.st-key-next_cell button {
+  background-color: var(--accent);
+  border: 1px solid var(--muted);
+  color: var(--ink-pressed);
+  font-weight: 600;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.st-key-next_cell button:hover {
+  background-color: var(--accent-pressed);
+  border-color: var(--ink);
+  color: var(--ink-pressed);
+}
+
+.st-key-next_cell button:focus:not(:active) {
+  color: var(--ink-pressed);
+  box-shadow: 0 0 0 4px var(--muted);
+}
+
+table.claricyte-attrs {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  border: 3px solid var(--ink);
+  font-size: 0.9rem;
+}
+
+table.claricyte-attrs th,
+table.claricyte-attrs td {
+  border: 1px solid var(--ink);
+  padding: 0.3rem 0.5rem;
+  text-align: left;
+  overflow-wrap: break-word;
+  line-height: 1.35;
+}
+
+table.claricyte-attrs th:first-child,
+table.claricyte-attrs td:first-child {
+  width: 45%;
+}
+
+table.claricyte-attrs th {
+  background: var(--ink);
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+table.claricyte-attrs td.confidence,
+table.claricyte-attrs th.confidence {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  width: 4.25rem;
+}
+
+table.claricyte-attrs tr.hedged td {
+  color: var(--incorrect);
+}
+
+[data-testid="stExpander"] details {
+  border: 1px solid var(--ink);
+  box-shadow: none;
+}
