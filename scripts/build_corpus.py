@@ -78,6 +78,16 @@ SEARCHES: dict[str, str] = {
     ),
 }
 
+# Hand-picked articles that relevance ranking misses. Always fetched, so a known
+# good source cannot be lost to a reshuffle when a query or --per-query changes.
+# This is the mechanism for acting on any curated recommendation.
+EXTRA_PMCIDS: tuple[str, ...] = (
+    "PMC11130981",  # The challenge of diagnosing and classifying eosinophilia
+    "PMC10814743",  # Hematological Neoplasms with Eosinophilia
+    "PMC11270355",  # Transient Stress Lymphocytosis: case report and review
+    "PMC10148979",  # French guidelines for the etiological workup of eosinophilia
+)
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -87,7 +97,8 @@ def main() -> None:
     args = parser.parse_args()
 
     # Dedupe across topics: the same review answers several of these queries.
-    pmcids: list[str] = []
+    pmcids: list[str] = list(EXTRA_PMCIDS)
+    print(f"{'curated':22} {len(pmcids):3} pinned")
     for topic, query in SEARCHES.items():
         found = to_pmcids(search_pubmed(query, args.per_query))
         fresh = [p for p in found if p not in pmcids]
