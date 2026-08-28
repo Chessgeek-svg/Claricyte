@@ -13,3 +13,7 @@ pysbd==0.3.4
 # Kept in step with the version CI pins in .github/workflows/ci.yml.
 ruff==0.15.22
 pytest==9.1.1
+
+# Local generation backend, used by the eval loop so replaying the gold set
+# dozens of times costs nothing. The hosted demo uses the OpenAI path instead.
+transformers==4.57.1

@@ -28,3 +28,6 @@ streamlit==1.60.0
 # ~1GB, and the quiz path never touches them. See claricyte/rag/store.py.
 chromadb==1.5.9
 sentence-transformers==6.0.0
+
+# Generation. Called only from the question box, never on the quiz path.
+openai==1.109.1
