@@ -78,8 +78,8 @@ _SEGMENTER = pysbd.Segmenter(language="en", clean=False)
 def tag_classes(text: str) -> tuple[str, ...]:
     """Classes a passage is about, plus GENERAL if it is cross-cutting.
 
-    Empty means the passage mentioned no cell type and no smear-level topic, which
-    is the signal to drop it: it cannot be reached through the class filter.
+    Empty means drop it: no cell type and no smear-level topic, so no filter
+    could ever reach it.
     """
     return tuple(label for label, pattern in _PATTERNS.items() if pattern.search(text))
 
@@ -115,11 +115,10 @@ class Chunk:
 
 
 def _overlap_cut(sentences: list[str], budget: int) -> tuple[int, int]:
-    """Index to slice from for the tail fitting in `budget`, and its word count.
+    """Where to slice for the tail fitting in `budget`, and its word count.
 
-    Returns an index so the caller slices a list it already holds. A sentence
-    longer than the budget carries nothing, so one long sentence cannot duplicate
-    itself into the next chunk.
+    An index, so the caller slices the list it already has. A sentence longer
+    than the budget carries nothing, so it cannot duplicate itself forward.
     """
     total = 0
     cut = len(sentences)

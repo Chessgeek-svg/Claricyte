@@ -1,17 +1,12 @@
-"""Vector store: embedding and retrieval over the chunk corpus.
+"""Embedding and retrieval over the chunk corpus.
 
-Everything is lazy. Loading the embedder and building the collection costs
-~260MB, and the hosted demo has roughly 1GB total with the CBM already using
-650MB. The quiz path never retrieves, so nothing here loads until someone asks a
-question.
+Lazy throughout: the embedder and collection cost ~260MB and the demo has ~1GB
+with the CBM already using 650MB, so nothing loads until someone asks a question.
 
-What ships is the corpus plus a 1.5MB npz of its vectors.
-Embedding 1050 chunks takes 102s, so it cannot happen at startup, but rebuilding
-the collection from precomputed vectors takes 0.9s. A persisted Chroma directory
-would be 19MB of binary that churns entirely whenever chunk boundaries move.
-
-Embeddings are computed here rather than through a Chroma embedding_function, so
-indexing and querying use the same model.
+Ships an npz of vectors, not a Chroma directory. Embedding the corpus takes 102s
+so it cannot happen at startup, but rebuilding the collection from saved vectors
+takes 0.9s, and a persisted index would be 19MB of binary churning on every
+corpus rebuild.
 """
 
 from __future__ import annotations
@@ -37,7 +32,7 @@ QUERY_PREFIX = "Represent this sentence for searching relevant passages: "
 
 @lru_cache(maxsize=1)
 def _embedder():
-    """The sentence-transformer, loaded once per process on first use."""
+    """The embedding model, loaded once per process on first use."""
     from sentence_transformers import SentenceTransformer
 
     return SentenceTransformer(EMBEDDING_MODEL, device="cpu")
@@ -53,10 +48,10 @@ def embed(texts: list[str], is_query: bool = False) -> np.ndarray:
 def build_embeddings(
     corpus_path: str | Path = CORPUS_PATH, out_path: str | Path = EMBEDDINGS_PATH
 ) -> int:
-    """Embed a corpus and save its vectors. Offline only: ~100s for 1000 chunks.
+    """Embed a corpus and save its vectors. Offline: ~100s for 1000 chunks.
 
-    Ids are saved alongside so vectors stay matched to their chunks regardless of
-    corpus ordering, and a stale npz fails loudly rather than silently misaligning.
+    Ids go in alongside so vectors stay matched to their chunks whatever the
+    corpus order, and a stale npz fails loudly instead of quietly misaligning.
     """
     chunks = read_jsonl(corpus_path)
     vectors = embed([chunk.text for chunk in chunks])
@@ -103,10 +98,9 @@ def _collection(corpus_path: str = CORPUS_PATH, embeddings_path: str = EMBEDDING
 def search(
     text: str, where: dict | None = None, k: int = 5
 ) -> list[tuple[Chunk, float]]:
-    """Retrieve the k nearest chunks to `text`, optionally filtered by metadata.
+    """The k nearest chunks to `text`, optionally filtered by metadata.
 
-    Returns (chunk, similarity) pairs, most similar first, where similarity is
-    1 - cosine distance.
+    Returns (chunk, similarity) pairs, best first; similarity is 1 - distance.
     """
     result = _collection().query(
         query_embeddings=embed([text], is_query=True).tolist(),
@@ -128,7 +122,7 @@ def search(
 def _to_chunk(chunk_id: str, document: str, metadata: dict) -> Chunk:
     """Rebuild a Chunk from what Chroma stored.
 
-    chunk_index comes back off the id rather than being stored twice, since Chunk
+    chunk_index comes off the id rather than being stored twice, since Chunk
     derives the id from it and the two must not be able to disagree.
     """
     return Chunk(

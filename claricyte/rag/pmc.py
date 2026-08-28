@@ -1,26 +1,11 @@
-"""PubMed Central fetching and JATS XML parsing.
+"""Search PubMed, fetch from PMC, parse JATS into articles.
 
-Turns a search query into parsed, license-cleared articles ready to be chunked.
-Everything network- and XML-facing lives here so the rest of the RAG package stays
-pure and testable, the same split ``claricyte.explain`` uses.
+All the network and XML code, kept out of the rest of the package. Standard
+library only, so building the corpus adds nothing to the hosted demo.
 
-Each stage is a separate function so each can be tested and retried on its own:
-
-  search_pubmed(query) -> PMIDs (PubMed, because only it has real MeSH indexing
-                          and a working review[pt]; db=pmc searches full text)
-  to_pmcids(pmids)     -> the subset of those held in PMC
-  fetch_article(id)    -> raw JATS XML for one article
-  parse_article(xml)   -> an Article, or None if it fails the licence filter
-
-Licence policy: ND variants are always rejected, since NoDerivatives conflicts with
-chunking and reassembling text. NC variants are accepted (Claricyte is
-non-commercial). PMC's custom "available for text mining" terms are accepted but
-recorded under their own value, because they grant mining outright while leaving
-redistribution to fair use, and keeping them distinct means one predicate can drop
-that bucket later.
-
-Uses only the standard library (urllib, ElementTree) rather than requests/lxml, so
-the corpus build adds no runtime dependency to the hosted demo.
+ND licences are rejected: NoDerivatives conflicts with chunking. NC is fine,
+Claricyte is non-commercial. PMC's "available for text mining" terms get their
+own value, since they grant mining but leave redistribution to fair use.
 """
 
 from __future__ import annotations
@@ -89,11 +74,10 @@ NO_SECTION = "untitled"
 
 @dataclass(frozen=True)
 class Article:
-    """One parsed, license-cleared article, ready to be chunked.
+    """A parsed, licence-cleared article.
 
-    ``sections`` is ordered as the paper is, each entry a (heading, text) pair.
-    Chunking happens per section and never across a boundary, so the heading stays
-    attached to the passages it covers and can be matched by the retrieval eval.
+    sections is (heading, text) pairs in document order. Chunking never crosses a
+    heading, so the gold set can match on it.
     """
 
     pmcid: str
@@ -104,12 +88,8 @@ class Article:
 
 
 def _get(url: str, retries: int = 3) -> bytes:
-    """GET a URL, retrying on transient failure with a widening backoff.
-
-    Raises the final exception rather than returning None: a fetch that fails after
-    three attempts is a real problem the caller needs to see, not a silent gap in
-    the corpus.
-    """
+    """GET with backoff. Raises after the last try rather than returning None,
+    which would leave a silent hole in the corpus."""
     last_error: Exception | None = None
     for attempt in range(retries):
         try:
@@ -126,16 +106,10 @@ def _get(url: str, retries: int = 3) -> bytes:
 def search_pmc(
     query: str, max_results: int = 100, sort: str = "relevance"
 ) -> list[str]:
-    """Return PMCIDs matching `query`, restricted to the open-access subset.
+    """PMCIDs matching `query`, open-access only, ranked by relevance.
 
-    The ``open access[filter]`` clause is appended to the query so non-OA articles
-    never enter the pipeline; efetch would return only their abstracts anyway.
-
-    Sorted by relevance rather than the default (date), which otherwise returns
-    whatever was published most recently that happens to mention the terms. Note
-    that db=pmc searches FULL TEXT, so an unrestricted query matches any paper that
-    mentions a word once: field tags like ``neutrophil[TI]`` do the real work here,
-    and belong in the query itself.
+    db=pmc searches full text, so anything mentioning a word once matches. Field
+    tags like neutrophil[TI] do the real narrowing and belong in the query.
     """
     params = urllib.parse.urlencode(
         {
@@ -162,16 +136,11 @@ def fetch_article(pmcid: str) -> bytes:
 
 
 def _licence_of(root: ET.Element) -> str | None:
-    """Extract a normalised licence string, or None if it is not machine-readable.
+    """Normalised licence name, or None if we cannot redistribute it.
 
-    Publishers declare the licence inconsistently, so all three known carriers are
-    checked: a ``license-type`` attribute, an ``xlink:href``, and the text of an
-    ``ali:license_ref`` child (the NISO ALI form, which is what PMC actually emits
-    for most modern articles). The Creative Commons URL is the reliable signal, so
-    it is matched first and the attribute form is only a fallback.
-
-    Returns None for any licence outside ALLOWED_LICENCES, which includes every
-    NC and ND variant and every article with no machine-readable licence at all.
+    Publishers declare licences three different ways, so check all of them: the
+    license-type attribute, xlink:href, and ali:license_ref text, which is what
+    PMC actually emits. The CC URL is the reliable one.
     """
     # Creative Commons URL path -> our normalised name. Anything absent from this
     # map (by-nc, by-nd, by-nc-sa, ...) is not redistributable on our terms.
@@ -217,12 +186,11 @@ SKIP_SUBTREES = ("xref", "table-wrap", "fig")
 
 
 def _text_of(element: ET.Element) -> str:
-    """Flatten an element's text, dropping citation markers, tables and figures.
+    """Element text, minus citation markers, tables and figures.
 
-    Recurses rather than using iter() so a skipped element skips its whole subtree
-    but keeps its tail. The tail is the text that FOLLOWS the element and belongs to
-    the parent's flow, so dropping it with the element silently truncates every
-    sentence that contains an inline citation.
+    Recurses instead of using iter() so a skipped element loses its subtree but
+    keeps its tail. The tail is the text after the element, so dropping it
+    truncates every sentence containing an inline citation.
     """
     parts: list[str] = []
 
@@ -248,13 +216,12 @@ def _is_skippable(section_type: str, heading: str) -> bool:
 
 
 def parse_article(xml: bytes) -> Article | None:
-    """Parse JATS XML into an Article, or return None if it should be dropped.
+    """Parse JATS into an Article, or None if it should be dropped.
 
-    Returns None (rather than raising) for the two expected, non-exceptional
-    rejections: a licence outside ALLOWED_LICENCES, and an article with no body.
-    The second is a real trap: efetch answers for non-OA articles with metadata and
-    an abstract instead of failing, so a missing body has to be checked explicitly
-    or the corpus quietly fills with abstract-only stubs.
+    None rather than raising, because both rejections are expected: a licence we
+    cannot use, or no body. Watch the second one; efetch answers for non-OA
+    articles with an abstract instead of failing, so the corpus would fill with
+    stubs if we did not check.
     """
     root = ET.fromstring(xml)
 
@@ -304,13 +271,11 @@ def parse_article(xml: bytes) -> Article | None:
 
 
 def search_pubmed(query: str, max_results: int = 15) -> list[str]:
-    """Return PMIDs matching `query`, restricted to articles held in PMC.
+    """PMIDs matching `query`, restricted to articles held in PMC.
 
-    PubMed rather than PMC because only PubMed has real MeSH indexing and a
-    working ``review[pt]`` filter; db=pmc searches full text, so any paper that
-    mentions a word once matches. ``pubmed pmc[sb]`` is the subset filter that
-    actually works: "open access"[filter] is not a valid tag and silently returns
-    zero results for every query.
+    PubMed rather than PMC: only it has real MeSH indexing and a working
+    review[pt]. Use pubmed pmc[sb] for the subset filter. "open access"[filter]
+    is not a valid tag and silently returns nothing at all.
     """
     params = urllib.parse.urlencode(
         {

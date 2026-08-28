@@ -1,25 +1,18 @@
 """Turn a model prediction into a retrieval query.
 
-Pure and torch-free, like ``corpus`` and ``explain``: takes the dict
-``predict.predict`` returns and produces the two things ``store.search`` needs,
-a string to embed and a metadata filter to narrow on first.
+Produces the two things store.search needs: a string to embed and a metadata
+filter. Torch-free, so it tests without a model.
 
-Two design decisions worth stating, because both are load-bearing.
+The class filters rather than being searched for. It is a fact, and a filter
+guarantees where a query term only nudges.
 
-The class is a hard filter, not a search term. It is a known categorical, so
-asking the embedding to infer it wastes the one fact we are certain about.
+The query is prose because the corpus is prose. Embedding "basophil, coarse
+purple granules" against clinical paragraphs compares two registers and
+retrieves badly.
 
-The query is prose, not a list of attribute values. Embedding
-"basophil, coarse purple granules" against clinical paragraphs compares text in
-two different registers and retrieves badly. Templating into a sentence puts the
-query in the same register as the corpus. Same insight as HyDE, minus the
-generation step.
-
-Attributes mostly do NOT appear in the query. For clinical retrieval the class
-name carries almost all the signal, and a cell's normal defining features are
-uninformative: every neutrophil has pink granules, so saying so narrows nothing.
-The exception is a finding that is abnormal and clinically associated, which in
-the current 11-attribute vocabulary means vacuolation and nothing else.
+Attributes mostly stay out. Every neutrophil has pink granules, so saying so
+narrows nothing; only a finding that is abnormal and clinically associated earns
+a place, which in this vocabulary means vacuolation and nothing else.
 """
 
 from __future__ import annotations
@@ -50,10 +43,10 @@ LOW_CONFIDENCE = 0.75
 
 
 def class_filter(label: str) -> dict:
-    """Chroma filter matching chunks about `label`, plus cross-cutting ones.
+    """Chunks about `label`, plus cross-cutting ones.
 
-    GENERAL is always included: smear review and pre-analytical passages name no
-    cell type, so a strict class filter would make them permanently unreachable.
+    GENERAL is always let through. Smear review and artifact passages name no
+    cell type, so a strict filter would put them permanently out of reach.
     """
     return {
         "$or": [
@@ -88,12 +81,9 @@ def build_query(
     Args:
         result: {attribute: (value, confidence)} from predict.predict.
         label: the cell class being explained.
-        question: a user's free-text question, if any. Without one this builds
-            the standing clinical-context query for the class.
-        low_confidence: threshold below which a finding is ignored.
-
-    Returns:
-        The string to embed, and a Chroma `where` filter.
+        question: the user's question. Without one, builds the standing
+            clinical-context query for the class.
+        low_confidence: below this, a finding is ignored.
     """
     findings = notable_findings(result, low_confidence)
 
