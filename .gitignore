@@ -228,3 +228,5 @@ __marimo__/
 !/checkpoints/demo.pt
 /documents
 .vscode/
+# Local-only RAG material: not redistributable, never committed.
+/rag_data/local/

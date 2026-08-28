@@ -1,0 +1,195 @@
+import json
+import re
+from collections.abc import Iterable, Iterator
+from dataclasses import asdict, dataclass
+from pathlib import Path
+
+import pysbd
+
+from claricyte.rag.pmc import Article
+
+# Surface forms indicating a passage is about a class. Matched on word boundaries,
+# so "band" cannot fire on "bandwidth" or "band pass filter".
+CLASS_ALIASES: dict[str, tuple[str, ...]] = {
+    "Segmented Neutrophil": (
+        "neutrophil",
+        "neutrophils",
+        "segmented neutrophil",
+        "polymorphonuclear",
+        "pmn",
+        "seg neutrophil",
+        "mature neutrophil",
+    ),
+    "Band Neutrophil": (
+        "neutrophil",
+        "neutrophils",
+        "band neutrophil",
+        "band form",
+        "band cell",
+        "stab cell",
+        "left shift",
+        "bandemia",
+        "non-segmented neutrophil",
+        "nonsegmented neutrophil",
+    ),
+    "Lymphocyte": (
+        "lymphocyte",
+        "lymphocytes",
+        "lymphocytic",
+        "large granular lymphocyte",
+        "reactive lymphocyte",
+        "atypical lymphocyte",
+    ),
+    "Monocyte": ("monocyte", "monocytes", "monocytic", "monocytoid"),
+    "Eosinophil": ("eosinophil", "eosinophils", "eosinophilia"),
+    "Basophil": ("basophil", "basophils", "basophilia"),
+}
+
+# Passages about smear review, staining or pre-analytical artifact are relevant to
+# every class. They get their own tag, which the retriever includes alongside the
+# class filter.
+GENERAL = "General"
+GENERAL_ALIASES: tuple[str, ...] = (
+    "blood film",
+    "blood smear",
+    "peripheral smear",
+    "leukocyte differential",
+    "white blood cell differential",
+    "differential count",
+    "wright-giemsa",
+    "romanowsky",
+    "smear review",
+    "film review",
+    "edta",
+)
+
+_PATTERNS: dict[str, re.Pattern[str]] = {
+    label: re.compile(
+        r"\b(?:" + "|".join(re.escape(a) for a in aliases) + r")\b", re.IGNORECASE
+    )
+    for label, aliases in {**CLASS_ALIASES, GENERAL: GENERAL_ALIASES}.items()
+}
+
+_SEGMENTER = pysbd.Segmenter(language="en", clean=False)
+
+
+def tag_classes(text: str) -> tuple[str, ...]:
+    """Classes a passage is about, plus GENERAL if it is cross-cutting.
+
+    Empty means the passage mentioned no cell type and no smear-level topic, which
+    is the signal to drop it: it cannot be reached through the class filter.
+    """
+    return tuple(label for label, pattern in _PATTERNS.items() if pattern.search(text))
+
+
+# What Chroma accepts as a metadata value: scalars, or arrays of scalars.
+ChromaMetadata = dict[str, str | list[str]]
+
+
+@dataclass(frozen=True)
+class Chunk:
+    text: str
+    pmcid: str
+    section: str
+    url: str
+    license: str
+    cell_classes: tuple[str, ...]
+    title: str
+    chunk_index: int
+
+    @property
+    def id(self) -> str:
+        return f"{self.pmcid}:{self.section}:{self.chunk_index}"
+
+    def chroma_keys(self) -> tuple[str, str, ChromaMetadata]:
+        metadata: ChromaMetadata = dict()
+        metadata["pmcid"] = self.pmcid
+        metadata["section"] = self.section
+        metadata["url"] = self.url
+        metadata["license"] = self.license
+        metadata["cell_classes"] = list(self.cell_classes)
+        metadata["title"] = self.title
+        return self.id, self.text, metadata
+
+
+def _overlap_cut(sentences: list[str], budget: int) -> tuple[int, int]:
+    """Index to slice from for the tail fitting in `budget`, and its word count.
+
+    Returns an index so the caller slices a list it already holds. A sentence
+    longer than the budget carries nothing, so one long sentence cannot duplicate
+    itself into the next chunk.
+    """
+    total = 0
+    cut = len(sentences)
+    for i in range(len(sentences) - 1, -1, -1):
+        words = len(sentences[i].split())
+        if total + words > budget:
+            break
+        total += words
+        cut = i
+    return cut, total
+
+
+def chunk_section(
+    text: str, max_words: int = 300, overlap_words: int = 50
+) -> Iterator[str]:
+    batch, total = [], 0
+    # pysbd keeps terminal punctuation and a trailing space, so strip here and
+    # rejoin with a plain space below.
+    sentences = [s.strip() for s in _SEGMENTER.segment(text)]
+    for sentence in sentences:
+        if total + len(sentence.split()) > max_words and batch:
+            yield " ".join(batch)
+            cut, total = _overlap_cut(batch, overlap_words)
+            batch = batch[cut:]
+        batch.append(sentence)
+        total += len(sentence.split())
+    if batch:
+        yield " ".join(batch)
+
+
+def chunk_article(
+    article: Article,
+    cell_classes: tuple[str, ...],
+    max_words: int = 300,
+) -> list[Chunk]:
+    chunks = []
+    # Counted across the whole article, not restarted per section: real papers
+    # repeat headings (two "Diagnostic criteria" sections, one per disease), and a
+    # per-section counter gives both a chunk_index of 0 and so the same id. Chroma
+    # treats a repeat id as an overwrite, so that silently drops text.
+    index = 0
+    for section, text in article.sections:
+        for passage in chunk_section(text, max_words):
+            chunks.append(
+                Chunk(
+                    text=passage,
+                    chunk_index=index,
+                    pmcid=article.pmcid,
+                    section=section,
+                    url=article.url,
+                    license=article.license,
+                    cell_classes=cell_classes,
+                    title=article.title,
+                )
+            )
+            index += 1
+    return chunks
+
+
+def write_jsonl(chunks: Iterable[Chunk], path: str | Path) -> None:
+    """Write chunks as one JSON object per line."""
+    with open(path, "w", encoding="utf-8") as handle:
+        for chunk in chunks:
+            handle.write(json.dumps(asdict(chunk), ensure_ascii=False) + "\n")
+
+
+def read_jsonl(path: str | Path) -> list[Chunk]:
+    """Read a corpus file back. cell_classes round-trips via list, so retuple it."""
+    chunks = []
+    with open(path, encoding="utf-8") as handle:
+        for line in handle:
+            row = json.loads(line)
+            row["cell_classes"] = tuple(row["cell_classes"])
+            chunks.append(Chunk(**row))
+    return chunks
