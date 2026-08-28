@@ -22,3 +22,9 @@ timm==1.0.28
 pandas==3.0.3
 pillow==12.3.0
 streamlit==1.60.0
+
+# Retrieval. Needed at runtime because the demo answers questions in-app, but
+# loaded lazily: together they cost ~260MB against Streamlit Community Cloud's
+# ~1GB, and the quiz path never touches them. See claricyte/rag/store.py.
+chromadb==1.5.9
+sentence-transformers==6.0.0

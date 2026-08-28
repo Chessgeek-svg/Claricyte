@@ -10,6 +10,8 @@ from claricyte.rag.pmc import Article
 
 # Surface forms indicating a passage is about a class. Matched on word boundaries,
 # so "band" cannot fire on "bandwidth" or "band pass filter".
+# TODO with the immature classes: "left shift", "immature granulocytes" and
+# "leukocytosis" describe the myelocyte series but currently tag Band or nothing.
 CLASS_ALIASES: dict[str, tuple[str, ...]] = {
     "Segmented Neutrophil": (
         "neutrophil",
