@@ -11,10 +11,13 @@ is used, same reason as store.py.
 from __future__ import annotations
 
 import os
+from pathlib import Path
 from typing import Protocol
 
+SECRETS_PATH = Path(".streamlit/secrets.toml")
+
 # Confirm against the account's own model list before relying on it; the cheap
-# tier is renamed often. scripts/list_models.py prints what is actually available.
+# tier is renamed often. scripts/check_openai.py prints what is actually available.
 OPENAI_MODEL = "gpt-5-nano"
 LOCAL_MODEL = "Qwen/Qwen2.5-1.5B-Instruct"
 
@@ -32,20 +35,33 @@ class Provider(Protocol):
 def api_key() -> str:
     """The OpenAI key, from Streamlit secrets or the environment.
 
-    Streamlit is optional so the eval scripts run outside the app.
+    Streamlit is optional so the eval scripts run outside the app. A secrets file
+    that exists but will not parse is reported as such rather than being folded
+    into "no key found", which makes a bad file look identical to a missing one.
     """
     try:
         import streamlit as st
 
         if "OPENAI_API_KEY" in st.secrets:
             return st.secrets["OPENAI_API_KEY"]
-    except Exception:
-        pass
+    except ImportError:
+        pass  # not installed: the env var below is the only source
+    except Exception as error:
+        if SECRETS_PATH.exists():
+            # Deliberately does NOT include the underlying error: a TOML parse
+            # failure quotes the offending line, which is the key itself, and
+            # that would print it to the terminal and into any log.
+            raise RuntimeError(
+                f"{SECRETS_PATH} exists but could not be parsed "
+                f"({type(error).__name__}). Values must be quoted, e.g.\n"
+                '    OPENAI_API_KEY = "sk-proj-..."'
+            ) from None
+
     key = os.environ.get("OPENAI_API_KEY")
     if not key:
         raise RuntimeError(
-            "No OPENAI_API_KEY. Copy .streamlit/secrets.toml.example to "
-            ".streamlit/secrets.toml and fill it in, or export the variable."
+            f"No OPENAI_API_KEY. Copy {SECRETS_PATH}.example to {SECRETS_PATH} "
+            "and fill it in, or export the variable."
         )
     return key
 
