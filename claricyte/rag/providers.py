@@ -16,9 +16,12 @@ from typing import Protocol
 
 SECRETS_PATH = Path(".streamlit/secrets.toml")
 
-# Confirm against the account's own model list before relying on it; the cheap
-# tier is renamed often. scripts/check_openai.py prints what is actually available.
-OPENAI_MODEL = "gpt-5-nano"
+# gpt-4.1-nano rather than gpt-5-nano: the gpt-5 tier are reasoning models and
+# spend max_completion_tokens on hidden reasoning BEFORE any visible text, so a
+# 400-token budget came back empty at full price. This one has no reasoning
+# overhead, uses half the tokens for the same answer, and accepts temperature.
+# Verify with scripts/check_openai.py before changing it.
+OPENAI_MODEL = "gpt-4.1-nano"
 LOCAL_MODEL = "Qwen/Qwen2.5-1.5B-Instruct"
 
 # Answers are three or four sentences. The cap is a cost and abuse bound, not a
@@ -69,17 +72,16 @@ def api_key() -> str:
 class OpenAIProvider:
     """The hosted path. Cheap tier, capped output.
 
-    temperature defaults to None, meaning "do not send it": the newer models
-    reject the parameter outright. Set it to 0 once verified against the account's
-    actual model, since the eval needs the same input to give the same output or a
-    prompt change cannot be told apart from sampling noise.
+    temperature=0 so the eval can tell a prompt change from sampling noise. The
+    gpt-5 tier rejects the parameter outright, which is one reason we are not on
+    it; pass None to omit it if the model ever changes.
     """
 
     def __init__(
         self,
         model: str = OPENAI_MODEL,
         max_tokens: int = MAX_OUTPUT_TOKENS,
-        temperature: float | None = None,
+        temperature: float | None = 0.0,
     ):
         self.model = model
         self.max_tokens = max_tokens

@@ -39,7 +39,11 @@ sources use. Never frame anything as advice about a particular patient or case.
 6. Be brief: three or four sentences.
 """
 
-CITATION = re.compile(r"\[(\d+)\]")
+# Matches [1] and also [1, 5], which models emit despite being asked for one
+# bracket per source. Missing that form marked properly cited sentences as
+# ungrounded, which would have made the eval's groundedness number meaningless.
+CITATION = re.compile(r"\[\s*\d+(?:\s*,\s*\d+)*\s*\]")
+_NUMBER = re.compile(r"\d+")
 
 
 def format_sources(chunks: list[Chunk]) -> str:
@@ -63,8 +67,10 @@ def build_messages(question: str, chunks: list[Chunk]) -> list[dict[str, str]]:
 
 
 def cited(answer: str) -> set[int]:
-    """Source numbers the answer refers to."""
-    return {int(n) for n in CITATION.findall(answer)}
+    """Source numbers the answer refers to, from either bracket form."""
+    return {
+        int(n) for group in CITATION.findall(answer) for n in _NUMBER.findall(group)
+    }
 
 
 def invalid_citations(answer: str, source_count: int) -> set[int]:

@@ -88,6 +88,30 @@ def test_cited_finds_every_reference():
     assert cited("Seen in CML [1] and in allergy [2][3].") == {1, 2, 3}
 
 
+@pytest.mark.parametrize(
+    "answer,expected",
+    [
+        ("Both agree [1, 5].", {1, 5}),
+        ("Compact form [1,5].", {1, 5}),
+        ("Mixed [1,5] and [3].", {1, 3, 5}),
+        ("Spaced [ 2 , 4 ].", {2, 4}),
+    ],
+)
+def test_comma_grouped_citations_are_parsed(answer, expected):
+    """Models write [1, 5] despite being asked for one bracket per source. Missing
+    that form marked properly cited sentences as ungrounded, which would have made
+    the groundedness metric meaningless."""
+    assert cited(answer) == expected
+
+
+def test_comma_grouped_citations_are_range_checked():
+    assert invalid_citations("Claim [1, 9].", source_count=3) == {9}
+
+
+def test_a_comma_grouped_citation_counts_as_cited():
+    assert uncited_sentences("These conditions may lead to X [1, 5].") == []
+
+
 def test_no_citations_is_an_empty_set():
     assert cited("Basophilia has several causes.") == set()
 
