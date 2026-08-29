@@ -20,6 +20,7 @@ import argparse
 from collections import Counter
 from dataclasses import replace
 
+from claricyte.rag.books import BOOKS, load_book
 from claricyte.rag.corpus import chunk_article, tag_classes, write_jsonl
 from claricyte.rag.pmc import fetch_article, parse_article, search_pubmed, to_pmcids
 
@@ -128,9 +129,26 @@ def main() -> None:
                 continue
             chunks.append(replace(chunk, cell_classes=labels))
 
+    # Open-licensed textbooks, a second front door onto the same Article shape.
+    # These carry the descriptive morphology the journal corpus lacks: the
+    # band-versus-seg criteria, toxic change, Dohle bodies.
+    for book in BOOKS:
+        article = load_book(book)
+        before = len(chunks)
+        for chunk in chunk_article(article, cell_classes=(), max_words=args.max_words):
+            labels = tag_classes(chunk.text)
+            if not labels:
+                dropped["chunk untagged"] += 1
+                continue
+            chunks.append(replace(chunk, cell_classes=labels))
+        print(
+            f"{book.source_id:22} {len(article.sections):3} sections, "
+            f"{len(chunks) - before:3} chunks kept"
+        )
+
     write_jsonl(chunks, args.out)
 
-    kept = {c.pmcid for c in chunks}
+    kept = {c.source_id for c in chunks}
     print(f"\nkept {len(kept)} articles, {len(chunks)} chunks -> {args.out}")
     for reason, count in dropped.most_common():
         print(f"  dropped ({reason}): {count}")

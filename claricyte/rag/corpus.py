@@ -91,7 +91,7 @@ ChromaMetadata = dict[str, str | list[str]]
 @dataclass(frozen=True)
 class Chunk:
     text: str
-    pmcid: str
+    source_id: str
     section: str
     url: str
     license: str
@@ -101,11 +101,11 @@ class Chunk:
 
     @property
     def id(self) -> str:
-        return f"{self.pmcid}:{self.section}:{self.chunk_index}"
+        return f"{self.source_id}:{self.section}:{self.chunk_index}"
 
     def chroma_keys(self) -> tuple[str, str, ChromaMetadata]:
         metadata: ChromaMetadata = dict()
-        metadata["pmcid"] = self.pmcid
+        metadata["source_id"] = self.source_id
         metadata["section"] = self.section
         metadata["url"] = self.url
         metadata["license"] = self.license
@@ -166,7 +166,7 @@ def chunk_article(
                 Chunk(
                     text=passage,
                     chunk_index=index,
-                    pmcid=article.pmcid,
+                    source_id=article.source_id,
                     section=section,
                     url=article.url,
                     license=article.license,

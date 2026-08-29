@@ -31,7 +31,7 @@ def make_chunk(**overrides) -> Chunk:
     """A fully populated chunk, with overrides applied."""
     base = dict(
         text="Basophil granules are water soluble and may wash out.",
-        pmcid="PMC7563270",
+        source_id="PMC7563270",
         section="Morphology",
         url="https://pmc.ncbi.nlm.nih.gov/articles/PMC7563270/",
         license="CC BY",
@@ -73,7 +73,7 @@ def test_chroma_keys_returns_id_text_metadata():
     chunk_id, text, metadata = chunk.chroma_keys()
     assert chunk_id == chunk.id
     assert text == chunk.text
-    assert metadata["pmcid"] == "PMC7563270"
+    assert metadata["source_id"] == "PMC7563270"
     assert metadata["title"] == chunk.title  # citation needs link text, not just url
 
 
@@ -132,14 +132,14 @@ def test_oversized_sentence_carries_nothing():
 
 def make_article(sections) -> Article:
     return Article(
-        pmcid="PMC1", title="T", url="u", license="CC BY", sections=tuple(sections)
+        source_id="PMC1", title="T", url="u", license="CC BY", sections=tuple(sections)
     )
 
 
 def test_chunk_article_stamps_provenance_on_every_chunk():
     article = make_article([("Intro", sentences(3)), ("Methods", sentences(3))])
     chunks = chunk_article(article, cell_classes=("Basophil",))
-    assert {c.pmcid for c in chunks} == {"PMC1"}
+    assert {c.source_id for c in chunks} == {"PMC1"}
     assert {c.section for c in chunks} == {"Intro", "Methods"}
     assert all(c.cell_classes == ("Basophil",) for c in chunks)
 

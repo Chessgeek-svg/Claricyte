@@ -29,7 +29,9 @@ VACUOLATED = {"cytoplasm_vacuole": ("yes", 0.99)}
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", default=PANELS_PATH)
-    parser.add_argument("--k", type=int, default=5)
+    # Higher than the live default of 5: panels are generated once, offline, so
+    # a wider net costs nothing and stops a thin retrieval forcing an abstention.
+    parser.add_argument("--k", type=int, default=8)
     parser.add_argument("--provider", default="openai")
     args = parser.parse_args()
 

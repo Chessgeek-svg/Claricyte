@@ -1,12 +1,12 @@
 {
   "Band Neutrophil": {
-    "text": "A student should know that band neutrophils have an unsegmented nuclear morphology and are less mature forms of neutrophils [2]. They are typically seen in the context of neutrophilia, especially during a left shift, which indicates an abnormal increase in circulating neutrophil precursors [2][3]. Conditions associated with the presence of band neutrophils include bacterial infections, acute inflammation, burns, corticosteroid use, malignancy, and severe infections where a severe neutrophilia with left shift, termed leukaemoid reaction, may occur [2][3].",
+    "text": "A student should know that band neutrophils have an unsegmented nuclear morphology and are considered less mature forms of neutrophils [2]. They are typically seen in increased numbers during a left shift, which indicates an abnormal rise in circulating neutrophil precursors, often associated with severe infections or inflammation [2][4]. Conditions such as bacterial infections, especially pyogenic ones, and severe infections can lead to an increase in band neutrophils, reflecting an active marrow response to infection or inflammation [2][4].",
     "sources": [
       {
         "number": 1,
-        "title": "Paraneoplastic leukemoid reactions induced by cytokine-secreting tumours",
-        "section": "Peripheral blood findings",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7279568/"
+        "title": "A Laboratory Guide to Clinical Hematology",
+        "section": "11.3: Toxic Changes",
+        "url": "https://med.libretexts.org/Bookshelves/Allied_Health/A_Laboratory_Guide_to_Clinical_Hematology_(Villatoro_and_To)"
       },
       {
         "number": 2,
@@ -22,20 +22,38 @@
       },
       {
         "number": 4,
+        "title": "A Laboratory Guide to Clinical Hematology",
+        "section": "11.3: Toxic Changes",
+        "url": "https://med.libretexts.org/Bookshelves/Allied_Health/A_Laboratory_Guide_to_Clinical_Hematology_(Villatoro_and_To)"
+      },
+      {
+        "number": 5,
         "title": "Coronavirus disease 2019 ( COVID ‐19): Focus on peripheral blood cell morphology",
         "section": "General neutrophil abnormalities",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9874661/"
       },
       {
-        "number": 5,
+        "number": 6,
+        "title": "The role of monocytosis and neutrophilia in atherosclerosis",
+        "section": "Neutrophilia and hypercholesterolaemia",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5824421/"
+      },
+      {
+        "number": 7,
         "title": "PERIPHERAL BLOOD FILM - A REVIEW",
         "section": "INDICATIONS FOR A PERIPHERAL BLOOD FILM",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4415389/"
+      },
+      {
+        "number": 8,
+        "title": "Identifying Neutrophil Extracellular Traps (NETs) in Blood Samples Using Peripheral Smear Autoanalyzers",
+        "section": "1. Introduction",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10054266/"
       }
     ]
   },
   "Basophil": {
-    "text": "A student should know that basophils normally account for ≤2% of peripheral-blood leukocytes, with an upper normal absolute count of 0.1 × 10^9/L, and hyperbasophilia occurs when the count exceeds 1.0 × 10^9/L [1]. Persistent basophilia (>8 months) is always suggestive of a neoplastic hematologic disorder, although many causes of reactive (non-clonal) basophilia exist [1]. Basophils are involved in allergic responses, carry high-affinity IgE receptors, and contain histamine and other inflammatory mediators, with their development regulated by cytokines such as interleukin-3 [1].",
+    "text": "Basophils normally account for ≤2% of peripheral-blood leukocytes, with hyperbasophilia occurring when counts exceed 1.0 × 10^9/L [1]. They are derived from hematopoietic progenitors in the bone marrow and can be detected in peripheral blood under physiological conditions, especially from lineage-restricted CFU-eo/baso precursors [2]. Basophilia is a significant prognostic feature in conditions like chronic myeloid leukemia (CML), where increased basophil counts are associated with disease progression and are included in prognostic scoring systems [3][7]. They may also be seen in reactive states or in association with specific hematologic disorders, such as in some cases of acute myeloid leukemia (AML) with increased basophils in the blood or marrow [1][8].",
     "sources": [
       {
         "number": 1,
@@ -45,32 +63,50 @@
       },
       {
         "number": 2,
+        "title": "The underestimated role of basophils in Ph + chronic myeloid leukaemia",
+        "section": "BASOPHIL DIFFERENTIATION IN HEALTHY BM AND IN Ph + CML",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6175372/"
+      },
+      {
+        "number": 3,
+        "title": "The underestimated role of basophils in Ph + chronic myeloid leukaemia",
+        "section": "CONCLUDING REMARKS AND FUTURE PERSPECTIVES",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6175372/"
+      },
+      {
+        "number": 4,
+        "title": "The underestimated role of basophils in Ph + chronic myeloid leukaemia",
+        "section": "INTRODUCTION",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6175372/"
+      },
+      {
+        "number": 5,
         "title": "Bacteremia detected on peripheral blood smear in small animal patients presenting to the Emergency Department and its association with prognosis to discharge",
         "section": "Introduction",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12173895/"
       },
       {
-        "number": 3,
+        "number": 6,
         "title": "PERIPHERAL BLOOD FILM - A REVIEW",
         "section": "INDICATIONS FOR A PERIPHERAL BLOOD FILM",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4415389/"
       },
       {
-        "number": 4,
+        "number": 7,
+        "title": "The underestimated role of basophils in Ph + chronic myeloid leukaemia",
+        "section": "PROGNOSTIC ROLE OF BASOPHILS IN CML",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6175372/"
+      },
+      {
+        "number": 8,
         "title": "Approach to Acute Myeloid Leukemia with Increased Eosinophils and Basophils",
         "section": "5. Conclusions",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10856720/"
-      },
-      {
-        "number": 5,
-        "title": "Bacteremia detected on peripheral blood smear in small animal patients presenting to the Emergency Department and its association with prognosis to discharge",
-        "section": "Discussion",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12173895/"
       }
     ]
   },
   "Eosinophil": {
-    "text": "Eosinophils normally account for about 3% to 5% of circulating leukocytes, with an absolute eosinophil count (AEC) upper normal limit of 0.35 × 10^9/L to 0.5 × 10^9/L [1]. Elevated eosinophil levels, known as eosinophilia, are considered when counts exceed 0.5 × 10^9/L, with hypereosinophilia defined as counts ≥1.5 × 10^9/L [2]. Eosinophilia can be associated with a broad range of conditions, including reactive (secondary) disorders, primary (clonal) hematologic neoplasms, and hereditary causes [1][2]. The clinical context, including symptoms and medication use, is important for interpretation [4].",
+    "text": "A student should know that eosinophils normally constitute about 3% to 5% of circulating leukocytes, with an absolute count upper normal limit of 0.35 to 0.5 × 10^9/L [1]. Eosinophilia is defined as an absolute eosinophil count greater than 0.5 × 10^9/L, with mild eosinophilia between 0.5 and 1.49 × 10^9/L, and hypereosinophilia as ≥1.5 × 10^9/L [2][6]. Elevated eosinophil counts can be associated with various conditions, including allergic diseases like asthma and atopic dermatitis, parasitic infections, certain cancers, drug reactions, and systemic diseases such as hypereosinophilic syndrome (HES) and eosinophilic granulomatosis with polyangiitis (EGPA) [4][8]. The degree of eosinophilia and its persistence, along with clinical context, are important for interpretation and further workup.",
     "sources": [
       {
         "number": 1,
@@ -101,11 +137,29 @@
         "title": "Approach to the patient with eosinophilia",
         "section": "Introduction",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7089574/"
+      },
+      {
+        "number": 6,
+        "title": "Approach to the patient with eosinophilia",
+        "section": "Blood Eosinophilia",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7089574/"
+      },
+      {
+        "number": 7,
+        "title": "The challenge of diagnosing and classifying eosinophilia and eosinophil disorders: A review",
+        "section": "Up-to-date classification of hypereosinophilia and hypereosinophilic syndromes",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11130981/"
+      },
+      {
+        "number": 8,
+        "title": "HES and EGPA: Two Sides of the Same Coin",
+        "section": "Introduction",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10348452/"
       }
     ]
   },
   "Lymphocyte": {
-    "text": "Lymphocytes in peripheral blood can show abnormal morphology, such as atypical, reactive, activated, or pleomorphic forms, which are common in viral infections like COVID-19, EBV, and CMV [1]. Lymphocytopenia is frequent in COVID-19, especially in severe cases requiring ICU care, and is associated with worse outcomes [1]. Morphological abnormalities, including atypical lymphocytes, are often observed in COVID-19 patients, with some studies noting a higher proportion in milder disease and recovery phases, although these do not always correlate with disease severity [3].",
+    "text": "Lymphocytes in peripheral blood can show morphological abnormalities, such as atypical, reactive, activated, or pleomorphic forms, which are often associated with viral infections like COVID-19, EBV, and CMV [1]. In COVID-19, lymphocytopenia is frequent and correlates with disease severity, with a universal presence of abnormal lymphocyte morphology, although the specific features vary [1][3]. Lymphocytes may also exhibit transient increases, such as transient stress lymphocytosis, which resolves quickly and can involve reactive or lymphoma-like cells, without indicating malignancy [7]. Conditions associated with abnormal lymphocyte morphology or counts include viral infections, systemic lupus erythematosus, and COVID-19, among others [1][3][8].",
     "sources": [
       {
         "number": 1,
@@ -136,46 +190,82 @@
         "title": "Advantages of AI-based whole blood film scanning for blast detection in markedly leucopenic blood films",
         "section": "Cases of leukopenia with blast cells",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12619778/"
+      },
+      {
+        "number": 6,
+        "title": "Coronavirus disease 2019 ( COVID ‐19): Focus on peripheral blood cell morphology",
+        "section": "INTRODUCTION",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9874661/"
+      },
+      {
+        "number": 7,
+        "title": "Transient Stress Lymphocytosis in a Child: A Case Report and Systematic Review of the Literature",
+        "section": "4. Results",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11270355/"
+      },
+      {
+        "number": 8,
+        "title": "A Practical Perspective of the Hematologic Manifestations of Systemic Lupus Erythematosus",
+        "section": "Review",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8986464/"
       }
     ]
   },
   "Monocyte": {
-    "text": "A student should know that monocytes are circulating cells involved in innate immunity, capable of differentiating into macrophages in tissues, and are classified into subsets based on CD14 and CD16 expression, with different functions such as phagocytosis, antigen presentation, and patrolling the endothelium [3]. Monocytes can be \"primed\" to produce more inflammatory cytokines, especially in conditions like diabetes, where they exhibit an inflammatory phenotype and increased cytokine production [1]. They are also involved in various clinical conditions, including unexplained cytopenias, leukocytosis, infections, myeloproliferative diseases, and malignancies, with their levels and subsets aiding in diagnosis and disease monitoring [2][4].",
+    "text": "A student should know that monocytes are a component of peripheral blood and are produced in the bone marrow and spleen, with their levels regulated by signals and circadian rhythms [1]. Monocytosis, an elevation of monocyte counts, is commonly associated with inflammatory conditions such as atherosclerosis, acute and chronic inflammation, and infections [2][4]. It can be detected through peripheral blood analysis, often prompted by clinical suspicion or abnormal automated counts, and flow cytometry can distinguish monocyte subsets, especially in conditions like CMML [4][5].",
     "sources": [
       {
         "number": 1,
-        "title": "Monocytes and Macrophages as Protagonists in Vascular Complications of Diabetes",
-        "section": "Does Increased Inflammatory Activation of Monocytes and Macrophages Contribute to Diabetes-Accelerated Atherosclerosis?",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7033616/"
+        "title": "Regulation and consequences of monocytosis",
+        "section": "Introduction",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4203415/"
       },
       {
         "number": 2,
+        "title": "The role of monocytosis and neutrophilia in atherosclerosis",
+        "section": "Introduction",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5824421/"
+      },
+      {
+        "number": 3,
+        "title": "Regulation and consequences of monocytosis",
+        "section": "Conclusions",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4203415/"
+      },
+      {
+        "number": 4,
         "title": "PERIPHERAL BLOOD FILM - A REVIEW",
         "section": "INDICATIONS FOR A PERIPHERAL BLOOD FILM",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4415389/"
       },
       {
-        "number": 3,
-        "title": "Phenotypic and functional heterogeneity of monocytes in health and cancer in the era of high dimensional technologies",
-        "section": "Monocyte heterogeneity and functions in circulation",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12306937/"
-      },
-      {
-        "number": 4,
+        "number": 5,
         "title": "Myelodysplastic Syndromes/Myeloproliferative Overlap Neoplasms and Differential Diagnosis in the WHO and ICC 2022 Era: A Focused Review",
         "section": "2.2. Flow Cytometry Immunophenotyping",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10296742/"
       },
       {
-        "number": 5,
+        "number": 6,
         "title": "Coronavirus disease 2019 ( COVID ‐19): Focus on peripheral blood cell morphology",
         "section": "Full blood count , morphology and clinical correlations",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9874661/"
+      },
+      {
+        "number": 7,
+        "title": "Regulation and consequences of monocytosis",
+        "section": "Recruitment of monocytes to sites of inflammation",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4203415/"
+      },
+      {
+        "number": 8,
+        "title": "Monocytes in Myocardial Infarction",
+        "section": "Monocytes",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4409536/"
       }
     ]
   },
   "Segmented Neutrophil": {
-    "text": "Segmented neutrophils are a type of white blood cell that can be affected by various conditions. A decrease in segmented neutrophils over time, such as observed at 24 hours in EDTA samples, can occur, indicating potential changes in their count [4]. In severe infections, neutrophils may exhibit toxic granulations, and a high neutrophil count with a left shift is termed a leukaemoid reaction, which is associated with severe infections [5]. Neutrophil hypersegmentation, with at least 6 nuclear segments, is a feature of megaloblastic anemia, but this is a different morphological change from the toxic granulations seen in infections [5].",
+    "text": "Segmented neutrophils are a normal component of peripheral blood, but their counts can vary over time, as a decrease has been observed at 24 hours in some cases [6]. They are typically seen in the context of infections, such as sepsis, where morphological changes like toxic granulation can occur, indicating activation and maturation of neutrophils [4][8]. Severe infections may also cause a leukaemoid reaction characterized by severe neutrophilia with left shift, and hypersegmentation can be associated with conditions like megaloblastic anemia [8].",
     "sources": [
       {
         "number": 1,
@@ -185,24 +275,42 @@
       },
       {
         "number": 2,
+        "title": "The role of monocytosis and neutrophilia in atherosclerosis",
+        "section": "Neutrophilia and hypercholesterolaemia",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5824421/"
+      },
+      {
+        "number": 3,
+        "title": "Neutrophil green inclusions combined with hemophagocytosis in peripheral blood after bee sting a case report and literature review",
+        "section": "3. Discussion",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12091641/"
+      },
+      {
+        "number": 4,
         "title": "The influence of sepsis on erythrocytes morphology: case report and literature review",
         "section": "Discussions",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11146462/"
       },
       {
-        "number": 3,
+        "number": 5,
         "title": "Coronavirus disease 2019 ( COVID ‐19): Focus on peripheral blood cell morphology",
         "section": "Full blood count , morphology and clinical correlations",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9874661/"
       },
       {
-        "number": 4,
+        "number": 6,
         "title": "Time‐Dependent EDTA Effect on Leukocyte Differential Count and Morphology Compared to Blood Smear Made by Direct Finger Prick",
         "section": "Agreement of Differential Count",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12426802/"
       },
       {
-        "number": 5,
+        "number": 7,
+        "title": "Hematopoietic responses to SARS-CoV-2 infection",
+        "section": "SARS-CoV-2 infection and myelopoiesis/neutrophilia",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8918078/"
+      },
+      {
+        "number": 8,
         "title": "PERIPHERAL BLOOD FILM - A REVIEW",
         "section": "WHITE CELL MORPHOLOGY",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4415389/"
@@ -210,34 +318,52 @@
     ]
   },
   "Monocyte|vacuolated": {
-    "text": "A student should know that monocytes in peripheral blood can be elevated in conditions such as CMML, where the proportion of classical monocytes (CD14+/CD16−) is increased, and this can help distinguish CMML from reactive monocytosis [1]. Monocytes with exuberant vacuolation are associated with initial and milder disease in COVID-19 cases, and the presence of vacuolization or atypical lymphocytes can be linked to less severe illness [2]. Cytoplasmic vacuolation in monocytes suggests reactive changes, often seen in infections like COVID-19, but it does not significantly affect monocyte counts [2].",
+    "text": "A student should know that monocytes in peripheral blood are highly variable in nuclear and cytoplasmic morphology, with features such as variable shapes, loose chromatin, and ground glass appearance of the cytoplasm that may contain pseudopods or vacuoles [1]. Monocytes normally comprise about 3-11% of peripheral blood cells [1]. They are seen in conditions involving inflammation, such as monocytosis in acute and chronic inflammatory states, including atherosclerosis, and can be increased in myelodysplastic syndromes or myeloproliferative disorders [1][5][6]. Cytoplasmic vacuolation in monocytes can be associated with reactive or infectious processes, and in the context of COVID-19, a high proportion of vacuolated monocytes has been linked to milder disease and shorter hospital stays [4].",
     "sources": [
       {
         "number": 1,
+        "title": "A Laboratory Guide to Clinical Hematology",
+        "section": "10.4: Monocytes",
+        "url": "https://med.libretexts.org/Bookshelves/Allied_Health/A_Laboratory_Guide_to_Clinical_Hematology_(Villatoro_and_To)"
+      },
+      {
+        "number": 2,
         "title": "Myelodysplastic Syndromes/Myeloproliferative Overlap Neoplasms and Differential Diagnosis in the WHO and ICC 2022 Era: A Focused Review",
         "section": "2.2. Flow Cytometry Immunophenotyping",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10296742/"
       },
       {
-        "number": 2,
+        "number": 3,
+        "title": "Regulation and consequences of monocytosis",
+        "section": "Introduction",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4203415/"
+      },
+      {
+        "number": 4,
         "title": "Coronavirus disease 2019 ( COVID ‐19): Focus on peripheral blood cell morphology",
         "section": "Full blood count , morphology and clinical correlations",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9874661/"
       },
       {
-        "number": 3,
-        "title": "Monocytes and Macrophages as Protagonists in Vascular Complications of Diabetes",
-        "section": "What is the Role of Monocytosis in Diabetes-Accelerated Atherosclerosis?",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7033616/"
+        "number": 5,
+        "title": "The role of monocytosis and neutrophilia in atherosclerosis",
+        "section": "Introduction",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5824421/"
       },
       {
-        "number": 4,
+        "number": 6,
         "title": "Myelodysplastic Syndromes/Myeloproliferative Overlap Neoplasms and Differential Diagnosis in the WHO and ICC 2022 Era: A Focused Review",
         "section": "3. Clonal Monocytosis of Undetermined Significance and Clonal Cytopenia with Monocytosis of Undetermined Significance",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10296742/"
       },
       {
-        "number": 5,
+        "number": 7,
+        "title": "A Laboratory Guide to Clinical Hematology",
+        "section": "10.5: Macrophages",
+        "url": "https://med.libretexts.org/Bookshelves/Allied_Health/A_Laboratory_Guide_to_Clinical_Hematology_(Villatoro_and_To)"
+      },
+      {
+        "number": 8,
         "title": "Advantages of AI-based whole blood film scanning for blast detection in markedly leucopenic blood films",
         "section": "Diagnostic trajectories of blast-positive cases",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12619778/"
@@ -245,7 +371,7 @@
     ]
   },
   "Segmented Neutrophil|vacuolated": {
-    "text": "A student should know that segmented neutrophils are a normal component of peripheral blood, but their hypersegmentation is a diagnostic feature of megaloblastic anemia [5]. Cytoplasmic vacuolation in neutrophils is associated with bacterial infections and sepsis, indicating morphological changes that can aid in early recognition of sepsis [1]. Vacuolation has also been linked to culture-positive infections and is observed more frequently in severe cases, suggesting an association with infectious or inflammatory conditions [1].",
+    "text": "A student should know that segmented neutrophils are mature neutrophils characterized by multiple nuclear segments, and they may exhibit features such as toxic granulation, vacuolation, and Dohle bodies in response to certain conditions [8]. Cytoplasmic vacuolation in neutrophils is often associated with toxic changes, indicating phagocytic activity or autophagocytosis, and is commonly seen in severe infections or sepsis [8]. These morphological abnormalities can serve as indicators of systemic inflammatory responses or infectious processes.",
     "sources": [
       {
         "number": 1,
@@ -255,27 +381,45 @@
       },
       {
         "number": 2,
+        "title": "Neutrophil green inclusions combined with hemophagocytosis in peripheral blood after bee sting a case report and literature review",
+        "section": "3. Discussion",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12091641/"
+      },
+      {
+        "number": 3,
         "title": "The influence of sepsis on erythrocytes morphology: case report and literature review",
         "section": "Discussions",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11146462/"
       },
       {
-        "number": 3,
+        "number": 4,
         "title": "Coronavirus disease 2019 ( COVID ‐19): Focus on peripheral blood cell morphology",
         "section": "Full blood count , morphology and clinical correlations",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9874661/"
-      },
-      {
-        "number": 4,
-        "title": "Sweet Syndrome Associated with Myelodysplastic Syndrome—A Review of a Multidisciplinary Approach",
-        "section": "3.4. Histopathology",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10053503/"
       },
       {
         "number": 5,
         "title": "PERIPHERAL BLOOD FILM - A REVIEW",
         "section": "WHITE CELL MORPHOLOGY",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4415389/"
+      },
+      {
+        "number": 6,
+        "title": "Coronavirus disease 2019 ( COVID ‐19): Focus on peripheral blood cell morphology",
+        "section": "Neutrophil cytoplasmic abnormalities",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9874661/"
+      },
+      {
+        "number": 7,
+        "title": "A Laboratory Guide to Clinical Hematology",
+        "section": "10.7: Platelets",
+        "url": "https://med.libretexts.org/Bookshelves/Allied_Health/A_Laboratory_Guide_to_Clinical_Hematology_(Villatoro_and_To)"
+      },
+      {
+        "number": 8,
+        "title": "A Laboratory Guide to Clinical Hematology",
+        "section": "11.3: Toxic Changes",
+        "url": "https://med.libretexts.org/Bookshelves/Allied_Health/A_Laboratory_Guide_to_Clinical_Hematology_(Villatoro_and_To)"
       }
     ]
   }

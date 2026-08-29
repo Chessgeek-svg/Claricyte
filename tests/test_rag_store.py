@@ -20,7 +20,7 @@ from claricyte.rag.store import EMBEDDINGS_PATH, _collection, _to_chunk, search
 def make_chunk(**overrides) -> Chunk:
     base = dict(
         text="Basophil granules are water soluble.",
-        pmcid="PMC7563270",
+        source_id="PMC7563270",
         section="Morphology",
         url="https://pmc.ncbi.nlm.nih.gov/articles/PMC7563270/",
         license="CC BY",

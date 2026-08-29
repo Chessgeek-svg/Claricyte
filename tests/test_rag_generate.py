@@ -26,7 +26,7 @@ from claricyte.rag.generate import (
 def make_chunk(**overrides) -> Chunk:
     base = dict(
         text="Basophilia is associated with chronic myeloid leukaemia.",
-        pmcid="PMC1",
+        source_id="PMC1",
         section="Clinical associations",
         url="https://example.org/PMC1/",
         license="CC BY",

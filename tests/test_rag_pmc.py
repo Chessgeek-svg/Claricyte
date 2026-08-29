@@ -109,7 +109,7 @@ def test_parses_sections_in_document_order():
     )
     article = parse_article(xml)
     assert [heading for heading, _ in article.sections] == ["Introduction", "Results"]
-    assert article.pmcid == "PMC1"
+    assert article.source_id == "PMC1"
     assert article.license == "CC BY"
     assert article.url.endswith("/PMC1/")
 

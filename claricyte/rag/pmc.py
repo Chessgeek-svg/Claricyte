@@ -80,7 +80,7 @@ class Article:
     heading, so the gold set can match on it.
     """
 
-    pmcid: str
+    source_id: str
     title: str
     url: str
     license: str
@@ -262,7 +262,7 @@ def parse_article(xml: bytes) -> Article | None:
         return None
 
     return Article(
-        pmcid=pmcid,
+        source_id=pmcid,
         title=title,
         url=ARTICLE_URL.format(pmcid=pmcid),
         license=licence,

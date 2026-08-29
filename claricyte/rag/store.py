@@ -127,7 +127,7 @@ def _to_chunk(chunk_id: str, document: str, metadata: dict) -> Chunk:
     """
     return Chunk(
         text=document,
-        pmcid=metadata["pmcid"],
+        source_id=metadata["source_id"],
         section=metadata["section"],
         url=metadata["url"],
         license=metadata["license"],
