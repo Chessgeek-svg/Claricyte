@@ -70,6 +70,25 @@ def notable_findings(
     return found
 
 
+def panel_question(label: str, findings: list[str] | None = None) -> str:
+    """The question the standing clinical-context panel answers.
+
+    Separate from the retrieval query, which is shaped to sit near the corpus in
+    embedding space and reads as a topic heading.
+
+    Phrasing measured, not chosen: "clinical significance of X" made the model
+    abstain on classes it could answer perfectly well when asked concretely. An
+    abstract question invites a general claim no single chunk supports.
+    """
+    question = (
+        f"What should a student know about {label.lower()}s in peripheral blood, "
+        "and what conditions are they seen in?"
+    )
+    if findings:
+        question += f" What does {findings[0]} in this cell type suggest?"
+    return question
+
+
 def build_query(
     result: dict[str, tuple[str, float]],
     label: str,
