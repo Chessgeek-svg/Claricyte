@@ -122,3 +122,44 @@
   adversarial: true
   expect: Abstain. Local, and no source can supply it.
   tags: [adversarial, local]
+
+# --- deictic: the cell is on screen, so the question never names it -------
+#
+# These are what the class filter exists for. The first eight questions all name
+# their own cell type, which lets the embedding find the right neighbourhood
+# unaided and leaves the filter nothing to do. Real users point at the screen.
+
+- id: deictic-vacuoles
+  question: What do the vacuoles in this cell mean?
+  label: Segmented Neutrophil
+  sources: [PMC4415389, OER-ATLAS, PMC10451583]
+  expect: Toxic change, from severe infection or inflammation.
+  tags: [deictic, core]
+
+- id: deictic-smudge
+  question: Why do so many of these break when the film is made?
+  label: Lymphocyte
+  sources: [PMC8255663, PMC8418501]
+  expect: Fragile cells, classically CLL.
+  tags: [deictic]
+
+- id: deictic-increase
+  question: What makes these go up?
+  label: Basophil
+  sources: [PMC6175372]
+  expect: CML and other myeloproliferative neoplasms.
+  tags: [deictic]
+
+- id: deictic-immature
+  question: Does it matter that this one is immature?
+  label: Band Neutrophil
+  sources: [PMC4415389, OER-ATLAS]
+  expect: A left shift, suggesting infection or marrow stimulation.
+  tags: [deictic]
+
+- id: deictic-elevated
+  question: What conditions make these increase?
+  label: Monocyte
+  sources: [PMC4203415, PMC5824421]
+  expect: Chronic infection and inflammation, and CMML among neoplastic causes.
+  tags: [deictic]

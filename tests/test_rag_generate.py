@@ -13,6 +13,7 @@ import pytest
 from claricyte.rag.corpus import Chunk
 from claricyte.rag.generate import (
     ABSTAIN,
+    DECLINE_VISUAL,
     SYSTEM_PROMPT,
     abstained,
     build_messages,
@@ -149,3 +150,21 @@ def test_a_fully_cited_answer_flags_nothing():
 def test_abstaining_is_not_an_uncited_claim():
     """Declining is the correct behaviour, not a grounding failure."""
     assert uncited_sentences(ABSTAIN) == []
+
+
+def test_visual_refusal_counts_as_a_decline():
+    """Different reason, same consequence: the UI and the eval both need to see
+    a refusal, so abstained covers both strings."""
+    assert abstained(DECLINE_VISUAL)
+    assert abstained(ABSTAIN)
+
+
+def test_the_two_refusals_are_distinguishable():
+    """Sharing a string would lose the reason: not covered by the sources is a
+    corpus gap, cannot see the image is an architectural boundary."""
+    assert ABSTAIN != DECLINE_VISUAL
+
+
+def test_the_prompt_carries_both_refusal_strings():
+    assert ABSTAIN in SYSTEM_PROMPT
+    assert DECLINE_VISUAL in SYSTEM_PROMPT

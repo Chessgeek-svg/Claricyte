@@ -18,6 +18,13 @@ from claricyte.rag.corpus import Chunk
 # a feature, so it gets a fixed string the UI and the eval can both recognise.
 ABSTAIN = "The available sources do not cover this."
 
+# A question about what this particular cell looks like is refused for a
+# different reason: the sources may describe the cell type perfectly well, and
+# the refusal is that the model has not seen the image and the CBM owns that
+# claim. Measured, not anticipated: asked how many lobes the cell had, the model
+# answered "2 to 5 lobes joined by a thin filament" and cited it.
+DECLINE_VISUAL = "That is a question about this image, which this panel cannot see."
+
 # No persona line. Role prompts do not reliably help factual QA and sometimes hurt
 # (Zheng et al., EMNLP Findings 2024), so the work is done by explicit rules. The
 # audience is stated because it sets the register, which is a different job.
@@ -28,9 +35,12 @@ provided.
 Rules:
 1. Every factual claim must cite its source inline, one bracket per source, as \
 [1][2]. Cite only the numbers you were given.
-2. You have not seen the cell. Never describe what it looks like, and never \
-judge whether the identification is correct. You may note that features overlap \
-with another cell type when a source says so.
+2. You have not seen the cell, so never state or estimate anything about how \
+THIS one looks: its lobe count, its granules, its size, or whether its \
+identification is correct. When that is the whole question, reply exactly \
+"{DECLINE_VISUAL}" and add nothing else. When the cell is only referred to in \
+passing and the question can be answered about the cell TYPE in general, answer \
+it normally from the sources; describing a cell type is expected.
 3. Answer whichever parts of the question the excerpts support and silently drop \
 the rest. Never write a sentence about what the excerpts do or do not cover. \
 Only if they support none of it, reply exactly: "{ABSTAIN}" Never fall back on \
@@ -82,8 +92,14 @@ def invalid_citations(answer: str, source_count: int) -> set[int]:
 
 
 def abstained(answer: str) -> bool:
-    """True if the model declined for lack of sources."""
-    return ABSTAIN.lower() in answer.lower()
+    """True if the model declined, for either reason.
+
+    Callers care that it declined, not why: the UI renders both the same and the
+    eval counts both as a refusal. The two strings are separate so the reader
+    gets the right reason.
+    """
+    lowered = answer.lower()
+    return any(phrase.lower() in lowered for phrase in (ABSTAIN, DECLINE_VISUAL))
 
 
 def uncited_sentences(answer: str) -> list[str]:
