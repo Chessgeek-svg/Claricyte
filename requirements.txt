@@ -29,5 +29,10 @@ streamlit==1.60.0
 chromadb==1.5.9
 sentence-transformers==6.0.0
 
+# Sentence segmentation for the chunker. A runtime dependency, not a build-time
+# one: app.py reaches corpus.py through the retrieval path, and corpus imports
+# pysbd at module level.
+pysbd==0.3.4
+
 # Generation. Called only from the question box, never on the quiz path.
 openai==1.109.1
