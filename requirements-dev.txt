@@ -13,6 +13,10 @@ scikit-learn==1.9.0
 ruff==0.15.22
 pytest==9.1.1
 
+# The gold set is YAML so it stays readable in review. Eval-only: nothing the
+# hosted demo runs reads it.
+pyyaml==6.0.3
+
 # Local generation backend, used by the eval loop so replaying the gold set
 # dozens of times costs nothing. The hosted demo uses the OpenAI path instead.
 transformers==4.57.1

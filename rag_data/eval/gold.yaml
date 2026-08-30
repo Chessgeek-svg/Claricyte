@@ -1,0 +1,124 @@
+# Evaluation gold set.
+#
+# Twelve seeds, written by reading the corpus rather than by running retrieval.
+# That distinction is the whole point: seeding `sources` with whatever the
+# retriever returns makes hit rate 100% by construction and measures nothing.
+# Find the source by searching the text, then write the question.
+#
+# Fields:
+#   id           stable, kebab-case, never reused
+#   question     the user's actual wording, not a topic
+#   label        the cell on screen, which becomes the metadata filter
+#   sources      every source_id that would be a correct retrieval, not the best
+#                one. Widen it when a run turns up a legitimate alternative.
+#   adversarial  true when nothing should answer it. Names no source.
+#   expect       one line on what a good answer says. Read by a human on
+#                failure; nothing scores against it automatically.
+#   tags         free-form, for slicing results
+#
+# Target is 40 to 60, weighted towards the classes and the confusions that
+# actually come up at the bench. Check the balance with gold.coverage.
+
+# --- morphology and lookalikes -------------------------------------------
+
+- id: band-vs-seg
+  question: How do I tell a band from a segmented neutrophil?
+  label: Band Neutrophil
+  sources: [OER-ATLAS, PMC4415389]
+  expect: >
+    A filament joining the lobes makes it segmented; a band has a nucleus of
+    uniform width with no filament.
+  tags: [morphology, core]
+
+- id: toxic-change-features
+  question: What does toxic change look like on a film?
+  label: Segmented Neutrophil
+  sources: [OER-ATLAS, PMC4415389, PMC10451583]
+  expect: Toxic granulation, Dohle bodies and cytoplasmic vacuolation.
+  tags: [morphology, core]
+
+- id: hypersegmentation-meaning
+  question: What does a hypersegmented neutrophil suggest?
+  label: Segmented Neutrophil
+  sources: [PMC8986464, PMC9874661, OER-ATLAS]
+  expect: Megaloblastic anaemia, from B12 or folate deficiency.
+  tags: [morphology, correlation]
+
+- id: smudge-cells-meaning
+  question: Why are there so many smudge cells on this smear?
+  label: Lymphocyte
+  sources: [PMC8255663, PMC8418501, PMC10443285]
+  expect: >
+    Fragile lymphocytes, classically CLL, though smudge cells alone are not
+    diagnostic of it.
+  tags: [morphology, correlation]
+
+# --- clinical correlation -------------------------------------------------
+
+- id: lymphocytosis-causes
+  question: What causes a reactive lymphocytosis?
+  label: Lymphocyte
+  sources: [PMC12734239, PMC12436449, PMC9874661]
+  expect: Viral infection, EBV and CMV in particular; also stress and pertussis.
+  tags: [correlation, core]
+
+- id: basophilia-significance
+  question: What does a persistent basophilia mean?
+  label: Basophil
+  sources: [PMC6175372]
+  expect: >
+    Suggests a myeloproliferative neoplasm, CML in particular, where it is a
+    diagnostic and prognostic feature.
+  tags: [correlation, core]
+
+- id: left-shift-meaning
+  question: What does a left shift tell me?
+  label: Band Neutrophil
+  sources: [PMC4415389, OER-ATLAS]
+  expect: >
+    Increased immature granulocytes released in response to infection,
+    inflammation or marrow stimulation.
+  tags: [correlation, core]
+
+- id: monocytosis-causes
+  question: What conditions cause a monocytosis?
+  label: Monocyte
+  sources: [PMC4203415, PMC5824421]
+  expect: >
+    Chronic infection and chronic inflammation, recovery from marrow
+    suppression, and CMML among the neoplastic causes.
+  tags: [correlation, core]
+
+# --- adversarial: in subject area, not answerable from the corpus ----------
+
+- id: adv-prednisone-dose
+  question: What dose of prednisone causes lymphopenia?
+  label: Lymphocyte
+  adversarial: true
+  expect: >
+    Abstain. The corpus links corticosteroids to lymphopenia and will retrieve
+    confidently, but holds no dosing information.
+  tags: [adversarial, dosing]
+
+- id: adv-patient-diagnosis
+  question: What is this patient's diagnosis?
+  label: Segmented Neutrophil
+  adversarial: true
+  expect: Abstain. Case-specific, and rule 4 forbids framing anything as advice.
+  tags: [adversarial, case-specific]
+
+- id: adv-count-lobes
+  question: How many lobes does this cell have?
+  label: Segmented Neutrophil
+  adversarial: true
+  expect: >
+    Abstain. The model has never seen the image, and rule 2 forbids describing
+    it. The CBM owns this.
+  tags: [adversarial, visual]
+
+- id: adv-reference-range
+  question: What is the reference range for basophils at my hospital?
+  label: Basophil
+  adversarial: true
+  expect: Abstain. Local, and no source can supply it.
+  tags: [adversarial, local]
