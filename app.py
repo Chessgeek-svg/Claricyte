@@ -23,6 +23,10 @@ from claricyte.data import MorphologyDataset
 from claricyte.explain import LOW_CONFIDENCE, _article, explain
 from claricyte.model import Model
 from claricyte.predict import contributions, predict
+from claricyte.rag.generate import cited
+from claricyte.rag.panels import Panel, load_panels, panel_key
+from claricyte.rag.pipeline import ask
+from claricyte.rag.query import notable_findings
 from claricyte.vocab import CLASSES
 
 ATTR_PATH, METADATA_PATH = "demo_data/attributes.csv", "demo_data/metadata.csv"
@@ -31,6 +35,10 @@ CSS_PATH = "assets/claricyte.css"
 
 # Sidebar scope for "any cell type" quiz mode. Specific classes are study mode.
 QUIZ_SCOPE = "Quiz me!"
+
+# Questions per session. Trivially bypassed by reloading, so the real backstop is
+# the spend limit on the account; this is here to make casual abuse tedious.
+MAX_QUESTIONS = 10
 
 
 @st.cache_data
@@ -64,6 +72,45 @@ def attribute_table_html(result: dict[str, tuple[str, float]]) -> str:
     )
 
 
+@st.cache_data
+def load_context_panels() -> dict[str, Panel]:
+    """Read the committed clinical context panels once."""
+    return load_panels()
+
+
+def sources_markdown(panel: Panel) -> str:
+    """The panel's cited sources as a numbered list of links.
+
+    Only the ones the answer actually cites: retrieval hands over k chunks and a
+    three-sentence answer rarely uses them all, so listing the rest implies
+    support that was never claimed. Numbering stays as generated, so [2] in the
+    text still points at the entry labelled 2.
+    """
+    used = cited(panel.text)
+    return "\n".join(
+        f"{source.number}. [{source.title}, {source.section}]({source.url})"
+        for source in panel.sources
+        if source.number in used
+    )
+
+
+def render_panel(panel: Panel, invalid: tuple[int, ...] = ()) -> None:
+    """Show an answer with its sources, precomputed or live."""
+    if not panel.text:
+        st.info("Nothing in the corpus matched that.")
+        return
+    st.write(panel.text)
+    links = sources_markdown(panel)
+    if links:
+        with st.expander("Sources"):
+            st.markdown(links)
+    if invalid:
+        st.warning(
+            f"The model cited sources that were not retrieved: {list(invalid)}. "
+            "Those claims are unsupported."
+        )
+
+
 @st.cache_resource
 def load_model():
     """Load the trained CBM once and cache it across reruns."""
@@ -93,6 +140,8 @@ def advance(valset, scope):
     """Draw a fresh cell within scope and reset the guess phase."""
     st.session_state.index = pick_index(valset, scope)
     st.session_state.guess = None
+    # The answer belongs to the cell that was on screen, not to the next one.
+    st.session_state.answer = None
 
 
 st.set_page_config(page_title="Claricyte", layout="centered")
@@ -165,3 +214,49 @@ with right:
             )
 
     st.button("Next cell", key="next_cell", on_click=advance, args=(valset, scope))
+
+# Clinical context sits below both columns rather than inside one: it is prose
+# with source links and reads badly at half width.
+if revealed:
+    findings = notable_findings(result)
+
+    st.divider()
+    st.subheader("Clinical context")
+    st.caption(
+        "Written from open-licensed literature by a language model that never "
+        "sees the image. Educational only, not diagnostic."
+    )
+
+    panel = load_context_panels().get(panel_key(true_label, findings))
+    if panel is None:
+        st.info("No clinical context panel for this cell type yet.")
+    else:
+        render_panel(panel)
+
+    asked = st.session_state.get("questions_asked", 0)
+    st.subheader("Ask about this cell")
+    question = st.text_input(
+        "Question",
+        # Keyed by cell, so moving on clears the box rather than carrying a
+        # question about the previous cell onto this one.
+        key=f"question_{index}",
+        placeholder="Why is this not a monocyte?",
+        label_visibility="collapsed",
+        disabled=asked >= MAX_QUESTIONS,
+    )
+
+    stored = st.session_state.get("answer")
+    if asked >= MAX_QUESTIONS:
+        st.caption("Question limit reached for this session. Reload the page to reset.")
+    elif question and (stored is None or stored[0] != question):
+        # Streamlit reruns the whole script on every interaction, so the answer is
+        # kept in session state and only regenerated when the question changes.
+        with st.spinner("Searching the literature..."):
+            stored = (question, ask(question, true_label, result))
+        st.session_state.answer = stored
+        st.session_state.questions_asked = asked + 1
+
+    if stored:
+        render_panel(stored[1].panel, stored[1].invalid)
+        left_over = MAX_QUESTIONS - st.session_state.get("questions_asked", 0)
+        st.caption(f"{left_over} questions left this session.")
