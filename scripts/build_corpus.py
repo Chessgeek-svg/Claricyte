@@ -24,6 +24,13 @@ from claricyte.rag.books import BOOKS, load_book
 from claricyte.rag.corpus import chunk_article, tag_classes, write_jsonl
 from claricyte.rag.pmc import fetch_article, parse_article, search_pubmed, to_pmcids
 
+# Appended to every search. The standard PubMed idiom for excluding animal-only
+# studies: it drops veterinary and pure mouse-model papers while keeping articles
+# too recent to have been MeSH indexed, which a bare humans[mh] would lose.
+# Without it the corpus took in rabbit differential counts and a small-animal
+# bacteraemia paper, which retrieval then cited under Basophil.
+HUMAN_ONLY = " NOT (animals[mh] NOT humans[mh])"
+
 SEARCHES: dict[str, str] = {
     "neutrophilia": (
         'neutrophilia AND (causes OR "differential diagnosis" OR approach)'
@@ -60,6 +67,14 @@ SEARCHES: dict[str, str] = {
         '("reactive lymphocytes" OR "atypical lymphocytes")'
         ' AND (morphology OR "differential diagnosis")'
     ),
+    # The lymphocyte panel came out almost entirely COVID, because the recent
+    # open-access literature on lymphopenia is COVID. This asks for the causes
+    # directly rather than hoping a general query surfaces them.
+    "reactive_lymphocytosis": (
+        '("reactive lymphocytosis" OR "benign lymphocytosis"'
+        ' OR "absolute lymphocytosis") AND (causes OR evaluation OR approach'
+        ' OR "differential diagnosis")'
+    ),
     "left_shift": (
         '("left shift" OR "band neutrophil" OR "immature granulocytes")'
         ' AND ("clinical significance" OR "peripheral blood") AND review[pt]'
@@ -87,6 +102,31 @@ EXTRA_PMCIDS: tuple[str, ...] = (
     "PMC10814743",  # Hematological Neoplasms with Eosinophilia
     "PMC11270355",  # Transient Stress Lymphocytosis: case report and review
     "PMC10148979",  # French guidelines for the etiological workup of eosinophilia
+    # Lymphocyte sources, picked by hand after ten queries scored on descriptive
+    # content rather than hit count. Open-access reviews are written for people
+    # who already know what a reactive lymphocyte looks like, so relevance
+    # ranking surfaces molecular immunology and these have to be named.
+    "PMC10527541",  # Atypical chronic lymphocytic leukaemia, the current status
+    "PMC8255663",  # Lymphocytosis with smudge cells is not equivalent to CLL
+    "PMC8418501",  # High fluorescent lymphocytes and smudge cells
+    "PMC5336551",  # Chronic lymphocytic leukaemia
+    "PMC4177785",  # New insights into monoclonal B-cell lymphocytosis
+    "PMC12436449",  # CMV infection-induced lymphocytosis
+    "PMC12734239",  # The many faces of primary EBV infection
+    "PMC10140754",  # Mycosis fungoides and Sezary syndrome
+)
+
+
+# Articles a search keeps returning that should not be in a corpus about human
+# blood films. The MeSH filter above misses these: it excludes articles indexed
+# as animal-only, and an article too recent to be indexed at all is not. Nothing
+# subtle is being judged here, only species.
+REJECTED_PMCIDS: frozenset[str] = frozenset(
+    {
+        "PMC12173895",  # Bacteraemia on peripheral blood smear in small animals
+        "PMC8225691",  # Differential white blood cell counts in rabbits
+        "PMC6430879",  # Comparative pathophysiology of protein-losing enteropathy
+    }
 )
 
 
@@ -98,11 +138,11 @@ def main() -> None:
     args = parser.parse_args()
 
     # Dedupe across topics: the same review answers several of these queries.
-    pmcids: list[str] = list(EXTRA_PMCIDS)
+    pmcids: list[str] = [p for p in EXTRA_PMCIDS if p not in REJECTED_PMCIDS]
     print(f"{'curated':22} {len(pmcids):3} pinned")
     for topic, query in SEARCHES.items():
-        found = to_pmcids(search_pubmed(query, args.per_query))
-        fresh = [p for p in found if p not in pmcids]
+        found = to_pmcids(search_pubmed(query + HUMAN_ONLY, args.per_query))
+        fresh = [p for p in found if p not in pmcids and p not in REJECTED_PMCIDS]
         pmcids.extend(fresh)
         print(f"{topic:22} {len(found):3} hits, {len(fresh):3} new")
 

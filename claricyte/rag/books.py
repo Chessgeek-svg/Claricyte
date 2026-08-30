@@ -42,6 +42,11 @@ FOOTER = re.compile(r"This page titled.*$", re.S)
 PAGEINDEX = re.compile(r"\\\(\\PageIndex\{[^}]*\}\\\)")
 
 
+# Chapter names carrying no retrievable content. LibreTexts also links each book
+# to itself from its own table of contents, which the book title catches.
+SKIP: tuple[str, ...] = ("Front Matter", "Back Matter", "Resources")
+
+
 @dataclass(frozen=True)
 class Book:
     """One open-licensed book and the parts of it worth retrieving."""
@@ -50,9 +55,17 @@ class Book:
     title: str
     url: str
     license: str
-    # Page-name prefixes to descend into. Everything else (red cells, leukaemias,
-    # front matter) is out of scope for the current six classes.
-    include: tuple[str, ...]
+    # Page-name prefixes to descend into. Empty means the whole book: the class
+    # tagger drops whatever finds no home, so a chapter on a cell the model does
+    # not yet predict costs a few dropped chunks and answers questions about it
+    # the moment that class exists.
+    include: tuple[str, ...] = ()
+
+    def wants(self, name: str) -> bool:
+        """Whether a chapter of this book should be fetched."""
+        if name.startswith(SKIP) or name == self.title:
+            return False
+        return not self.include or name.startswith(self.include)
 
 
 BOOKS: tuple[Book, ...] = (
@@ -67,12 +80,6 @@ BOOKS: tuple[Book, ...] = (
             "Laboratory_(Taylor_and_Doty)"
         ),
         license="CC BY-NC-SA",
-        include=(
-            "Normal Blood Cells",
-            "White Blood Cell Variants",
-            "Slide and Stain Quality",
-            "Other Abnormal Cells",
-        ),
     ),
     Book(
         source_id="OER-LABGUIDE",
@@ -82,10 +89,6 @@ BOOKS: tuple[Book, ...] = (
             "A_Laboratory_Guide_to_Clinical_Hematology_(Villatoro_and_To)"
         ),
         license="CC BY-NC",
-        include=(
-            "10: White Blood Cells and Platelets",
-            "11: White Blood Cells- Non-Malignant",
-        ),
     ),
 )
 
@@ -132,7 +135,7 @@ def load_book(book: Book, min_words: int = MIN_WORDS) -> Article:
     """
     sections: list[tuple[str, str]] = []
     for name, url in _children(_content(_get(book.url))):
-        if not name.startswith(book.include):
+        if not book.wants(name):
             continue
         content = _content(_get(url))
         for heading, text in _pages(name, content):
