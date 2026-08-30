@@ -76,13 +76,20 @@ def panel_question(label: str, findings: list[str] | None = None) -> str:
     Separate from the retrieval query, which is shaped to sit near the corpus in
     embedding space and reads as a topic heading.
 
-    Phrasing measured, not chosen: "clinical significance of X" made the model
-    abstain on classes it could answer perfectly well when asked concretely. An
-    abstract question invites a general claim no single chunk supports.
+    Phrasing measured, not chosen. "Clinical significance of X" made the model
+    abstain on classes it could answer perfectly well when asked concretely: an
+    abstract question invites a general claim no single chunk supports. Asking
+    what a student should know then cost a sentence per panel to "a student
+    should know that", since models open by restating the question. Naming the
+    conditions directly leaves nothing to restate.
+
+    Asking about counts "increased or decreased" then drew a sentence per panel
+    accounting for the half the corpus does not cover. A question with no halves
+    to balance does not.
     """
     question = (
-        f"What should a student know about {label.lower()}s in peripheral blood, "
-        "and what conditions are they seen in?"
+        f"What conditions are {label.lower()}s associated with, and what related "
+        "findings appear on a peripheral blood film?"
     )
     if findings:
         question += f" What does {findings[0]} in this cell type suggest?"

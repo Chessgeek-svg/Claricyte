@@ -26,7 +26,9 @@ from claricyte.predict import contributions, predict
 from claricyte.rag.generate import cited
 from claricyte.rag.panels import Panel, load_panels, panel_key
 from claricyte.rag.pipeline import ask
+from claricyte.rag.providers import OPENAI_MODEL
 from claricyte.rag.query import notable_findings
+from claricyte.rag.store import EMBEDDING_MODEL
 from claricyte.vocab import CLASSES
 
 ATTR_PATH, METADATA_PATH = "demo_data/attributes.csv", "demo_data/metadata.csv"
@@ -39,6 +41,15 @@ QUIZ_SCOPE = "Quiz me!"
 # Questions per session. Trivially bypassed by reloading, so the real backstop is
 # the spend limit on the account; this is here to make casual abuse tedious.
 MAX_QUESTIONS = 10
+
+# Names the stack rather than describing it, since the audience for this line is
+# as likely to be a reader of the repo as a student. Model names come from the
+# modules that use them so the caption cannot drift from what actually ran.
+PROVENANCE = (
+    f"Retrieved from open-licensed literature by {EMBEDDING_MODEL.split('/')[-1]} "
+    f"embeddings in ChromaDB, then written by OpenAI {OPENAI_MODEL}, which never "
+    "sees the image. Every claim cites a retrieved source."
+)
 
 
 @st.cache_data
@@ -144,7 +155,7 @@ def advance(valset, scope):
     st.session_state.answer = None
 
 
-st.set_page_config(page_title="Claricyte", layout="centered")
+st.set_page_config(page_title="Claricyte", layout="wide")
 st.markdown(f"<style>{load_css()}</style>", unsafe_allow_html=True)
 
 model = load_model()
@@ -169,94 +180,96 @@ quiz_mode = scope == QUIZ_SCOPE
 # In quiz mode the label stays hidden until the user commits a guess.
 revealed = (not quiz_mode) or st.session_state.guess is not None
 
-left, right = st.columns(2)
-
-with left:
-    caption = f"True label: {true_label}" if revealed else "Mystery cell"
-    st.image(Image.open(row["image_path"]), caption=caption)
-
-with right:
-    if not revealed:
-        # Guess phase: one click per candidate class commits the guess.
+if not revealed:
+    # Guess phase: image beside the candidate classes, nothing else to show.
+    left, right = st.columns(2)
+    with left:
+        st.image(Image.open(row["image_path"]), caption="Mystery cell")
+    with right:
         st.subheader("What type is this cell?")
         cols = st.columns(2)
         for i, cls in enumerate(CLASSES):
             if cols[i % 2].button(cls, type="primary", use_container_width=True):
                 st.session_state.guess = cls
                 st.rerun()
-    else:
-        # Reveal phase: score the guess (quiz only), then explain the true label.
-        if quiz_mode:
-            guess = st.session_state.guess
-            if guess == true_label:
-                st.success(f"Correct: {true_label}")
-            else:
-                article = _article(true_label)
-                st.error(f"You guessed {guess}. It's {article} {true_label}.")
-
-        result, class_dist, concepts = predict(model, image_tensor)
-        scores = contributions(model, result, concepts, true_label)
-
-        st.subheader("Explanation")
-        st.write(explain(result, scores, true_label))
-
-        st.subheader("Predicted attributes")
-        st.markdown(attribute_table_html(result), unsafe_allow_html=True)
-
-        # Honest reveal of the raw class head.
-        with st.expander("Model internals (raw class prediction)"):
-            predicted = max(class_dist, key=lambda c: class_dist[c])
-            st.write(
-                f"Model's own class call: **{predicted}** ({class_dist[predicted]:.0%})"
-            )
-            st.caption(
-                "The demo explains the known-correct label, not this prediction."
-            )
-
-    st.button("Next cell", key="next_cell", on_click=advance, args=(valset, scope))
-
-# Clinical context sits below both columns rather than inside one: it is prose
-# with source links and reads badly at half width.
-if revealed:
+else:
+    result, class_dist, concepts = predict(model, image_tensor)
+    scores = contributions(model, result, concepts, true_label)
     findings = notable_findings(result)
 
-    st.divider()
-    st.subheader("Clinical context")
-    st.caption(
-        "Written from open-licensed literature by a language model that never "
-        "sees the image. Educational only, not diagnostic."
-    )
+    # Three columns: the cell, what the model read off it, and what the
+    # literature says about it. The keyed container is what the stylesheet
+    # scopes its wrapping rules to; it holds no nested columns of its own, so
+    # those rules cannot reach anything else.
+    with st.container(key="reveal"):
+        cell, model_output, context = st.columns([1, 1.15, 1.35])
 
-    panel = load_context_panels().get(panel_key(true_label, findings))
-    if panel is None:
-        st.info("No clinical context panel for this cell type yet.")
-    else:
-        render_panel(panel)
+        with cell:
+            st.image(Image.open(row["image_path"]), caption=f"True label: {true_label}")
+            if quiz_mode:
+                guess = st.session_state.guess
+                if guess == true_label:
+                    st.success(f"Correct: {true_label}")
+                else:
+                    st.error(
+                        f"You guessed {guess}. "
+                        f"It's {_article(true_label)} {true_label}."
+                    )
+            st.button(
+                "Next cell", key="next_cell", on_click=advance, args=(valset, scope)
+            )
+            # Honest reveal of the raw class head.
+            with st.expander("Model internals (raw class prediction)"):
+                predicted = max(class_dist, key=lambda c: class_dist[c])
+                st.write(
+                    f"Model's own class call: **{predicted}** "
+                    f"({class_dist[predicted]:.0%})"
+                )
+                st.caption(
+                    "The demo explains the known-correct label, not this prediction."
+                )
 
-    asked = st.session_state.get("questions_asked", 0)
-    st.subheader("Ask about this cell")
-    question = st.text_input(
-        "Question",
-        # Keyed by cell, so moving on clears the box rather than carrying a
-        # question about the previous cell onto this one.
-        key=f"question_{index}",
-        placeholder="Why is this not a monocyte?",
-        label_visibility="collapsed",
-        disabled=asked >= MAX_QUESTIONS,
-    )
+        with model_output:
+            st.subheader("Explanation")
+            st.write(explain(result, scores, true_label))
+            st.subheader("Predicted attributes")
+            st.markdown(attribute_table_html(result), unsafe_allow_html=True)
 
-    stored = st.session_state.get("answer")
-    if asked >= MAX_QUESTIONS:
-        st.caption("Question limit reached for this session. Reload the page to reset.")
-    elif question and (stored is None or stored[0] != question):
-        # Streamlit reruns the whole script on every interaction, so the answer is
-        # kept in session state and only regenerated when the question changes.
-        with st.spinner("Searching the literature..."):
-            stored = (question, ask(question, true_label, result))
-        st.session_state.answer = stored
-        st.session_state.questions_asked = asked + 1
+        with context:
+            st.subheader("Clinical context")
+            st.caption(PROVENANCE)
 
-    if stored:
-        render_panel(stored[1].panel, stored[1].invalid)
-        left_over = MAX_QUESTIONS - st.session_state.get("questions_asked", 0)
-        st.caption(f"{left_over} questions left this session.")
+            panel = load_context_panels().get(panel_key(true_label, findings))
+            if panel is None:
+                st.info("No clinical context panel for this cell type yet.")
+            else:
+                render_panel(panel)
+
+            asked = st.session_state.get("questions_asked", 0)
+            st.subheader("Ask about this cell")
+            question = st.text_input(
+                "Question",
+                # Keyed by cell, so moving on clears the box rather than carrying
+                # a question about the previous cell onto this one.
+                key=f"question_{index}",
+                placeholder="Why is this not a monocyte?",
+                label_visibility="collapsed",
+                disabled=asked >= MAX_QUESTIONS,
+            )
+
+            stored = st.session_state.get("answer")
+            if asked >= MAX_QUESTIONS:
+                st.caption("Question limit reached for this session. Reload to reset.")
+            elif question and (stored is None or stored[0] != question):
+                # Streamlit reruns the whole script on every interaction, so the
+                # answer is kept in session state and regenerated only when the
+                # question changes.
+                with st.spinner("Searching the literature..."):
+                    stored = (question, ask(question, true_label, result))
+                st.session_state.answer = stored
+                st.session_state.questions_asked = asked + 1
+
+            if stored:
+                render_panel(stored[1].panel, stored[1].invalid)
+                left_over = MAX_QUESTIONS - st.session_state.get("questions_asked", 0)
+                st.caption(f"{left_over} questions left this session.")

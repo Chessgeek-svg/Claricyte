@@ -125,3 +125,24 @@ table.claricyte-attrs tr.hedged td {
   border: 1px solid var(--ink);
   box-shadow: none;
 }
+
+
+/* Reveal layout: three columns wide, two when the window cannot fit three,
+   one on a phone. Streamlit renders server side and never learns the viewport
+   width, so the breakpoints are flex wrapping against a minimum column width
+   rather than anything Python decides. Scoped to the reveal container, which
+   holds no nested columns, so the guess-phase button grid is untouched. */
+.st-key-reveal [data-testid="stHorizontalBlock"] {
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.st-key-reveal [data-testid="stColumn"] {
+  min-width: 22rem;
+}
+
+/* The crops are 360px native. Left to fill a third of a wide window they
+   upscale to mush, so cap them and let the column carry the slack. */
+.st-key-reveal [data-testid="stImage"] img {
+  max-width: 24rem;
+}
