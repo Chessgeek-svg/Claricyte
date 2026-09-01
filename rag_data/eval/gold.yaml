@@ -58,7 +58,8 @@
 - id: lymphocytosis-causes
   question: What causes a reactive lymphocytosis?
   label: Lymphocyte
-  sources: [PMC12734239, PMC12436449, PMC9874661]
+  # Widened after triage: both name the reactive causes directly.
+  sources: [PMC12734239, PMC12436449, PMC9874661, PMC10601740, PMC8255663]
   expect: Viral infection, EBV and CMV in particular; also stress and pertussis.
   tags: [correlation, core]
 
@@ -165,7 +166,7 @@
   expect: Chronic infection and inflammation, and CMML among neoplastic causes.
   tags: [deictic]
 
-# --- eosinophil, which had no questions at all ---------------------------
+# --- eosinophil ---------------------------------------------------------
 
 - id: eosinophilia-causes
   question: What causes an eosinophilia?
@@ -193,7 +194,8 @@
 - id: hypereosinophilia-threshold
   question: How high does the eosinophil count need to be before it matters?
   label: Eosinophil
-  sources: [PMC11130981, PMC10148979]
+  # Widened: three others state the thresholds outright.
+  sources: [PMC11130981, PMC10148979, PMC10814743, PMC12237101, PMC7089574]
   expect: >
     Eosinophilia above roughly 0.5, hypereosinophilia at 1.5 x 10^9/L or more,
     which is the threshold that triggers a workup for organ damage.
@@ -229,7 +231,9 @@
 - id: leukemoid-vs-cml
   question: How do I tell a leukemoid reaction from CML?
   label: Segmented Neutrophil
-  sources: [PMC4415389, PMC10814743, OER-LABGUIDE]
+  # Widened to the CML half. The corpus has no source centred on leukemoid
+  # reactions, so this stays a half-answer until one is added.
+  sources: [PMC4415389, PMC10814743, OER-LABGUIDE, PMC9063582, PMC12399941]
   expect: >
     A leukemoid reaction is a reactive neutrophilia with a left shift and toxic
     change; CML shows basophilia and the full myeloid spectrum.
@@ -345,7 +349,9 @@
 - id: basophil-granules
   question: What do basophil granules look like?
   label: Basophil
-  sources: [PMC9554480, PMC6175372, PMC4415389]
+  # Widened: the metachromatic granules section answers this better than
+  # anything originally listed.
+  sources: [PMC9554480, PMC6175372, PMC4415389, PMC10856720]
   expect: Coarse, dark purple-black, and numerous enough to overlie the nucleus.
   tags: [morphology, core]
 
@@ -372,7 +378,8 @@
 - id: storage-artefact
   question: What happens to the cells if the sample sits too long?
   label: Segmented Neutrophil
-  sources: [PMC8918078, PMC9874661, PMC8086364]
+  # Widened: a study measuring exactly this, which the original list missed.
+  sources: [PMC8918078, PMC9874661, PMC8086364, PMC12426802]
   expect: >
     Degenerative change in EDTA over time: vacuolation, nuclear change and
     increasing smudge cells, all of which mimic pathology.
@@ -413,3 +420,115 @@
   adversarial: true
   expect: Decline. Case-specific prognosis, and no source supports it.
   tags: [adversarial, advice]
+
+# =========================================================================
+# Third batch: function and physiology. Why a cell looks the way it does and
+# what its parts are for, which is the "why" a student asks after learning the
+# "what". Drafted from corpus content, sources still need review.
+# =========================================================================
+
+- id: neutrophil-function
+  question: What does a neutrophil actually do?
+  label: Segmented Neutrophil
+  sources: [PMC12687445, PMC8466545]
+  expect: >
+    First responder to infection: it migrates to tissue, phagocytoses, and kills
+    by degranulation, oxidative burst and extracellular traps.
+  tags: [function, core]
+
+- id: neutrophil-nets
+  question: What is a neutrophil extracellular trap?
+  label: Segmented Neutrophil
+  sources: [PMC8466545, PMC12687445]
+  expect: >
+    Extruded chromatin studded with granule proteins, which traps and kills
+    organisms outside the cell and costs the neutrophil its life.
+  tags: [function]
+
+- id: neutrophil-granule-contents
+  question: What is inside a neutrophil's granules?
+  label: Segmented Neutrophil
+  sources: [PMC12687445, PMC4939221]
+  expect: >
+    Myeloperoxidase and defensins in the primary granules; lactoferrin and
+    lysozyme in the secondary ones. The contents are the killing machinery.
+  tags: [function, morphology]
+
+- id: eosinophil-function
+  question: What is an eosinophil for?
+  label: Eosinophil
+  sources: [PMC7089574, PMC11130981, PMC10148979]
+  expect: >
+    Defence against tissue-invasive helminths and a role in allergic
+    inflammation, both by releasing cationic granule proteins.
+  tags: [function, core]
+
+- id: eosinophil-granule-damage
+  question: Why are eosinophils bad for tissue?
+  label: Eosinophil
+  sources: [PMC11130981, PMC10148979, PMC7089574]
+  expect: >
+    The cationic granule proteins that kill parasites damage host tissue too,
+    which is why hypereosinophilia is defined by organ damage rather than count
+    alone.
+  tags: [function]
+
+- id: basophil-granule-function
+  question: What do the granules in a basophil do?
+  label: Basophil
+  sources: [PMC6930967, PMC10856720, PMC6175372]
+  expect: >
+    They store histamine and other mediators released on IgE crosslinking,
+    which is what drives the immediate hypersensitivity response.
+  tags: [function, core]
+
+- id: basophil-granule-staining
+  question: Why do basophil granules stain so dark?
+  label: Basophil
+  sources: [PMC10856720]
+  expect: >
+    The granules are packed with acidic proteoglycans, which bind basic dyes
+    heavily and stain metachromatically.
+  tags: [function, morphology, core]
+
+- id: basophil-vs-mast-cell
+  question: How is a basophil different from a mast cell?
+  label: Basophil
+  sources: [PMC10856720, PMC6930967, PMC8766224]
+  expect: >
+    Both carry metachromatic granules and IgE receptors, but basophils
+    circulate and mast cells live in tissue; special stains separate them when
+    morphology cannot.
+  tags: [function, lookalike]
+
+- id: lymphocyte-function
+  question: What do lymphocytes do that neutrophils cannot?
+  label: Lymphocyte
+  # Widened: the textbook's own lymphocyte page, which I missed.
+  sources: [PMC8918078, PMC10247428, OER-LABGUIDE]
+  expect: >
+    Antigen-specific adaptive immunity and memory, rather than the immediate
+    non-specific killing a neutrophil does.
+  tags: [function, core]
+
+- id: monocyte-becomes-macrophage
+  question: What happens to a monocyte after it leaves the blood?
+  label: Monocyte
+  sources: [PMC5824421, PMC4203415, PMC11753505]
+  expect: >
+    It enters tissue and differentiates into a macrophage or dendritic cell,
+    so the blood monocyte is a transit form rather than an end stage.
+  tags: [function, core]
+
+# --- a known gap, kept deliberately --------------------------------------
+
+- id: gap-why-segmented
+  question: Why is a neutrophil's nucleus segmented in the first place?
+  label: Segmented Neutrophil
+  adversarial: true
+  expect: >
+    Abstain. A fair student question the corpus cannot answer: nothing in it
+    connects nuclear lobulation to deformability or migration. Distinct from
+    the out-of-scope adversarials, and the one to retest if a physiology source
+    is ever added.
+  tags: [adversarial, corpus-gap, function]
