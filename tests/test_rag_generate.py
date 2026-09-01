@@ -13,7 +13,6 @@ import pytest
 from claricyte.rag.corpus import Chunk
 from claricyte.rag.generate import (
     ABSTAIN,
-    DECLINE_VISUAL,
     SYSTEM_PROMPT,
     abstained,
     build_messages,
@@ -68,7 +67,11 @@ def test_messages_put_rules_in_system_and_sources_in_user():
 def test_prompt_forbids_describing_the_image():
     """The CBM owns what the cell looks like. If the LLM contradicts it the demo
     is showing two disagreeing accounts of one picture."""
-    assert "not seen the cell" in SYSTEM_PROMPT
+    assert "not seen this cell" in SYSTEM_PROMPT
+    # The distinction the rule turns on: the type may be described, this one
+    # may not. Losing either half breaks it in a different direction.
+    assert "TYPE" in SYSTEM_PROMPT
+    assert "THIS one shows" in SYSTEM_PROMPT
 
 
 def test_prompt_tells_the_model_what_to_do_with_conflicting_sources():
@@ -150,21 +153,3 @@ def test_a_fully_cited_answer_flags_nothing():
 def test_abstaining_is_not_an_uncited_claim():
     """Declining is the correct behaviour, not a grounding failure."""
     assert uncited_sentences(ABSTAIN) == []
-
-
-def test_visual_refusal_counts_as_a_decline():
-    """Different reason, same consequence: the UI and the eval both need to see
-    a refusal, so abstained covers both strings."""
-    assert abstained(DECLINE_VISUAL)
-    assert abstained(ABSTAIN)
-
-
-def test_the_two_refusals_are_distinguishable():
-    """Sharing a string would lose the reason: not covered by the sources is a
-    corpus gap, cannot see the image is an architectural boundary."""
-    assert ABSTAIN != DECLINE_VISUAL
-
-
-def test_the_prompt_carries_both_refusal_strings():
-    assert ABSTAIN in SYSTEM_PROMPT
-    assert DECLINE_VISUAL in SYSTEM_PROMPT
