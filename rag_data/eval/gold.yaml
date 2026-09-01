@@ -165,13 +165,6 @@
   expect: Chronic infection and inflammation, and CMML among neoplastic causes.
   tags: [deictic]
 
-# =========================================================================
-# Second batch. Questions a student is likely to ask, drafted from what the
-# corpus verifiably contains. Sources are a first draft: "the article covers
-# this topic" is not "the article answers this question", so expect to widen or
-# correct them during triage. Review and add your own.
-# =========================================================================
-
 # --- eosinophil, which had no questions at all ---------------------------
 
 - id: eosinophilia-causes

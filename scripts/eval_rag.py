@@ -100,9 +100,14 @@ def score_retrieval(
         ranks.append(rank)
         precisions.append(precision_at_k(sources, question.sources, k))
         if rank is None:
-            # Kept so a miss can be triaged: either the retriever failed, or the
-            # gold set is missing a source that also answers the question.
-            missed[question.id] = sources
+            # Titles, not just ids, because triage is judging whether what came
+            # back answers the question, and an id says nothing about that.
+            seen: dict[str, str] = {}
+            for chunk, _ in retrieved:
+                seen.setdefault(
+                    chunk.source_id, f"{chunk.title[:52]} / {chunk.section[:22]}"
+                )
+            missed[question.id] = [f"{sid}  {title}" for sid, title in seen.items()]
     return RetrievalScore(variant.name, len(questions), ranks, precisions), missed
 
 
@@ -148,11 +153,17 @@ def run_generation(questions: list[GoldQuestion], k: int, provider_name: str) ->
         if question.adversarial:
             adversarial.append(refused)
             if not refused:
-                failures.append((question.id, answer))
+                failures.append(("answered, should have declined", question, answer))
         else:
             answerable.append(refused)
             if refused:
-                failures.append((question.id, answer))
+                failures.append(("declined, should have answered", question, answer))
+        if bad:
+            failures.append(
+                (f"cited {sorted(bad)}, which do not exist", question, answer)
+            )
+        elif loose:
+            failures.append((f"{len(loose)} uncited sentences", question, answer))
 
     return {
         "adversarial_abstention": abstention_rate(adversarial),
@@ -168,6 +179,9 @@ def main() -> None:
     parser.add_argument("--gold", default=GOLD_PATH)
     parser.add_argument("--k", type=int, default=5)
     parser.add_argument("--generate", action="store_true", help="costs API calls")
+    parser.add_argument(
+        "--per-question", action="store_true", help="rank for every question"
+    )
     parser.add_argument("--provider", default="openai")
     parser.add_argument("--out", help="write results as json")
     args = parser.parse_args()
@@ -198,14 +212,25 @@ def main() -> None:
     for variant in VARIANTS:
         print(f"  {variant.name:22} {variant.note}")
 
+    by_id = {question.id: question for question in questions}
+    if args.per_question:
+        print("\nrank of the first accepted source, per question:")
+        for question, rank in zip(scored, scores[0].ranks):
+            mark = "miss" if rank is None else f"{rank:4}"
+            print(f"  {mark}  {question.id:28} {question.question[:44]}")
+
     if misses[VARIANTS[0].name]:
-        print("\nmisses under the shipped configuration:")
-        for question_id, sources in misses[VARIANTS[0].name].items():
-            print(f"  {question_id}")
-            print(f"      got: {', '.join(dict.fromkeys(sources))}")
+        print(f"\n{len(misses[VARIANTS[0].name])} retrieval misses:")
+        for question_id, got in misses[VARIANTS[0].name].items():
+            question = by_id[question_id]
+            print(f"\n  {question_id}: {question.question}")
+            print(f"      wanted: {', '.join(question.sources)}")
+            for line in got:
+                print(f"      got:    {line}")
         print(
-            "\n  Triage each: if one of those answers the question, add it to the\n"
-            "  question's sources. If none does, it is a real retrieval failure."
+            "\n  Triage each: if something that came back does answer the question,\n"
+            "  add it to that question's sources. If nothing does, it is a real\n"
+            "  retrieval failure and the corpus or the query is at fault."
         )
 
     if args.generate:
@@ -220,8 +245,13 @@ def main() -> None:
             "      (want 0)\n"
             f"  uncited sentences         {generation['uncited_sentences']}"
         )
-        for question_id, answer in generation["failures"]:
-            print(f"\n  {question_id}: {answer[:300]}")
+        if generation["failures"]:
+            print(f"\n{len(generation['failures'])} generation findings:")
+        for kind, question, answer in generation["failures"]:
+            print(f"\n  {question.id}  [{kind}]")
+            print(f"      asked:  {question.question}")
+            print(f"      expect: {' '.join(question.expect.split())[:96]}")
+            print(f"      got:    {' '.join(answer.split())[:280]}")
         results["generation"] = {
             key: value for key, value in generation.items() if key != "failures"
         }
