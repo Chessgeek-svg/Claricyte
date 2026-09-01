@@ -29,6 +29,15 @@ EMBEDDINGS_PATH = "rag_data/embeddings.npz"
 # Omitting it costs a couple of points of retrieval accuracy.
 QUERY_PREFIX = "Represent this sentence for searching relevant passages: "
 
+# Tried and rejected: prefixing each document with its article title and section
+# heading before embedding, the usual "contextual header" trick, to stop a page
+# of red cell images headed "Basophilic Stippling" answering a question about
+# basophil granules. It made retrieval worse on the gold set, hit@5 0.98 to 0.90
+# and MRR 0.78 to 0.73. The heading repeats across every chunk of an article, so
+# it pulls each vector towards the article's topic and away from the passage's
+# own. Query-only ablations improved, which is the same effect seen from the
+# other side. Do not reintroduce without measuring.
+
 
 @lru_cache(maxsize=1)
 def _embedder():
