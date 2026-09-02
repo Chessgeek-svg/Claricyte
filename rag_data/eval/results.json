@@ -37,10 +37,15 @@
     "mrr": 0.45555555555555555,
     "precision": 0.25000000000000006
   },
+  "generation_groundedness": {
+    "groundedness": 0.9256198347107438,
+    "claims": 121,
+    "reviewed": 0
+  },
   "generation": {
     "adversarial_abstention": 0.7142857142857143,
     "answerable_abstention": 0.08333333333333333,
     "fabricated_citations": 0,
-    "uncited_sentences": 11
+    "uncited_sentences": 10
   }
 }

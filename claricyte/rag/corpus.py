@@ -114,6 +114,13 @@ class Chunk:
         return self.id, self.text, metadata
 
 
+def split_sentences(text: str) -> list[str]:
+    """Sentences, stripped. Shared so the chunker and the groundedness judge
+    agree on what a sentence is; a naive split on ". " breaks on "1.5 x 10^9/L"
+    and on every abbreviation in a clinical paper."""
+    return [s.strip() for s in _SEGMENTER.segment(text) if s.strip()]
+
+
 def _overlap_cut(sentences: list[str], budget: int) -> tuple[int, int]:
     """Where to slice for the tail fitting in `budget`, and its word count.
 
@@ -137,7 +144,7 @@ def chunk_section(
     batch, total = [], 0
     # pysbd keeps terminal punctuation and a trailing space, so strip here and
     # rejoin with a plain space below.
-    sentences = [s.strip() for s in _SEGMENTER.segment(text)]
+    sentences = split_sentences(text)
     for sentence in sentences:
         if total + len(sentence.split()) > max_words and batch:
             yield " ".join(batch)

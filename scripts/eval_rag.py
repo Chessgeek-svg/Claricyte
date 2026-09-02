@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from dataclasses import replace
 from typing import Callable, NamedTuple
 
 from claricyte.rag.generate import (
@@ -25,6 +26,15 @@ from claricyte.rag.generate import (
     uncited_sentences,
 )
 from claricyte.rag.gold import GOLD_PATH, GoldQuestion, coverage, load_gold
+from claricyte.rag.judge import (
+    NO_CLAIM,
+    UNSUPPORTED,
+    agreement,
+    groundedness,
+    judge_answer,
+    read_judgements,
+    write_judgements,
+)
 from claricyte.rag.metrics import (
     RetrievalScore,
     abstention_rate,
@@ -123,21 +133,29 @@ def print_retrieval(scores: list[RetrievalScore], k: int) -> None:
         )
 
 
-def run_generation(questions: list[GoldQuestion], k: int, provider_name: str) -> dict:
-    """Generate an answer per question and check it mechanically.
+JUDGEMENTS_PATH = "rag_data/eval/judgements.jsonl"
 
-    No LLM judge. A sentence-level judge is the standard way to score
-    groundedness, but an unvalidated judge is not a measurement, and validating
-    one means hand-labelling a sample and reporting the agreement rate. Until
-    that exists these three checks are what can be claimed honestly: citations
-    that resolve, sentences that carry one, and refusal when nothing supports an
-    answer.
+
+def run_generation(
+    questions: list[GoldQuestion],
+    k: int,
+    provider_name: str,
+    judge: bool = False,
+) -> dict:
+    """Generate an answer per question and check it.
+
+    Three of the four checks are mechanical: citations that resolve, sentences
+    that carry one, and refusal when nothing supports an answer. The fourth is
+    the judge, which is the only one that can catch a fluent invented sentence
+    with a valid citation attached, and the only one whose own numbers need
+    validating before they may be reported.
     """
     from claricyte.rag.store import search
 
     provider = get_provider(provider_name)
     answerable, adversarial = [], []
     fabricated, uncited, failures = 0, 0, []
+    judgements = []
 
     for question in questions:
         text, where = build_query({}, question.label, question=question.question)
@@ -165,13 +183,56 @@ def run_generation(questions: list[GoldQuestion], k: int, provider_name: str) ->
         elif loose:
             failures.append((f"{len(loose)} uncited sentences", question, answer))
 
+        # Only answers are judged. An abstention asserts nothing, so scoring it
+        # would count a correct refusal as ungrounded.
+        if judge and not refused:
+            judgements.extend(judge_answer(answer, chunks, provider, question.id))
+
     return {
+        "judgements": judgements,
         "adversarial_abstention": abstention_rate(adversarial),
         "answerable_abstention": abstention_rate(answerable),
         "fabricated_citations": fabricated,
         "uncited_sentences": uncited,
         "failures": failures,
     }
+
+
+def report_judge(judgements: list, provider_name: str) -> dict:
+    """Print the groundedness score, and say whether it may be quoted.
+
+    Human verdicts already recorded are carried onto the new run, matched by
+    question and sentence, so hand review survives a rerun of everything else.
+    """
+    previous = {
+        (j.question_id, j.sentence): j.human for j in read_judgements(JUDGEMENTS_PATH)
+    }
+    for i, judgement in enumerate(judgements):
+        human = previous.get((judgement.question_id, judgement.sentence))
+        if human is not None:
+            judgements[i] = replace(judgement, human=human)
+    write_judgements(judgements, JUDGEMENTS_PATH)
+
+    score = groundedness(judgements)
+    claims = sum(1 for j in judgements if j.verdict != NO_CLAIM)
+    rate, sample = agreement(judgements)
+
+    print(f"\ngroundedness (judge: {provider_name})")
+    print(f"  supported claims          {score:.2f} of {claims}")
+    if sample:
+        print(f"  judge/human agreement     {rate:.2f} over {sample} reviewed")
+    else:
+        print("  judge/human agreement     nothing reviewed yet, so the score above")
+        print("                            is a lead, not a result. Fill in the")
+        print(f'                            "human" field in {JUDGEMENTS_PATH}.')
+
+    unsupported = [j for j in judgements if j.verdict == UNSUPPORTED]
+    if unsupported:
+        print(f"\n{len(unsupported)} statements judged unsupported:")
+        for judgement in unsupported[:15]:
+            sentence = " ".join(judgement.sentence.split())
+            print(f"  {judgement.question_id:28} {sentence[:120]}")
+    return {"groundedness": score, "claims": claims, "reviewed": sample}
 
 
 def main() -> None:
@@ -181,6 +242,11 @@ def main() -> None:
     parser.add_argument("--generate", action="store_true", help="costs API calls")
     parser.add_argument(
         "--per-question", action="store_true", help="rank for every question"
+    )
+    parser.add_argument(
+        "--judge",
+        action="store_true",
+        help="score groundedness sentence by sentence; roughly doubles the cost",
     )
     parser.add_argument("--provider", default="openai")
     parser.add_argument("--out", help="write results as json")
@@ -234,7 +300,7 @@ def main() -> None:
         )
 
     if args.generate:
-        generation = run_generation(questions, args.k, args.provider)
+        generation = run_generation(questions, args.k, args.provider, args.judge)
         print(
             f"\ngeneration ({args.provider})\n"
             f"  abstention, adversarial   {generation['adversarial_abstention']:.2f}"
@@ -252,8 +318,15 @@ def main() -> None:
             print(f"      asked:  {question.question}")
             print(f"      expect: {' '.join(question.expect.split())[:96]}")
             print(f"      got:    {' '.join(answer.split())[:280]}")
+        if args.judge:
+            results["generation_groundedness"] = report_judge(
+                generation["judgements"], args.provider
+            )
+
         results["generation"] = {
-            key: value for key, value in generation.items() if key != "failures"
+            key: value
+            for key, value in generation.items()
+            if key not in ("failures", "judgements")
         }
 
     if args.out:
