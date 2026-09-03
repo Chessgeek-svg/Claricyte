@@ -34,6 +34,7 @@ from claricyte.rag.judge import (
     judge_answer,
     read_judgements,
     write_judgements,
+    write_sources,
 )
 from claricyte.rag.metrics import (
     RetrievalScore,
@@ -134,6 +135,10 @@ def print_retrieval(scores: list[RetrievalScore], k: int) -> None:
 
 
 JUDGEMENTS_PATH = "rag_data/eval/judgements.jsonl"
+# The chunks behind the judgements. Without them a verdict is a bare number and
+# nobody can check it, which makes the hand review the score depends on
+# impossible.
+SOURCES_PATH = "rag_data/eval/judged_sources.json"
 
 
 def run_generation(
@@ -155,7 +160,7 @@ def run_generation(
     provider = get_provider(provider_name)
     answerable, adversarial = [], []
     fabricated, uncited, failures = 0, 0, []
-    judgements = []
+    judgements, judged_chunks = [], {}
 
     for question in questions:
         text, where = build_query({}, question.label, question=question.question)
@@ -187,9 +192,11 @@ def run_generation(
         # would count a correct refusal as ungrounded.
         if judge and not refused:
             judgements.extend(judge_answer(answer, chunks, provider, question.id))
+            judged_chunks[question.id] = chunks
 
     return {
         "judgements": judgements,
+        "judged_chunks": judged_chunks,
         "adversarial_abstention": abstention_rate(adversarial),
         "answerable_abstention": abstention_rate(answerable),
         "fabricated_citations": fabricated,
@@ -319,14 +326,16 @@ def main() -> None:
             print(f"      expect: {' '.join(question.expect.split())[:96]}")
             print(f"      got:    {' '.join(answer.split())[:280]}")
         if args.judge:
+            write_sources(generation["judged_chunks"], SOURCES_PATH)
             results["generation_groundedness"] = report_judge(
                 generation["judgements"], args.provider
             )
+            print(f"  chunks behind them     -> {SOURCES_PATH}")
 
         results["generation"] = {
             key: value
             for key, value in generation.items()
-            if key not in ("failures", "judgements")
+            if key not in ("failures", "judgements", "judged_chunks")
         }
 
     if args.out:

@@ -10,6 +10,8 @@ where a wrong implementation still produces a plausible number:
     with itself
 """
 
+import json
+
 import pytest
 
 from claricyte.rag.corpus import Chunk
@@ -26,6 +28,7 @@ from claricyte.rag.judge import (
     parse_verdicts,
     read_judgements,
     write_judgements,
+    write_sources,
 )
 
 
@@ -191,3 +194,21 @@ def test_rerunning_the_judge_preserves_human_verdicts(tmp_path):
 
 def test_reading_a_missing_file_is_not_an_error(tmp_path):
     assert read_judgements(tmp_path / "absent.jsonl") == []
+
+
+def test_sources_are_written_numbered_by_position(tmp_path):
+    """The number in a verdict is positional, so the file has to preserve it or
+    a reviewer cannot tell which chunk [2] was."""
+    path = tmp_path / "judged_sources.json"
+    write_sources({"q1": [make_chunk(0), make_chunk(1)]}, path)
+    rows = json.loads(path.read_text(encoding="utf-8"))["q1"]
+    assert [r["number"] for r in rows] == [1, 2]
+    assert rows[0]["text"] == make_chunk().text
+    assert rows[0]["source_id"] == "PMC1"
+
+
+def test_sources_carry_enough_to_find_the_original(tmp_path):
+    path = tmp_path / "judged_sources.json"
+    write_sources({"q1": [make_chunk()]}, path)
+    (row,) = json.loads(path.read_text(encoding="utf-8"))["q1"]
+    assert set(row) == {"number", "source_id", "section", "url", "text"}

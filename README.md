@@ -22,6 +22,43 @@ The demo runs as a quiz, where Claricyte draws a real validation-set cell, you g
 
 Explanations are always built for the known-correct label rather than the model's own guess. This way, the model is still always explaining features that it actually saw in the cell that correlate with the correct cell type, even if it happened to predict incorrectly on its own. The model's raw class prediction is still shown, under "Model internals", so you can see where it agrees and where it does not.
 
+## Clinical context
+
+Once a cell is classified, Claricyte surfaces a cited reference panel highlighting associated clinical conditions and related smear findings, alongside an open prompt for follow-up questions.
+
+This pipeline relies on a strict separation of concerns. The language model never sees the image, ensuring it cannot make ungrounded visual assertions. The concept bottleneck model handles all morphology, while the RAG pipeline exclusively synthesizes context from vetted, license-compliant reference texts, and does not fabricate an answer when it fails to find one in its sources.
+
+```
+predicted class -> metadata filter + prose query -> retrieved chunks -> cited answer
+```
+
+The corpus is 1,267 chunks from 111 open-access PubMed Central articles and two open-licensed textbooks. Retrieval uses BGE-small-en-v1.5 embeddings in ChromaDB, with the predicted class as a metadata filter over chunks tagged at ingest by alias matching. Generation runs on gpt-4.1-nano at temperature 0, and every emitted citation is checked against what was actually retrieved before the answer is shown.
+
+The per-class panels are generated offline and committed, so that just browsing cells provides some information but doesn't automatically perform an API call with each image.
+
+### Retrieval and grounding performance
+
+Measured on a 55-question gold set, 48 of which are scored on retrieval and 7 of which are adversarial questions the system is supposed to refuse.
+
+| Metric | Value |
+|---|---|
+| Hit rate at 5 | 0.98 |
+| Groundedness (supported claims) | 0.97 |
+| Abstention on unanswerable questions | 0.71 |
+
+Four retrieval configurations were compared on the same gold set:
+
+| Configuration | Hit rate at 5 | MRR |
+|---|---|---|
+| Class as filter, question as prose query | 0.98 | 0.78 |
+| No class filter | 0.96 | 0.76 |
+| No class prepended to the query text | 0.79 | 0.60 |
+| Class name alone as the query | 0.56 | 0.46 |
+
+One of the design decisions I thought was clever was to filter sources on the classes they discussed, which are tagged in the metadata of each chunk. The reasoning behind this was essentially to guarantee that sources are relevant, and prevent false positive hits in sources that refer to unrelated conditions. But removing the metadata filter makes little difference, while removing the class from the query text costs 0.19 of hit rate and ten more misses. So while the class is necessary to ensure the returned information is relevant, it's more useful when it's just steering the embedding, not restricting the candidate pool. Currently the filter is kept since results are still marginally better, and there is always a risk of losing the signal of the class somewhere int he query embedding.
+
+Groundedness is scored by first having a language model judge each generated sentence against the retrieved excerpts to determine if the claim that is made is actually stated by the source (regardless of whether it is true), and then by a manual review of those that it failed to find support for. As an example, when asked about the reason for neutrophils having a segmented nucleus, the model answered that it allows the cells to more efficiently migrate to the sites of infection. This is a true statement, but it is not supported by any of the chunks that were retrieved. Around 3% of generated claims (4/121) are unsupported in this way.
+
 ## Current performance
 
 Six classes: band neutrophil, basophil, eosinophil, lymphocyte, monocyte, segmented neutrophil.
@@ -63,6 +100,8 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+The quiz and the clinical context panels run offline. The question box calls the OpenAI API, so it needs a key in `.streamlit/secrets.toml` (copy `.streamlit/secrets.toml.example`) or in `OPENAI_API_KEY`. Without one, everything else still works.
+
 The repository ships the validation split it quizzes on under `demo_data/`, and the trained model under `checkpoints/`. The checkpoint is about 47MB, because the ResNet50 backbone is fine-tuned rather than frozen and so cannot simply be refetched from timm; it is stored in half precision, which halves the file at no measurable cost to accuracy.
 
 Retraining the model would require the Acevedo image set and the WBCAtt attribute annotations, which carry their own licensing terms (see [Credits & attribution](#credits--attribution)), followed by the two-stage training in `scripts/` (`train_attr_heads.py`, then `train_class_head.py`). The two stages are trained separately on purpose, as otherwise the class objective (having received the correct label and then backpropagating to the attribute heads) would influence the attribute heads towards misidentified morphological cell features in order to make classification more accurate. For example, if an image of a segmented neutrophil was mistakenly labeled as an eosinophil, the jointly trained attribute head would be influenced by the class head to predict red granules on that image, even though none were actually present. Separating them allows the attribute heads to visually identify morphological features as accurately as possible, and then rely on the class head to convert those confidence values into a final class prediction, which can then be explained by what attributes were actually seen in that individual cell.
@@ -85,6 +124,12 @@ Claricyte is trained and evaluated on publicly released data, used here under th
   Satoshi Tsutsui, Winnie Pang, and Bihan Wen, "WBCAtt: A White Blood Cell Dataset Annotated with Detailed Morphological Attributes," Advances in Neural Information Processing Systems (NeurIPS), 2023. arXiv:2306.13531
   The authors also ask that work using WBCAtt cite its successor, which extends the dataset with pixel-level annotations not used here:
   Satoshi Tsutsui, Winnie Pang, Shuting He, and Bihan Wen, "WBCAtt+: Fine-Grained Pixel-Level Morphological Annotations for White Blood Cell Images," Medical Image Analysis, 2026. arXiv:2605.19692
+
+The clinical context corpus is drawn from openly licensed text, and every chunk notes its licence and a link back to its source:
+
+- Articles from the PubMed Central Open Access subset, each under its own CC0, CC BY, CC BY-SA or CC BY-NC licence, or PMC's text-mining terms. Articles under no-derivatives licences are excluded at ingest, since chunking and reassembling them is arguable as a derivative work.
+- Taylor and Doty, *Clinical Hematology Atlas: A Pictorial Guide for the Hematology Laboratory*, Oregon Institute of Technology, via Medicine LibreTexts. Licensed CC BY-NC-SA 4.0.
+- Villatoro and To, *A Laboratory Guide to Clinical Hematology*, Open Education Alberta, via Medicine LibreTexts. Licensed CC BY-NC 4.0.
 
 ## License
 

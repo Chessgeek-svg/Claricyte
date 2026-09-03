@@ -166,6 +166,34 @@ def write_judgements(judgements: list[Judgement], path: str | Path) -> None:
             )
 
 
+def write_sources(sources: dict[str, list[Chunk]], path: str | Path) -> None:
+    """Write the numbered chunks each question was answered from.
+
+    Written beside the judgements because a verdict is unreviewable without
+    them: "sentence 2 is unsupported, it cites [2]" is not something a person
+    can check against a bare number. Kept in its own file rather than repeated
+    on every judgement, since one question's five chunks back all of its
+    sentences.
+    """
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        question_id: [
+            {
+                "number": i,
+                "source_id": chunk.source_id,
+                "section": chunk.section,
+                "url": chunk.url,
+                "text": chunk.text,
+            }
+            for i, chunk in enumerate(chunks, 1)
+        ]
+        for question_id, chunks in sources.items()
+    }
+    with open(path, "w", encoding="utf-8") as handle:
+        json.dump(payload, handle, indent=2, ensure_ascii=False)
+
+
 def read_judgements(path: str | Path) -> list[Judgement]:
     """Read judgements back. Missing file means none yet, not an error."""
     path = Path(path)
