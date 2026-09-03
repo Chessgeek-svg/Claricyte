@@ -522,13 +522,15 @@
 
 # --- a known gap, kept deliberately --------------------------------------
 
-- id: gap-why-segmented
+- id: why-segmented
+  # Was adversarial: the corpus could not answer it, and the model invented the
+  # textbook explanation and cited chunks that did not contain it. That is what
+  # prompted pinning the physiology sources, so it is now answerable.
   question: Why is a neutrophil's nucleus segmented in the first place?
   label: Segmented Neutrophil
-  adversarial: true
+  sources: [PMC6288403, PMC6250837]
   expect: >
-    Abstain. A fair student question the corpus cannot answer: nothing in it
-    connects nuclear lobulation to deformability or migration. Distinct from
-    the out-of-scope adversarials, and the one to retest if a physiology source
-    is ever added.
-  tags: [adversarial, corpus-gap, function]
+    Lobulation increases nuclear deformability, which the cell needs to squeeze
+    through tight spaces when migrating. Hyposegmentation in Pelger-Huet is the
+    counter-example.
+  tags: [function, core]

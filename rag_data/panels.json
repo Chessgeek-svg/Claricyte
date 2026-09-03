@@ -1,6 +1,6 @@
 {
   "Band Neutrophil": {
-    "text": "Band neutrophils are associated with a left shift, which indicates an increase in circulating immature granulocytes, often seen in response to infection, inflammation, or stress [2][4]. On a peripheral blood film, bands are characterized by unsegmented nuclear morphology and may be seen alongside other immature forms such as myelocytes and metamyelocytes, especially in severe neutrophilia or leukaemoid reactions [2][4]. Toxic changes like toxic granulation, vacuolation, and Dohle bodies may also be present in neutrophils during such conditions [4].",
+    "text": "Band neutrophils are associated with a left shift, which indicates an increase in circulating immature granulocytes, often seen in response to infection, inflammation, or stress [2][4]. On a peripheral blood film, bands are characterized by unsegmented nuclear morphology and may be seen alongside other immature forms such as metamyelocytes, myelocytes, promyelocytes, and myeloblasts, especially in severe infections or leukemoid reactions [2][4]. Toxic changes like toxic granulation, vacuolation, and Dohle bodies may also be present in neutrophils during such conditions [4].",
     "sources": [
       {
         "number": 1,
@@ -53,7 +53,7 @@
     ]
   },
   "Basophil": {
-    "text": "Basophils are associated with conditions such as chronic myeloid leukemia (CML), where marked basophilia is a pathognomonic feature and a prognostic factor, and with allergic and inflammatory responses, including COPD and asthma, where tissue infiltration and increased density are observed [2][3][5]. On a peripheral blood film, basophilia may be evident as an increased number of basophils, sometimes quite immature, especially in disease progression or accelerated phases of CML, and may be accompanied by other abnormal cells or features indicating myeloproliferative disorders [6][7].",
+    "text": "Basophils are associated with conditions such as chronic myeloid leukemia (CML), where marked basophilia is a pathognomonic feature and a prognostic factor [3][7]. They are also linked to allergic and inflammatory responses, including COPD and asthma, where tissue infiltration and increased density are observed [5]. On a peripheral blood film, basophilia may be evident as an increased number of basophils, which can be quite immature in cases of disease progression, and may be accompanied by other hematologic abnormalities such as cytopenias or leukocytosis [6][7].",
     "sources": [
       {
         "number": 1,
@@ -106,7 +106,7 @@
     ]
   },
   "Eosinophil": {
-    "text": "Eosinophils are associated with a range of conditions, including hypereosinophilic syndrome (HES), eosinophilic granulomatosis with polyangiitis (EGPA), allergic diseases like asthma and atopic dermatitis, parasitic infections, and certain cancers or drug reactions [1][8]. On a peripheral blood film, eosinophils may be seen in increased numbers, with counts above 0.5×10^9/L indicating eosinophilia and counts ≥1.5×10^9/L indicating hypereosinophilia; their presence can be associated with tissue infiltration and eosinophil granule proteins [2][6][8]. The degree of eosinophilia and associated tissue findings help in diagnosing underlying disorders and assessing disease activity.",
+    "text": "Eosinophils are associated with a broad range of conditions, including hypereosinophilic syndrome (HES), eosinophilic granulomatosis with polyangiitis (EGPA), allergic diseases like asthma and atopic dermatitis, parasitic infections, and certain neoplasms such as myeloid neoplasms (e.g., CML and AML) [1][4][8]. On a peripheral blood film, eosinophilia is indicated by an increased absolute eosinophil count, typically above 0.5 × 10^9/L, with the degree categorized as mild, moderate, or severe [2][6]. The presence of eosinophilia can be confirmed by counting eosinophils directly, and in cases of hypereosinophilia, tissue infiltration or granule protein aggregates may also be observed [7].",
     "sources": [
       {
         "number": 1,
@@ -159,7 +159,7 @@
     ]
   },
   "Lymphocyte": {
-    "text": "Lymphocytes are associated with reactive processes such as infections and inflammatory conditions, as well as neoplastic lymphoproliferative disorders like chronic lymphocytic leukemia (CLL) and cutaneous lymphomas [1][4]. On a peripheral blood film, reactive lymphocytes may appear as atypical, pleomorphic, or activated cells, often with abnormal morphology, although phenotypic alterations can occur earlier than morphological changes [2][3]. In CLL, smudge cells are frequently observed, and abnormal lymphocytes may be small and difficult to identify morphologically, especially when phenotypic changes precede morphological alterations [3][4].",
+    "text": "Lymphocytes are associated with reactive processes, such as infections like COVID-19, where atypical or reactive lymphocytes with heterogeneous morphology may be observed, and with neoplastic conditions like chronic lymphocytic leukemia, which often presents with lymphocytosis and smudge cells on a blood smear [2][4]. In COVID-19, abnormal lymphocytes are described as atypical, reactive, activated, or pleomorphic, and their presence is a common morphological finding, although their counts may not correlate directly with disease severity [2][6]. The evaluation of lymphocytes on a peripheral blood smear can help differentiate reactive from neoplastic processes, with phenotypic alterations occurring earlier than morphological changes [3].",
     "sources": [
       {
         "number": 1,
@@ -212,7 +212,7 @@
     ]
   },
   "Monocyte": {
-    "text": "Monocytes are associated with inflammatory conditions such as atherosclerosis, myocardial infarction, infections, and hematologic disorders like myeloproliferative diseases [2][4][7][8]. On a peripheral blood film, monocytosis may be observed as an increased monocyte count, with features such as vacuolation or atypical morphology, which can be associated with initial or milder disease states, including COVID-19 [4][6]. These morphological changes, along with elevated monocyte numbers, support the presence of systemic inflammation or immune response.",
+    "text": "Monocytes are associated with inflammatory conditions such as atherosclerosis, myocardial infarction, infections, and hematologic disorders like myeloproliferative diseases [2][4][7][8]. On a peripheral blood film, monocytosis may be observed as an increased monocyte count, with possible morphological features including vacuolization or atypical/reactive lymphocytes, especially in severe cases of infections like COVID-19 [4][6]. These findings can support the presence of systemic inflammation or immune response related to the underlying condition.",
     "sources": [
       {
         "number": 1,
@@ -265,7 +265,7 @@
     ]
   },
   "Segmented Neutrophil": {
-    "text": "Segmented neutrophils are associated with sepsis and severe infections, often showing morphological abnormalities such as toxic granulations, vacuolar degeneration, and hypersegmentation [4][8]. In cases of severe infection, a leukaemoid reaction with toxic granulations may be observed, indicating increased microbicidal activity. Additionally, neutrophil hypersegmentation can be seen in megaloblastic anemia, characterized by neutrophils with six or more nuclear segments [8].",
+    "text": "Segmented neutrophils are associated with conditions such as sepsis, where they may exhibit toxic granulations, vacuolar degeneration, and other morphological abnormalities [4][8]. In severe infections, they can show toxic granulation due to increased microbicidal granules, and hypersegmentation may be observed in certain conditions like megaloblastic anemia [8]. Morphological changes such as these, along with the presence of immature forms or toxic granules, serve as indicators of infection severity and systemic inflammatory response [4][8].",
     "sources": [
       {
         "number": 1,
@@ -318,7 +318,7 @@
     ]
   },
   "Monocyte|vacuolated": {
-    "text": "Monocytes are associated with inflammatory conditions such as monocytosis in acute and chronic inflammation, including atherosclerosis, and can be part of clonal disorders like CMML [5][6]. On peripheral blood films, monocytes typically show variable nuclear shapes, a ground glass blue-gray cytoplasm with fine granules, and may have pseudopods or vacuoles [1]. Cytoplasmic vacuolation in monocytes can be associated with reactive or infectious states, and in COVID-19, it has been linked to milder disease and shorter hospital stays [4].",
+    "text": "Monocytes are associated with inflammatory conditions such as monocytosis in acute and chronic inflammation, including atherosclerosis, and can be elevated in myelodysplastic syndromes and myeloproliferative disorders [5][6]. On peripheral blood films, monocytes typically show variable nuclear shapes, a ground glass blue-gray cytoplasm with fine granules, and may have pseudopods or vacuoles [1]. Cytoplasmic vacuolation in monocytes can be associated with reactive or infectious states, and in COVID-19, a high proportion of vacuolated monocytes has been linked to milder disease and shorter hospital stays [4].",
     "sources": [
       {
         "number": 1,
@@ -371,7 +371,7 @@
     ]
   },
   "Segmented Neutrophil|vacuolated": {
-    "text": "Segmented neutrophils are associated with conditions such as sepsis, systemic inflammatory response syndrome (SIRS), and septic shock, where morphological changes like toxic granulation, Dohle bodies, and vacuolation are observed [1][8]. On peripheral blood films, these cells may show toxic granules, cytoplasmic vacuolation, and Dohle bodies, indicating activation and toxicity [8]. Cytoplasmic vacuolation suggests phagocytic activity, autophagocytosis, or cellular response to infection or inflammation [8].",
+    "text": "Segmented neutrophils are associated with conditions such as sepsis, systemic inflammatory response syndrome (SIRS), and septic shock, where morphological changes like toxic granulation, Dohle bodies, and vacuolation are observed [1][8]. On peripheral blood films, these cells may show toxic granules, cytoplasmic vacuoles, and Dohle bodies, indicating activation and toxicity [8]. Cytoplasmic vacuolation suggests phagocytic activity, autophagocytosis, or cellular response to infection and inflammation [8].",
     "sources": [
       {
         "number": 1,

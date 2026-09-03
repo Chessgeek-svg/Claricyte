@@ -114,6 +114,13 @@ EXTRA_PMCIDS: tuple[str, ...] = (
     "PMC12436449",  # CMV infection-induced lymphocytosis
     "PMC12734239",  # The many faces of primary EBV infection
     "PMC10140754",  # Mycosis fungoides and Sezary syndrome
+    # Cell physiology, which the corpus had almost none of. Asked why a
+    # neutrophil nucleus is segmented, the model gave the textbook answer about
+    # deformability and migration and cited two chunks that say nothing of the
+    # kind. The searches above look for clinical correlation, so nothing that
+    # explains why a cell is shaped the way it is was ever going to be found.
+    "PMC6288403",  # The neutrophil nucleus: an important influence on migration
+    "PMC6250837",  # Nuclear deformation during neutrophil migration
 )
 
 
