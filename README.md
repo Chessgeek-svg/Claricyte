@@ -32,7 +32,7 @@ This pipeline relies on a strict separation of concerns. The language model neve
 predicted class -> metadata filter + prose query -> retrieved chunks -> cited answer
 ```
 
-The corpus is 1,316 chunks from 111 open-access PubMed Central articles and two open-licensed textbooks. Retrieval uses BGE-small-en-v1.5 embeddings in ChromaDB, with the predicted class as a metadata filter over chunks tagged at ingest by alias matching. Generation runs on gpt-4.1-nano at temperature 0, and every emitted citation is checked against what was actually retrieved before the answer is shown.
+The corpus is 1,328 chunks from 112 open-access PubMed Central articles and two open-licensed textbooks. Retrieval uses BGE-small-en-v1.5 embeddings in ChromaDB, with the predicted class as a metadata filter over chunks tagged at ingest by alias matching. Generation runs on gpt-4.1-nano at temperature 0, and every emitted citation is checked against what was actually retrieved before the answer is shown.
 
 The per-class panels are generated offline and committed, so that just browsing cells provides some information but doesn't automatically perform an API call with each image.
 
@@ -43,23 +43,21 @@ Measured on a 55-question gold set, 49 of which are scored on retrieval and 6 of
 | Metric | Value |
 |---|---|
 | Hit rate at 5 | 0.98 |
-| Groundedness (supported claims) | 0.93 |
-| Abstention on unanswerable questions | 0.83 |
+| Groundedness (supported claims) | 0.97 |
+| Abstention on unanswerable questions | 1.00 |
 
 Four retrieval configurations were compared on the same gold set:
 
 | Configuration | Hit rate at 5 | MRR |
 |---|---|---|
 | Class as filter, question as prose query | 0.98 | 0.78 |
-| No class filter | 0.96 | 0.76 |
-| No class prepended to the query text | 0.80 | 0.61 |
-| Class name alone as the query | 0.55 | 0.45 |
+| No class filter | 0.96 | 0.77 |
+| No class prepended to the query text | 0.82 | 0.61 |
+| Class name alone as the query | 0.55 | 0.44 |
 
-One of the design decisions I thought was clever was to filter sources on the classes they discussed, which are tagged in the metadata of each chunk. The reasoning behind this was essentially to guarantee that sources are relevant, and prevent false positive hits in sources that refer to unrelated conditions. But removing the metadata filter makes little difference, while removing the class from the query text caused 9 more misses, which would be a hit rate drop of 0.18. So while the class is necessary to ensure the returned information is relevant, it's more useful when it's just steering the embedding, not restricting the candidate pool. Currently the filter is kept since results are still marginally better, and there is always a risk of losing the signal of the class somewhere int he query embedding.
+One of the design decisions I thought was clever was to filter sources on the classes they discussed, which are tagged in the metadata of each chunk. The reasoning behind this was essentially to guarantee that sources are relevant, and prevent false positive hits in sources that refer to unrelated conditions. But removing the metadata filter makes little difference, while removing the class from the query text caused 8 more misses, which would be a hit rate drop of 0.16. So while the class is necessary to ensure the returned information is relevant, the bulk of its value comes from the way that it steers the embedding, not restricting the candidate pool. Currently the filter is kept since results are still marginally better, and there is always a risk of losing the signal of the class somewhere int he query embedding.
 
-Groundedness is scored by reading every generated claim against the full text of all five retrieved chunks by hand. An LLM judge was built to do this first, and it is still in the eval, but tt was wrong too often to be a usable measurement. Of 14 claims it flagged, only 4 were genuinely unsupported, and it missed 4 that were. The figure above is the hand count, 8 unsupported claims out of 120.
-
-Those 8 share a cause. Every one comes from a chunk that describes two cells at once, and in each the model took a property from the wrong side of the comparison. It defined a hypersegmented neutrophil as having two to five lobes, which is the normal cell, where the source says six or more. It gave a monocyte the lymphocyte's size and nuclear-to-cytoplasmic ratio, which sit in an adjacent row of the same flattened table. It placed myeloperoxidase in the secondary granules when both retrieved sources put it in the primary. So the retrieval is succeeding in returning relevant information, but the model is not always able to correctly interpet it.
+Groundedness is scored by reading every generated claim against the full text of all five retrieved chunks. The first audit found 8 unsupported claims, and all 8 came from chunks comparing two cell types, where the model took a property from the wrong side of the comparison, e.g. a hypersegmented neutrophil defined as having two to five lobes. I decided to change the chunk overlap logic so that when no whole sentence fits inside the 50 word budget, the last 50 words carry over as contex tin the next chunk from the same source, instead of nothing. Previously, chunk overlap was carried as whole sentences within a 50 word budget, which meant that when there were sentences of more than 50 words that preceded a chunk's beginning, none of it carried over for context in the new chunk. This had been intentional design on the basis that incomplete thoughts would not provide helpful context, but reversing that decision halved the unsupported count.
 
 ## Current performance
 
@@ -102,7 +100,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-The quiz and the clinical context panels run offline. The question box calls the OpenAI API, so it needs a key in `.streamlit/secrets.toml` (copy `.streamlit/secrets.toml.example`) or in `OPENAI_API_KEY`. Without one, everything else still works.
+The quiz and the clinical context panels run offline. The question box calls the OpenAI API, so it needs a key in `.streamlit/secrets.toml` or in `OPENAI_API_KEY`. Without one, everything else still works.
 
 The repository ships the validation split it quizzes on under `demo_data/`, and the trained model under `checkpoints/`. The checkpoint is about 47MB, because the ResNet50 backbone is fine-tuned rather than frozen and so cannot simply be refetched from timm; it is stored in half precision, which halves the file at no measurable cost to accuracy.
 

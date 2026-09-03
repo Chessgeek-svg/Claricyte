@@ -115,9 +115,8 @@ class Chunk:
 
 
 def split_sentences(text: str) -> list[str]:
-    """Sentences, stripped. Shared so the chunker and the groundedness judge
-    agree on what a sentence is; a naive split on ". " breaks on "1.5 x 10^9/L"
-    and on every abbreviation in a clinical paper."""
+    """Sentences, stripped. A naive split on ". " breaks on "1.5 x 10^9/L" and
+    on every abbreviation in a clinical paper."""
     return [s.strip() for s in _SEGMENTER.segment(text) if s.strip()]
 
 
@@ -125,7 +124,7 @@ def _overlap_cut(sentences: list[str], budget: int) -> tuple[int, int]:
     """Where to slice for the tail fitting in `budget`, and its word count.
 
     An index, so the caller slices the list it already has. A sentence longer
-    than the budget carries nothing, so it cannot duplicate itself forward.
+    than the budget carries nothing whole, which is what _overlap_tail is for.
     """
     total = 0
     cut = len(sentences)
@@ -138,6 +137,29 @@ def _overlap_cut(sentences: list[str], budget: int) -> tuple[int, int]:
     return cut, total
 
 
+def _overlap_tail(sentences: list[str], budget: int) -> tuple[list[str], int]:
+    """The tail to carry into the next chunk: whole sentences if any fit,
+    otherwise the last `budget` words.
+
+    Whole sentences are preferred because a fragment starting mid-clause reads
+    badly and embeds badly. But a section can be one 200-word "sentence": a
+    table flattened into prose, a list of attributes with a single full stop at
+    the end. Carrying nothing there put a label at the end of one chunk and its
+    values at the start of the next, and the model answered with the values
+    belonging to the neighbouring row. Carrying the whole sentence instead is
+    not the fix, since it would spend most of the new chunk on overlap.
+    """
+    cut, total = _overlap_cut(sentences, budget)
+    if cut < len(sentences):
+        return sentences[cut:], total
+    if budget <= 0:
+        # Guard the slice, not just the caller: words[-0:] is the whole list,
+        # so a zero budget would carry everything forward.
+        return [], 0
+    words = " ".join(sentences).split()[-budget:]
+    return [" ".join(words)], len(words)
+
+
 def chunk_section(
     text: str, max_words: int = 300, overlap_words: int = 50
 ) -> Iterator[str]:
@@ -148,8 +170,7 @@ def chunk_section(
     for sentence in sentences:
         if total + len(sentence.split()) > max_words and batch:
             yield " ".join(batch)
-            cut, total = _overlap_cut(batch, overlap_words)
-            batch = batch[cut:]
+            batch, total = _overlap_tail(batch, overlap_words)
         batch.append(sentence)
         total += len(sentence.split())
     if batch:

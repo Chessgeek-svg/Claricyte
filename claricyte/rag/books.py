@@ -93,6 +93,11 @@ BOOKS: tuple[Book, ...] = (
 )
 
 
+def _canonical(url: str) -> str:
+    """A URL in the form used to tell pages apart: no trailing slash, no anchor."""
+    return url.split("#")[0].rstrip("/")
+
+
 def _get(url: str) -> str:
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(request, timeout=30) as response:
@@ -134,11 +139,19 @@ def load_book(book: Book, min_words: int = MIN_WORDS) -> Article:
     under chapter pages that are themselves only tables of contents.
     """
     sections: list[tuple[str, str]] = []
+    # Every page fetched so far, the book's own front page included. LibreTexts
+    # links a book to itself from its table of contents and labels that link
+    # with the author suffix appended, so matching the label against the title
+    # misses it: the front page was taken for a chapter, and descending into it
+    # ingested every chapter a second time. Deduping on URL cannot drift with
+    # the label, and closes the other paths to the same page at once.
+    seen: set[str] = {_canonical(book.url)}
     for name, url in _children(_content(_get(book.url))):
-        if not book.wants(name):
+        if not book.wants(name) or _canonical(url) in seen:
             continue
+        seen.add(_canonical(url))
         content = _content(_get(url))
-        for heading, text in _pages(name, content):
+        for heading, text in _pages(name, content, seen):
             if len(text.split()) >= min_words:
                 sections.append((heading, text))
     return Article(
@@ -150,11 +163,15 @@ def load_book(book: Book, min_words: int = MIN_WORDS) -> Article:
     )
 
 
-def _pages(name: str, content: str) -> list[tuple[str, str]]:
-    """A page's own text plus its children's, as (heading, text)."""
+def _pages(name: str, content: str, seen: set[str]) -> list[tuple[str, str]]:
+    """A page's own text plus its children's, as (heading, text).
+
+    `seen` is the set of URLs already taken, and is updated in place.
+    """
     found = [(name, _text(content))]
     for child_name, child_url in _children(content):
-        if child_name == name:
-            continue  # LibreTexts links a page to itself in its own listing
+        if _canonical(child_url) in seen:
+            continue  # a page already taken, itself included
+        seen.add(_canonical(child_url))
         found.append((child_name, _text(_content(_get(child_url)))))
     return found
