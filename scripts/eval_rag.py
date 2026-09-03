@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from dataclasses import replace
 from typing import Callable, NamedTuple
 
@@ -243,6 +244,10 @@ def report_judge(judgements: list, provider_name: str) -> dict:
 
 
 def main() -> None:
+    # Answers carry characters cp1252 cannot encode. Without this a Windows
+    # console kills the run on the first print, after every API call is paid for.
+    sys.stdout.reconfigure(encoding="utf-8")
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--gold", default=GOLD_PATH)
     parser.add_argument("--k", type=int, default=5)
