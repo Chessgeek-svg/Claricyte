@@ -19,4 +19,6 @@ pyyaml==6.0.3
 
 # Local generation backend, used by the eval loop so replaying the gold set
 # dozens of times costs nothing. The hosted demo uses the OpenAI path instead.
-transformers==4.57.1
+# Must stay inside the range sentence-transformers asks for (>=5.0.0,<6.0.0 as
+# of 6.0.0), or a clean install cannot resolve.
+transformers==5.16.1
