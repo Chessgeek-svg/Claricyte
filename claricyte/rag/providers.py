@@ -63,8 +63,8 @@ def api_key() -> str:
     key = os.environ.get("OPENAI_API_KEY")
     if not key:
         raise RuntimeError(
-            f"No OPENAI_API_KEY. Copy {SECRETS_PATH}.example to {SECRETS_PATH} "
-            "and fill it in, or export the variable."
+            f"No OPENAI_API_KEY. Create {SECRETS_PATH} with a line like "
+            'OPENAI_API_KEY = "sk-proj-...", or export the variable.'
         )
     return key
 

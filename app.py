@@ -94,12 +94,16 @@ def sources_markdown(panel: Panel) -> str:
 
     Only the ones the answer actually cites: retrieval hands over k chunks and a
     three-sentence answer rarely uses them all, so listing the rest implies
-    support that was never claimed. Numbering stays as generated, so [2] in the
-    text still points at the entry labelled 2.
+    support that was never claimed. Numbering stays as generated, so [6] in the
+    text still points at the entry labelled 6, and the list therefore has gaps.
+
+    Deliberately not a markdown ordered list. Markdown reads only the first
+    number of one and counts up from there, so "1. 2. 6. 7." rendered as
+    1, 2, 3, 4 and the [6] in the text pointed at nothing.
     """
     used = cited(panel.text)
     return "\n".join(
-        f"{source.number}. [{source.title}, {source.section}]({source.url})"
+        f"- **{source.number}**: [{source.title}, {source.section}]({source.url})"
         for source in panel.sources
         if source.number in used
     )

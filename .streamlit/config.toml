@@ -1,3 +1,9 @@
+# The demo is public. A failure anywhere in the script, an expired API key
+# most likely, would otherwise render its traceback into the page for every
+# visitor, and the OpenAI 401 quotes part of the key back in its message.
+[client]
+showErrorDetails = "none"
+
 [theme]
 base = "light"
 
