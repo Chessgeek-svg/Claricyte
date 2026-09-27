@@ -1,0 +1,92 @@
+name: Keep the demo awake
+
+# Community Cloud sleeps an app after roughly half a day without traffic and needs
+# a click to wake it. Four-hourly puts three visits inside that window, so a run
+# that GitHub delays or drops (scheduled runs are best effort) costs nothing.
+#
+# This drives a real browser rather than curl. Every HTTP path on the app, health
+# endpoints included, is answered by Streamlit's edge with the same 9.8KB shell,
+# so a plain request never reaches the container and would not count as traffic.
+# The session websocket a browser opens is what does.
+on:
+  schedule:
+    - cron: "23 */4 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: keepalive
+  cancel-in-progress: false
+
+jobs:
+  visit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install playwright==1.49.0
+      - run: playwright install --with-deps chromium
+
+      - name: Visit the app and wait for it to render
+        run: |
+          python - <<'PY'
+          import re, sys, time
+          from playwright.sync_api import sync_playwright
+
+          URL = "https://claricyte.streamlit.app/"
+          # app.py's st.title. It arrives over the session websocket, so seeing it
+          # proves the container ran the script; the shell alone proves nothing.
+          MARKER = "Claricyte WBC morphology tutor"
+          # Cold start loads torch and the checkpoint, so be generous.
+          DEADLINE = 240
+
+
+          def rendered(page):
+              """Community Cloud mounts the app in an iframe, so search every frame
+              rather than hard-coding today's mount path."""
+              for frame in page.frames:
+                  try:
+                      if frame.get_by_text(MARKER).count():
+                          return True
+                  except Exception:
+                      pass  # frame detached mid-poll
+              return False
+
+
+          with sync_playwright() as play:
+              browser = play.chromium.launch()
+              page = browser.new_page()
+              page.goto(URL, wait_until="domcontentloaded", timeout=120_000)
+
+              # If it did sleep anyway, take the click ourselves rather than leave
+              # it for Richard. Absent on a healthy app, hence the short timeout.
+              # Streamlit has worded this button at least two ways, so match both.
+              wake = re.compile(r"get this app back up|wake it up", re.I)
+              try:
+                  page.get_by_role("button", name=wake).click(timeout=10_000)
+                  print("app was asleep, clicked wake")
+              except Exception:
+                  pass
+
+              limit = time.time() + DEADLINE
+              while not rendered(page):
+                  if time.time() > limit:
+                      page.screenshot(path="failed.png", full_page=True)
+                      sys.exit(f"::error::App never rendered within {DEADLINE}s: {URL}")
+                  page.wait_for_timeout(2_000)
+
+              # Hold the session open briefly so it reads as a genuine visit.
+              page.wait_for_timeout(5_000)
+              browser.close()
+
+          print("app rendered")
+          PY
+
+      - name: Upload the failure screenshot
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failed-page
+          path: failed.png
+          if-no-files-found: ignore
